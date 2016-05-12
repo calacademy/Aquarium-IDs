@@ -1,0 +1,60 @@
+diff --git a/sites/all/modules/contrib/views_datasource/views_json.module b/sites/all/modules/contrib/views_datasource/views_json.module
+index c5230b5..787225b 100644
+--- a/sites/all/modules/contrib/views_datasource/views_json.module
++++ b/sites/all/modules/contrib/views_datasource/views_json.module
+@@ -188,33 +188,41 @@ function _views_json_render_fields($view, $row) {
+       }
+       else {
+         if ($field->options['type'] == 'image') {
++          if (preg_match_all("/<blockquote[^>]*class=\"image-field-caption\">(.*?)<\\/blockquote>/si", $field_output, $cap_matches)) {
++            foreach($cap_matches[1] AS &$cap) {
++              //clean up the captions for the json feed
++              $cap = htmlspecialchars(trim(strip_tags($cap)));
++            }
++          }
++
++          //check for image captions as constructed by project image_field_caption 
++          if (preg_match_all("/<blockquote[^>]*class=\"image-field-caption\">(.*?)<\\/blockquote>/si", $field_output, $cap_matches)) {
++            foreach($cap_matches[1] AS &$cap) {
++              //clean up the captions for the json feed
++              $cap = htmlspecialchars(trim(strip_tags($cap)));
++            }
++          }
++
+           // if field's type was an image. we just get the path.
+           if (preg_match_all("/<img[^>]+>/i", $field_output, $img_matches)) {
+             $field_output = array();
+-
+-            if (sizeof($img_matches[0]) > 1) {
++            
++            if (count($img_matches[0]) >= 1) {
+               $field_is_multiple = TRUE;
+-              foreach ($img_matches[0] as $i => $img_match) {
++              
++              foreach ( $img_matches[0] as $i => $img_match ) {
++
+                 if (preg_match('/(src)="([^"]*)"/i', $img_match, $src_match)) {
+                   $field_output[$i]['src'] = $src_match[2];
+                   $field_output[$i]['alt'] = '';
+-
++                  $field_output[$i]['cap'] = $cap_matches[1][$i];
++                  
+                   if (preg_match('/(alt)="([^"]*)"/i', $img_match, $alt_match)) {
+                     $field_output[$i]['alt'] = $alt_match[2];
+                   }
+                 }
+               }
+             }
+-            else {
+-              if (preg_match('/(src)="([^"]*)"/i', $img_matches[0][0], $src_match)) {
+-                $field_output['src'] = $src_match[2];
+-                $field_output['alt'] = '';
+-
+-                if (preg_match('/(alt)="([^"]*)"/i', $img_matches[0][0], $alt_match)) {
+-                  $field_output['alt'] = $alt_match[2];
+-                }
+-              }
+-            }
+           }
+         }
+       }

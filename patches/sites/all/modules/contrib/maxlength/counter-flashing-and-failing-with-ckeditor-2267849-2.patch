@@ -1,0 +1,12 @@
+diff --git a/js/maxlength.js b/js/maxlength.js
+index af816cb..28002a3 100644
+--- a/js/maxlength.js
++++ b/js/maxlength.js
+@@ -382,6 +382,7 @@
+   ml.ckeditorChange = function(e) {
+     // Clone to avoid changing defaults
+     var options = $.extend({}, ml.options[e.editor.element.getId()]);
++    $('#' + e.editor.element.getId()).val(ml['ckeditorGetData'](e));
+     if (options.truncateHtml){
+       ml.calculate($('#' + e.editor.element.getId()), options, ml.strip_tags(ml.ckeditorGetData(e)).length, e, 'ckeditorGetData', 'ckeditorSetData');
+     }

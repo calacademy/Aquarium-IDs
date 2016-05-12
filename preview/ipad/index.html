@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CalAcademy Aquarium ID | Preview</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimal-ui" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+
+		<link rel="stylesheet" href="//cloud.typography.com/6161652/615924/css/fonts.css" />
+		<link rel="stylesheet" href="stylesheets/flexslider.css" />
+		<link rel="stylesheet" href="stylesheets/global.css" />
+
+		<script src="js/modernizr.calacademy.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/idle-timer.min.js"></script>
+		<script src="js/jquery.jsonp.js"></script>
+		<script src="js/jquery.dotdotdot.min.js"></script>
+		<script src="js/jquery.flexslider.calacademy.js"></script>
+
+		<script src="js/static.js"></script>
+		<script src="js/aquariumidmodel.js"></script>
+		<script src="js/aquariumidview.js"></script>
+		<script src="js/aquariumid.js"></script>
+
+		<script>
+
+			$(window).load(function () {
+				var foo = new AquariumID();
+			});
+
+		</script>
+	</head>
+	
+	<body>
+		<div id="container">
+			<div id="main" class="flexslider hide"></div>
+			<div id="updated" class="flexslider hide"></div>
+			<div id="splash" class="flexslider hide"></div>
+			<div id="thumbnails" class="flexslider hide"></div>
+			<div id="photosensitive" class="hide">
+				<h2>Please do not photograph.</h2>
+				<p>You can download a photograph of this exhibit online at <em>calacademy.org/nophoto</em></p>
+			</div>
+		</div>
+	</body>
+</html>

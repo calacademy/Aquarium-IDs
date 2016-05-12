@@ -1,0 +1,33 @@
+<?php
+
+define('CALACADEMY_DISABLE_FIELDS_DEBUG', FALSE);
+
+/*
+
+Recent request from Bart: AQ staff access to publish common name and scientific name for new species; additional content access/publishing restricted to Exhibit staff.
+
+*/
+
+function calacademy_disable_fields_form_alter(&$form, &$form_state, $form_id) {
+    if ($form_id == 'organism_node_form') {
+        global $user;
+        // $permissions = user_role_permissions($user->roles);
+        
+        $roles = array_map('strtolower', $user->roles);
+        
+        $intersect = array_intersect(array(
+            'administrator',
+            'content editor',
+            'content publisher'
+        ), $roles);
+
+        // if current user doesn't have at least one high-level role, disable
+        if (count($intersect) == 0 || CALACADEMY_DISABLE_FIELDS_DEBUG) {
+            drupal_set_message('You can edit the scientific and common names of this organism. If other fields need editing, please contact Exhibits staff.');
+
+            $modulePath = drupal_get_path('module', 'calacademy_disable_fields');
+            drupal_add_css($modulePath . '/css/calacademy_disable_fields.css');
+            drupal_add_js($modulePath . '/js/calacademy_disable_fields.js');
+        }
+    }
+}

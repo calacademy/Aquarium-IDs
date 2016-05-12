@@ -1,0 +1,122 @@
+@import "compass/css3";
+@import "compass/utilities";
+@import "compass/css3/user-interface";
+
+@mixin calacademy-transform-origin($x, $y, $z:null) {
+	$myVal: $x $y $z;
+
+	@if $z == null {
+		$myVal: $x $y;
+	}
+
+	// vendor prefixed
+	@each $prefix in browser-prefixes($supported-browsers) {
+		#{$prefix + '-transform-origin'}: $myVal;
+	}
+
+	// no vendor prefix
+	transform-origin: $myVal;
+
+	.lt-ie9 & {
+		-ms-transform-origin: $x $y;
+		transform-origin: $x $y;
+	}
+}
+
+@mixin small-caps {
+	font-family: 'Whitney SC A', 'Whitney SC B', Helvetica, Arial, sans-serif;
+}
+
+@mixin highlight-color {
+	color: $water-planet-highlight;
+
+	.theme-1 & {
+		color: $cali-coast-highlight;
+	}
+	.theme-3 & {
+		color: $pcr-highlight;
+	}
+	.theme-13 & {
+		color: $amazon-flooded-forest-highlight;
+	}
+	.theme-145 & {
+		color: $caribbean-coral-reef-highlight;
+	}
+	.theme-153 & {
+		color: $southern-swamp-highlight;
+	}
+}
+
+@mixin highlight-border($size: 23px, $opacity: .6) {
+	border: $size solid rgba($water-planet-highlight, $opacity);
+
+	.theme-1 & {
+		border: $size solid rgba($cali-coast-highlight, $opacity);
+	}
+	.theme-3 & {
+		border: $size solid rgba($pcr-highlight, $opacity);
+	}
+	.theme-13 & {
+		border: $size solid rgba($amazon-flooded-forest-highlight, $opacity);
+	}
+	.theme-145 & {
+		border: $size solid rgba($caribbean-coral-reef-highlight, $opacity);
+	}
+	.theme-153 & {
+		border: $size solid rgba($southern-swamp-highlight, $opacity);
+	}
+}
+
+@mixin hyphy {
+	-webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto;
+
+	@include word-break(break-all);
+	word-break: break-word;
+}
+
+@mixin disable-link {
+	pointer-events: none;
+	cursor: default;
+}
+
+@mixin no-focus-border {
+	outline: none;
+
+	&::-moz-focus-inner {
+		border: 0;
+	}
+
+	&:-moz-focusring {
+    	color: transparent;
+    	text-shadow: 0 0 0 #000;
+	}
+}
+
+@mixin hide-text-calacademy {
+	@include hide-text;
+	display: block;
+	line-height: 0;
+}
+
+@mixin background-image-retina($file, $type, $width, $height) {
+	// swap to hi-res image
+	background-image: url($assetPath + '/' + $file + '.' + $type);
+
+	@media
+	only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	only screen and (-moz-min-device-pixel-ratio: 1.5),
+	only screen and (-o-min-device-pixel-ratio: 1.5/1),
+	only screen and (min-device-pixel-ratio: 1.5),
+	only screen and (min-resolution: 144dpi),
+	only screen and (min-resolution: 1.5dppx) {
+		& {
+			background-image: url($assetPath + '/' + $file + '@2x.' + $type);
+		}
+	}
+
+	@include background-size($width, $height);
+}

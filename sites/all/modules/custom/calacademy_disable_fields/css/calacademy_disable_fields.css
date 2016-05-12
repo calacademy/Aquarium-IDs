@@ -1,0 +1,7 @@
+form {
+	display: none;
+}
+
+.jquery-ready form {
+	display: block;
+}

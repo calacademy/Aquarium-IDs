@@ -1,0 +1,735 @@
+@import "global-variables";
+@import "compass/reset";
+@import "compass/css3/opacity";
+@import "compass/css3/user-interface";
+@import "compass/css3/animation";
+
+@include keyframes(fadein) {
+	from {
+		@include opacity(0);
+	}
+	to {
+		@include opacity(1);
+	}
+}
+
+// disable user select
+* {
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	@include user-select(none);
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	font-family: 'Whitney A', 'Whitney B', Helvetica, Arial, sans-serif;
+	font-weight: $book;
+	color: $white;
+
+	font-size: 34px;
+	line-height: 43px;
+
+	&.disable-links {
+		a {
+			pointer-events: none;
+		}
+	}
+
+	.hide {
+		display: none;
+	}
+
+	.flexslider.active {
+		@include animation(fadein .6s);
+	}
+
+	#container,
+	#main,
+	#splash,
+	#thumbnails,
+	#updated {
+		position: relative;
+
+		margin-left: auto;
+		margin-right: auto;
+
+		&, .slides, .slides li {
+			@include box-sizing(border-box);
+			width: $stageWidth;
+			height: $stageHeight;
+			overflow: hidden;
+		}
+
+		// slider arrows
+		&.flexslider {
+			.flex-direction-nav {
+				$w: 15px;
+				$h: 42px;
+				$arrowSpacing: 28px;
+
+				width: 100%;
+				position: absolute;
+				top: ($stageHeight / 2) - ($h / 2) - 14px;
+				left: 0;
+
+				a {
+					padding: 50px;
+					padding-top: 300px + $h;
+					padding-bottom: 300px;
+					margin-top: -350px;
+
+					position: absolute;
+					overflow: hidden;
+
+					@include transition(
+						left .3s ease,
+						right .3s ease
+					);
+
+					&, img {
+						width: $w;
+						height: $h;
+						border: 0;
+						outline: none;
+					}
+
+					div,
+					img {
+						@include opacity(.6);
+
+						@include transition(
+							opacity .3s ease
+						);
+					}
+
+					// fade out previous on non-specimen slides
+					&.flex-prev {
+						margin-left: -50px;
+
+						left: $arrowSpacing;
+
+						img {
+							padding-top: 8px;
+							@include opacity(0);
+						}
+
+						.on-specimen-slide & {
+							img {
+								@include opacity(.6);
+							}
+						}
+					}
+
+					&.flex-next {
+						margin-right: -50px;
+						padding-left: 0;
+
+						right: $arrowSpacing;
+						width: 145px;
+
+						img, div {
+							position: absolute;
+							right: 50px;
+							top: 350px;
+						}
+
+						img {
+							@include animation(fade 1s);
+							@include animation-iteration-count(infinite);
+							@include animation-direction(alternate);
+							@include animation-delay(.41s);
+						}
+
+						img:nth-child(2) {
+							right: $w + 50px;
+							@include animation-delay(.21s);
+						}
+
+						img:nth-child(3) {
+							right: ($w * 2) + 50px;
+							@include animation-delay(.01s);
+						}
+
+						div {
+							color: $white;
+							display: block;
+							right: ($w * 3) + 55px;
+							top: 346px;
+						}
+
+						// fade out the extra arrows and "swipe" on specimen slides
+						.on-specimen-slide & {
+							// stop animation
+							img {
+								@include animation(none);
+							}
+
+							div,
+							img:nth-child(2),
+							img:nth-child(3) {
+								@include opacity(0);
+							}
+						}
+					}
+				}
+			}
+
+			.page {
+				// prevent anti-aliasing in safari
+				-webkit-transform: translateZ(0px);
+
+				position: absolute;
+				color: rgba($white, .6);
+				font-size: 28px;
+				line-height: 34px;
+			}
+		}
+
+		.slides {
+			li {
+				&.specimen {
+					$padding: 80px;
+					padding-left: $padding;
+					padding-right: $padding;
+					padding-top: $padding - 10px;
+
+					$space: 30px;
+
+					.img-container {
+						position: relative;
+						margin-left: $space;
+
+						float: right;
+
+						.img {
+							width: 500px;
+							height: 320px;
+
+							@include hide-text-calacademy;
+							background-repeat: no-repeat;
+							background-size: cover;
+							background-position: center;
+						}
+					}
+
+					.title,
+					.field_scientific_name,
+					.field_exhibit_or_theme {
+						max-width: 330px;
+						font-weight: $medium;
+					}
+
+					.field_exhibit_or_theme {
+						text-transform: uppercase;
+						@include small-caps;
+						font-weight: $semibold;
+						font-size: 22px;
+						line-height: 26px;
+						margin-bottom: $space;
+						padding-left: 3px;
+						letter-spacing: 5px;
+					}
+
+					.title {
+						font-size: 60px;
+						line-height: 64px;
+						margin-bottom: 10px;
+					}
+
+					.field_scientific_name {
+						font-size: 28px;
+						line-height: 33px;
+						font-style: italic;
+					}
+
+					.body_1 {
+						clear: both;
+						padding-top: $space;
+
+						p {
+							margin-bottom: $space;
+						}
+
+						em {
+							font-style: italic;
+						}
+
+						strong {
+							font-weight: $semibold;
+						}
+					}
+
+					.field_diet,
+					.field_distribution {
+						font-size: 28px;
+						line-height: 34px;
+
+						em {
+							font-weight: $semibold;	
+						}
+					}
+
+					.field_tagline,
+					.field_source {
+						width: 750px;
+						float: left;
+						font-size: 20px;
+						line-height: 24px;
+						margin-top: $space;
+					}
+
+					.field_tagline {
+						font-weight: $semibold;
+					}
+
+					.field_source {
+						color: rgba(255, 255, 255, .8);
+					}
+				}
+
+				&.updated,
+				&.title-slide {
+					$padding: 90px;
+
+					padding-left: $padding;
+					padding-right: $padding;
+
+					.container {
+						display: table-cell;
+    					vertical-align: middle;
+    					height: $stageHeight;
+					}
+				}
+
+				&.photosensitive {
+					$padding: 90px;
+
+					padding-left: $padding * 2;
+					padding-right: $padding * 2;
+
+					.container {
+						margin-top: $padding;
+						$graphicSize: 225px;
+						padding-top: $graphicSize + ($padding / 2);
+						@include background-image-retina('photosensitive', 'png', $graphicSize, $graphicSize);
+						background-repeat: no-repeat;
+					}
+
+					h2 {
+						font-weight: $semibold;
+						font-size: 94px;
+						line-height: 1;
+					}
+
+					p {
+						margin-top: 30px;
+						font-size: 29px;
+						line-height: 40px;
+
+						em {
+							font-weight: $semibold;
+						}
+					}
+				}
+
+				&.updated {
+					.container {
+						width: $stageWidth;
+						text-align: center;
+					}
+
+					h2 {
+						font-size: 57px;
+						line-height: 1;
+						padding-bottom: 50px;
+					}
+				}
+
+				&.title-slide {
+					h1 {
+						font-weight: $book;
+						font-size: 166px;
+						line-height: 172px;
+						letter-spacing: -4px;
+					}
+
+					h2 {
+						font-weight: $medium;
+						font-size: 80px;
+						line-height: 140px;
+						letter-spacing: -1px;
+					}
+				}
+
+				// theme highlight colors
+				& > h2 em,
+				&.title-slide h1,
+				&.specimen .title,
+				&.specimen .field_scientific_name,
+				&.specimen .field_tagline {
+					@include highlight-color;
+				}
+			}
+		}
+
+		// theme background colors
+		background-color: $water-planet-background;
+
+		.theme-1 & {
+			background-color: $cali-coast-background;
+		}
+		.theme-3 & {
+			background-color: $pcr-background;
+		}
+		.theme-13 & {
+			background-color: $amazon-flooded-forest-background;
+		}
+		.theme-145 & {
+			background-color: $caribbean-coral-reef-background;
+		}
+		.theme-153 & {
+			background-color: $southern-swamp-background;
+		}
+	}
+
+	// captions
+	.cap {
+		@include calacademy-transform-origin(0, 0, 0);
+		@include rotate(90deg);
+		position: absolute;
+		width: 100%;
+
+		color: rgba(255, 255, 255, .6);
+		font-size: 12px;
+		line-height: 14px;
+		font-weight: $medium;
+	}
+
+	#main {
+		.cap {
+			top: 0;
+			left: 525px;
+		}
+
+		// only show on specimen slides
+		.page,
+		.grid {
+			pointer-events: none;
+			cursor: default;
+
+			@include transition(
+				opacity .3s ease
+			);
+
+			@include opacity(0);
+
+			.on-specimen-slide & {
+				@include opacity(1);
+			}
+		}
+
+		.page {
+			bottom: 20px;
+
+			// default justify right
+			right: 80px;
+
+			// justify left on big ipads
+			.aquarium-ipad-large & {
+				right: auto;
+				left: 80px;
+			}
+		}
+
+		.grid {
+			position: absolute;
+			bottom: 27px;
+			right: 80px;
+
+			width: 40px;
+			height: 40px;
+			background-image: url('../images/grid.svg');
+			z-index: 100;
+			@include hide-text-calacademy;
+
+			.on-specimen-slide & {
+				cursor: pointer;
+				pointer-events: auto;
+				@include opacity(.6);
+			}
+
+			.no-touch.on-specimen-slide &:hover,
+			.touch.on-specimen-slide &:active {
+				@include transition(none);
+				@include opacity(1);
+			}
+		}
+	}
+
+	#updated,
+	#splash {
+		li {
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+		}
+	}
+
+	#updated {
+		.cap {
+			top: 21px;
+			left: $stageWidth - 12;
+			color: $ebuCaption;
+			font-weight: $book;
+		}
+
+		li {
+			h2 {
+				font-size: 57px;
+				line-height: 68px;
+				width: 750px;
+				position: absolute;
+				letter-spacing: -1px;
+
+				em {
+					font-weight: $medium;
+					font-family: 'Whitney ON A', 'Whitney ON B', Helvetica, Arial, sans-serif;
+				}
+			}
+
+			$vOffset: 12px;
+
+			&:nth-child(odd) {
+				h2 {
+					bottom: 85px - $vOffset;
+					left: 222px;
+				}
+			}
+			&:nth-child(even) {
+				h2 {
+					top: 68px - $vOffset;
+					left: 68px;
+				}
+			}
+		}
+	}
+
+	#splash {
+		.slides li {
+			text-align: center;
+
+			// disable click / touch events on non-active slides
+			pointer-events: none;
+
+			&.flex-active-slide {
+				pointer-events: auto;
+			}
+
+			h1, h2 {
+				text-transform: uppercase;
+				@include small-caps;
+			}
+
+			h2 {
+				@include highlight-color;
+				margin-top: 57px;
+				
+				font-weight: $book;
+				font-size: 50px;
+				letter-spacing: 5px;
+			}
+
+			h1 {
+				display: inline-block;
+				margin-top: 150px;
+
+				overflow: hidden;
+				font-weight: $bold;
+				font-size: 70px;
+				letter-spacing: 1px;
+				
+				padding: 100px;
+				padding-bottom: 115px;
+				@include highlight-border;
+				
+				@include text-shadow(0 0 12px rgba(#000000, .25));
+				@include box-shadow(inset 0 12px 12px rgba(#000000, .12), 0 0 12px 12px rgba(#000000, .12));
+			}
+		}
+	}
+
+	#thumbnails {
+		padding: 70px;
+		padding-top: 55px;
+
+		h1 {
+			text-transform: uppercase;
+			@include small-caps;
+			
+			font-weight: $book;
+			font-size: 40px;
+			letter-spacing: 5px;
+			margin-bottom: 55px;
+			margin-left: -2px;
+		}
+
+		&.flexslider {
+			.flex-direction-nav {
+				a.flex-prev {
+					padding-right: 25px;
+				}
+				a.flex-next {
+					width: inherit;
+					padding-left: 45px;
+				}
+
+				a.flex-prev,
+				a.flex-next {
+					img {
+						@include animation(none);
+						@include opacity(.6);
+					}
+				}
+
+				a.flex-next {
+					div,
+					img:nth-child(2),
+					img:nth-child(3) {
+						display: none;
+					}
+				}
+			}
+
+			// fade in just the slides
+			.flex-viewport {
+				@include animation(fadein .6s);	
+			}
+		}
+
+		.slides {
+			z-index: 100;
+		}
+
+		.slides, .slides li {
+			$thumbnailSize: 205px;
+			$padding: 21px;
+
+			height: ($thumbnailSize * 2) + $padding;
+
+			.thumbnail {
+				float: left;
+				margin-bottom: $padding;
+				margin-right: $padding;
+
+				&:nth-child(4n) {
+					margin-right: 0;
+				}
+
+				cursor: pointer;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				background-color: rgba(#000000, .15);
+
+				&, .inner {
+					@include box-sizing(border-box);
+					width: $thumbnailSize;
+					height: $thumbnailSize;
+				}
+
+				.inner {
+					@include highlight-border(0px, 1);
+
+					@include transition(
+						border-width .1s ease-out
+					);
+				}
+
+				.no-touch &:hover,
+				.touch &:active {
+					.inner {
+						border-width: 8px;
+					}
+				}
+			}
+		}
+
+		.taxa-menu {
+			position: absolute;
+			z-index: 200;
+			margin-left: -20px;
+			margin-top: 40px;
+
+			li {
+				display: inline-block;
+				margin-right: 16px;
+				margin-bottom: 20px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				// type
+				text-transform: uppercase;
+				@include small-caps;
+				font-weight: $semibold;
+				font-size: 36px;
+				letter-spacing: 3px;
+
+				a {
+					padding: 12px;
+					padding-top: 0;
+					padding-bottom: 8px;
+					color: $white;
+					text-decoration: none;
+					@include highlight-border(8px, 0);
+
+					.no-touch &:hover,
+					.touch &:active {
+						color: $water-planet-highlight;
+					}
+					.no-touch.theme-1 &:hover,
+					.touch.theme-1 &:active {
+						color: $cali-coast-highlight;
+					}
+					.no-touch.theme-3 &:hover,
+					.touch.theme-3 &:active {
+						color: $pcr-highlight;
+					}
+					.no-touch.theme-13 &:hover,
+					.touch.theme-13 &:active {
+						color: $amazon-flooded-forest-highlight;
+					}
+					.no-touch.theme-145 &:hover,
+					.touch.theme-145 &:active {
+						color: $caribbean-coral-reef-highlight;
+					}
+					.no-touch.theme-153 &:hover,
+					.touch.theme-153 &:active {
+						color: $southern-swamp-highlight;
+					}
+				}
+
+				&.selected {
+					a {
+						@include highlight-color;
+						@include highlight-border(8px, 1);
+						@include disable-link;
+					}
+				}
+			}
+		}
+
+		.page {
+			right: 70px;
+			bottom: 24px;
+			@include animation(fadein .6s);
+		}
+	}
+}

@@ -1,0 +1,5 @@
+name = CalAcademy Seven
+description = Subtheme of core Seven
+core = 7.x
+base theme = seven
+stylesheets[all][] = css/styles.css

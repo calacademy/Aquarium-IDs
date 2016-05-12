@@ -1,0 +1,8 @@
+@include keyframes(fade) {
+	0% {
+		@include opacity(.4);
+	}
+	100% {
+		@include opacity(1);
+	}
+}

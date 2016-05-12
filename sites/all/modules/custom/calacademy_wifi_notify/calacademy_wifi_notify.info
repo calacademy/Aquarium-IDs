@@ -1,0 +1,6 @@
+name = CalAcademy Wifi Notify
+description = Send email notifications if a tank with spotty wifi has been updated
+dependencies[] = date
+package = CalAcademy
+core = 7.x
+php = 5.2

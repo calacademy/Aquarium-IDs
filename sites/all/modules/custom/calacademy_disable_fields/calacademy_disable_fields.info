@@ -1,0 +1,4 @@
+name = CalAcademy Disable Fields
+description = Disable certain fields in the admin UI per role
+package = CalAcademy
+core = 7.x

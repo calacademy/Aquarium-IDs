@@ -1,0 +1,30 @@
+/* hacking Taxonomy Term Reference Tree Widget */
+
+.term-reference-tree-button,
+.no-term-reference-tree-button {
+	display: none;
+}
+
+#edit-field-tank-or-display-und > .term-reference-tree-level > li {
+	display: inline-block;
+	vertical-align: top;
+	padding: 10px;
+}
+
+#edit-field-tank-or-display-und > .term-reference-tree-level > li input {
+	display: none;
+}
+
+#edit-field-tank-or-display-und > .term-reference-tree-level > li label {
+	font-weight: bold;
+	pointer-events: none;
+}
+
+#edit-field-tank-or-display-und > .term-reference-tree-level > li > ul.term-reference-tree-level input {
+	display: inline;
+}
+
+#edit-field-tank-or-display-und > .term-reference-tree-level > li > ul.term-reference-tree-level label {
+	font-weight: normal;
+	pointer-events: all;
+}
