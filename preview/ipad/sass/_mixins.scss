@@ -45,6 +45,9 @@
 	.theme-153 & {
 		color: $southern-swamp-highlight;
 	}
+	.theme-162 & {
+		color: $twilight-zone-highlight;
+	}
 }
 
 @mixin highlight-border($size: 23px, $opacity: .6) {
@@ -64,6 +67,9 @@
 	}
 	.theme-153 & {
 		border: $size solid rgba($southern-swamp-highlight, $opacity);
+	}
+	.theme-162 & {
+		border: $size solid rgba($twilight-zone-highlight, $opacity);
 	}
 }
 

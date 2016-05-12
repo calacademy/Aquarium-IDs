@@ -396,6 +396,9 @@ body {
 		.theme-153 & {
 			background-color: $southern-swamp-background;
 		}
+		.theme-162 & {
+			background-color: $twilight-zone-background;
+		}
 	}
 
 	// captions
@@ -714,6 +717,10 @@ body {
 					.touch.theme-153 &:active {
 						color: $southern-swamp-highlight;
 					}
+					.no-touch.theme-162 &:hover,
+					.touch.theme-162 &:active {
+						color: $twilight-zone-highlight;
+					}
 				}
 
 				&.selected {
@@ -730,6 +737,31 @@ body {
 			right: 70px;
 			bottom: 24px;
 			@include animation(fadein .6s);
+		}
+	}
+
+	.theme-162 & {
+		.title-slide {
+			background-image: url('../images/spotlight.png');
+			@include background-size(cover);
+
+			h1 {
+				line-height: 150px !important;
+				width: 75% !important;
+				color: $twilight-zone-background !important;
+				letter-spacing: -10px !important;
+				padding-top: 40px;
+			}
+
+			h2 {
+				line-height: 1 !important;
+				padding-top: 50px;
+				padding-left: 450px;
+			}
+		}
+
+		.field_exhibit_or_theme {
+			color: $twilight-zone-subhead;
 		}
 	}
 }
