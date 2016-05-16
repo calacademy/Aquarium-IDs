@@ -1412,11 +1412,12 @@ body #thumbnails .page {
 }
 /* line 762, ../sass/global.scss */
 .theme-162 body .title-slide h2 {
+  width: 50%;
   line-height: 1 !important;
   padding-top: 80px;
   padding-left: 480px;
 }
-/* line 769, ../sass/global.scss */
+/* line 770, ../sass/global.scss */
 .theme-162 body .field_exhibit_or_theme {
   color: #00b5e2;
 }
