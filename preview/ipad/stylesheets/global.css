@@ -1408,19 +1408,15 @@ body #thumbnails .page {
 }
 /* line 748, ../sass/global.scss */
 .theme-162 body .title-slide h1 {
-  line-height: 150px !important;
-  width: 75% !important;
-  color: #002855 !important;
-  letter-spacing: -10px !important;
-  padding-top: 40px;
+  visibility: hidden;
 }
-/* line 756, ../sass/global.scss */
+/* line 762, ../sass/global.scss */
 .theme-162 body .title-slide h2 {
   line-height: 1 !important;
-  padding-top: 50px;
-  padding-left: 450px;
+  padding-top: 80px;
+  padding-left: 480px;
 }
-/* line 763, ../sass/global.scss */
+/* line 769, ../sass/global.scss */
 .theme-162 body .field_exhibit_or_theme {
   color: #00b5e2;
 }

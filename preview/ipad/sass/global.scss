@@ -746,17 +746,23 @@ body {
 			@include background-size(cover);
 
 			h1 {
-				line-height: 150px !important;
-				width: 75% !important;
-				color: $twilight-zone-background !important;
-				letter-spacing: -10px !important;
-				padding-top: 40px;
+				// line-height: 160px !important;
+				// width: 75% !important;
+				// color: $twilight-zone-background !important;
+				// letter-spacing: -10px !important;
+				// padding-top: 50px;
+
+				// &:first-letter {
+				// 	letter-spacing: -28px;
+				// }
+
+				visibility: hidden;
 			}
 
 			h2 {
 				line-height: 1 !important;
-				padding-top: 50px;
-				padding-left: 450px;
+				padding-top: 80px;
+				padding-left: 480px;
 			}
 		}
 
