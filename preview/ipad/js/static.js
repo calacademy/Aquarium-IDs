@@ -60,6 +60,9 @@ var calacademy = {
 			if (typeof(myVar) == 'undefined') return false;
 			return (Object.prototype.toString.call(myVar) === '[object Array]');
 		},
+		htmlDecode: function (value) {
+			return $('<div />').html(value).text();
+		},
 		getUnique: function (arr) {
 			var u = {};
 			var a = [];

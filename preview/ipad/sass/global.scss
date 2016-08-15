@@ -246,6 +246,12 @@ body {
 						font-size: 28px;
 						line-height: 33px;
 						font-style: italic;
+
+						mark {
+							font-style: normal;
+							background-color: transparent;
+							color: inherit;
+						}
 					}
 
 					.body_1 {
