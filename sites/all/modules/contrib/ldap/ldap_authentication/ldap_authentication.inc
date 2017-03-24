@@ -461,7 +461,7 @@ function _ldap_authentication_user_login_authenticate_validate(&$form_state, $re
 
     // don't pass in ldap user to provisionDrupalAccount, because want to requery with correct attributes needed
     // this may be a case where efficiency dictates querying for all attributes
-    $drupal_account = $auth_conf->ldapUser->provisionDrupalAccount(NULL, $user_edit, NULL, TRUE);
+    $drupal_account = $auth_conf->ldapUser->provisionDrupalAccount(NULL, $user_edit, $ldap_user, TRUE);
 
     if ($drupal_account === FALSE) {
       watchdog('ldap_user', 'Failed to find or create %drupal_accountname on logon.', $watchdog_tokens, WATCHDOG_ERROR);
@@ -658,6 +658,14 @@ function ldap_authentication_test_credentials($auth_conf, $sso_login, $authname,
         * server authentication.
         */
       $credentials_pass = (boolean)($ldap_user);
+    }
+    elseif ($ldap_server->bind_method == LDAP_SERVERS_BIND_METHOD_USER) {
+       /**
+        * With user bind method, the only way we can reach this part of the
+        * code is when the pw has already been checked and $ldap_user could be
+        * loaded, so we're good to go.
+        */
+      $credentials_pass = true;
     }
     else {
       $credentials_pass = ($ldap_server->bind($ldap_user['dn'], $password, FALSE) == LDAP_SUCCESS);
