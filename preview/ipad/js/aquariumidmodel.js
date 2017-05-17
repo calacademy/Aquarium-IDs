@@ -1,5 +1,5 @@
 var AquariumIDModel = function () {
-	var _endpoint = 'http://displays.calacademy.org';
+	var _endpoint = '//displays.calacademy.org';
 	var _callbackData = { callback: '_jqjsp' };
 	var _timeout = 12000;
 
