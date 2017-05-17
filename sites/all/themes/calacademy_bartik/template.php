@@ -8,7 +8,7 @@ function calacademy_bartik_preprocess_page(&$variables, $hook) {
         if (variable_get('calacademy_tfa_required', false)) {
           drupal_set_message('Two-factor authentication is required for all users. Please contact a site administrator for assistance.', 'warning');
         } else {
-          drupal_set_message('Two-factor authentication will soon be required for all users. Please setup Google Authenticator using the &ldquo;Security&rdquo; tab after logging in.', 'warning');
+          drupal_set_message('Two-factor authentication will soon be required for all users. Please setup Google Authenticator using the &ldquo;Security&rdquo; tab <a href="/user">here</a> after logging in.', 'warning');
         }
       }
       break;
