@@ -197,16 +197,19 @@ class TfaTotpSetup extends TfaTotp implements TfaSetupPluginInterface {
    */
   public function getSetupForm(array $form, array &$form_state) {
     $items = array(
-      l('iTunes App Store', 'https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8', array('attributes' => array('target'=>'_blank'))),
-      l('Google Play', 'https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en', array('attributes' => array('target'=>'_blank')))
+      l('Google Authenticator (Android/iPhone/BlackBerry)', 'https://support.google.com/accounts/answer/1066447?hl=en', array('attributes' => array('target'=>'_blank'))),
+      l('Authy (Android/iPhone)', 'https://www.authy.com/app/', array('attributes' => array('target'=>'_blank'))),
+      l('Authenticator (Windows Phone)', 'http://www.windowsphone.com/en-us/store/app/authenticator/021dd79f-0598-e011-986b-78e7d1fa76f8', array('attributes' => array('target'=>'_blank'))),
+      l('FreeOTP (Android)', 'https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp', array('attributes' => array('target'=>'_blank'))),
+      l('GAuth Authenticator (Firefox OS, desktop, others)', 'https://github.com/gbraad/gauth', array('attributes' => array('target'=>'_blank')))
     );
     $form['apps'] = array(
       '#type' => 'markup',
-      '#markup' => theme('item_list', array('items' => $items, 'title' => t('Install Google Authenticator on your mobile device:'))),
+      '#markup' => theme('item_list', array('items' => $items, 'title' => t('Install authentication code application on your mobile or desktop device:'))),
     );
     $form['info'] = array(
       '#type' => 'markup',
-      '#markup' => t('<p><br />The two-factor authentication application will be used during this setup and for generating codes during regular authentication. Scan the QR code below to get the setup code, otherwise you can manually enter the text code.</p>'),
+      '#markup' => t('<p>The two-factor authentication application will be used during this setup and for generating codes during regular authentication. If the application supports it, scan the QR code below to get the setup code otherwise you can manually enter the text code.</p>'),
     );
     $form['seed'] = array(
       '#type' => 'textfield',
@@ -220,12 +223,7 @@ class TfaTotpSetup extends TfaTotp implements TfaSetupPluginInterface {
       $form['qr_image_wrapper']['qr_image'] = array(
         '#markup' => '<div id="tfa-qrcode"></div>',
       );
-      
-      global $base_url;
-      $title = str_replace('https://', '', $base_url);
-      $title = urlencode(str_replace('http://', '', $title));
-
-      $qrdata = 'otpauth://totp/' . $this->accountName() . '?secret=' . $this->seed . '&issuer=' . $title;
+      $qrdata = 'otpauth://totp/' . $this->accountName() . '?secret=' . $this->seed;
       $form['qr_image_wrapper']['qr_image']['#attached']['library'][] = array('tfa_basic', 'qrcodejs');
       $form['qr_image_wrapper']['qr_image']['#attached']['js'][] = array(
         'data' => 'jQuery(document).ready(function () { new QRCode(document.getElementById("tfa-qrcode"), "' . $qrdata . '");});',
@@ -330,7 +328,7 @@ class TfaTotpSetup extends TfaTotp implements TfaSetupPluginInterface {
    */
   protected function accountName() {
     $account = user_load($this->context['uid']);
-    return urlencode($account->name);
+    return urlencode($this->namePrefix . '-' . $account->name);
   }
 
 }

@@ -266,7 +266,7 @@ function tfa_basic_tfa_context_alter(&$context) {
       }
     }
     // Remove SMS from validation if set.
-    if ('tfa_basic_sms' == $context['plugins']['validate']) {
+    if ('tfa_basic_sms' == $context['plugins']['validate'] && !empty($fallback_plugins)) {
       $context['plugins']['validate'] = array_shift($fallback_plugins);
     }
     $context['plugins']['fallback'] = $fallback_plugins;

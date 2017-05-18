@@ -211,4 +211,18 @@ class TfaBasicSmsSetup extends TfaBasicSms implements TfaSetupPluginInterface {
     return TRUE;
   }
 
+  /**
+  * {@inheritdoc}
+  */
+  public function ready() {
+    // We can only send a code if there is a phone number.
+    if (!empty($this->mobileNumber)) {
+      // We should only send codes if TFA is enabled for this account.
+      $user_data = tfa_basic_get_tfa_data(user_load($this->context['uid']));
+      if (!empty($user_data['status'])) {
+        return TRUE;
+      }
+    }
+    return FALSE;
+  }
 }

@@ -1,0 +1,40 @@
+diff --git a/includes/tfa_sms.inc b/includes/tfa_sms.inc
+index 5036b86..ddcf75f 100644
+--- a/includes/tfa_sms.inc
++++ b/includes/tfa_sms.inc
+@@ -147,6 +147,22 @@ class TfaBasicSms extends TfaBasePlugin implements TfaValidationPluginInterface,
+       return FALSE;
+     }
+   }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function ready() {
++    // We can only send a code if there is a phone number.
++    if (!empty($this->mobileNumber)) {
++      // We should only send codes if TFA is enabled for this account.
++      $user_data = tfa_basic_get_tfa_data(user_load($this->context['uid']));
++      if (!empty($user_data['status'])) {
++        return TRUE;
++      }
++    }
++    return FALSE;
++  }
++
+ }
+ 
+ /**
+diff --git a/tfa_basic.module b/tfa_basic.module
+index 181a1e9..ef70920 100644
+--- a/tfa_basic.module
++++ b/tfa_basic.module
+@@ -229,7 +229,7 @@ function tfa_basic_tfa_context_alter(&$context) {
+       }
+     }
+     // Remove SMS from validation if set.
+-    if ('tfa_basic_sms' == $context['plugins']['validate']) {
++    if ('tfa_basic_sms' == $context['plugins']['validate'] && !empty($fallback_plugins)) {
+       $context['plugins']['validate'] = array_shift($fallback_plugins);
+     }
+     $context['plugins']['fallback'] = $fallback_plugins;

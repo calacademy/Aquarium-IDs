@@ -16,8 +16,8 @@ files[] = includes/googleauthenticator/GoogleAuthenticator.php
 files[] = includes/twilio-php/Services/Twilio.php
 
 ; Information added by Drupal.org packaging script on 2016-10-26
-version = "7.x-1.0"
+version = "7.x-1.0-beta3+3-dev"
 core = "7.x"
 project = "tfa_basic"
-datestamp = "1477519747"
+datestamp = "1477519129"
 
