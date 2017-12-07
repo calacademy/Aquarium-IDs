@@ -22,7 +22,7 @@
     opacity: 1;
   }
 }
-/* line 5, ../../../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -44,45 +44,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../../../usr/local/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -645,7 +645,7 @@ body #updated .slides li.photosensitive .container {
   background-repeat: no-repeat;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 1.5 / 1), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx) {
-  /* line 122, ../sass/_mixins.scss */
+  /* line 128, ../sass/_mixins.scss */
   body #container .slides li.photosensitive .container,
   body #main .slides li.photosensitive .container,
   body #splash .slides li.photosensitive .container,
@@ -891,6 +891,30 @@ body #updated .slides li.specimen .field_scientific_name, .theme-162
 body #updated .slides li.specimen .field_tagline {
   color: #ffd100;
 }
+/* line 51, ../sass/_mixins.scss */
+.theme-167 body #container .slides li > h2 em, .theme-167 body #container .slides li.title-slide h1, .theme-167 body #container .slides li.specimen .title, .theme-167 body #container .slides li.specimen .field_scientific_name, .theme-167 body #container .slides li.specimen .field_tagline, .theme-167
+body #main .slides li > h2 em, .theme-167
+body #main .slides li.title-slide h1, .theme-167
+body #main .slides li.specimen .title, .theme-167
+body #main .slides li.specimen .field_scientific_name, .theme-167
+body #main .slides li.specimen .field_tagline, .theme-167
+body #splash .slides li > h2 em, .theme-167
+body #splash .slides li.title-slide h1, .theme-167
+body #splash .slides li.specimen .title, .theme-167
+body #splash .slides li.specimen .field_scientific_name, .theme-167
+body #splash .slides li.specimen .field_tagline, .theme-167
+body #thumbnails .slides li > h2 em, .theme-167
+body #thumbnails .slides li.title-slide h1, .theme-167
+body #thumbnails .slides li.specimen .title, .theme-167
+body #thumbnails .slides li.specimen .field_scientific_name, .theme-167
+body #thumbnails .slides li.specimen .field_tagline, .theme-167
+body #updated .slides li > h2 em, .theme-167
+body #updated .slides li.title-slide h1, .theme-167
+body #updated .slides li.specimen .title, .theme-167
+body #updated .slides li.specimen .field_scientific_name, .theme-167
+body #updated .slides li.specimen .field_tagline {
+  color: #ffffff;
+}
 /* line 390, ../sass/global.scss */
 .theme-1 body #container, .theme-1
 body #main, .theme-1
@@ -939,7 +963,15 @@ body #thumbnails, .theme-162
 body #updated {
   background-color: #002855;
 }
-/* line 411, ../sass/global.scss */
+/* line 408, ../sass/global.scss */
+.theme-167 body #container, .theme-167
+body #main, .theme-167
+body #splash, .theme-167
+body #thumbnails, .theme-167
+body #updated {
+  background-color: #005396;
+}
+/* line 414, ../sass/global.scss */
 body .cap {
   -moz-transform-origin: 0 0 0;
   -ms-transform-origin: 0 0 0;
@@ -962,12 +994,12 @@ body .cap {
   -ms-transform-origin: 0 0;
   transform-origin: 0 0;
 }
-/* line 424, ../sass/global.scss */
+/* line 427, ../sass/global.scss */
 body #main .cap {
   top: 0;
   left: 525px;
 }
-/* line 430, ../sass/global.scss */
+/* line 433, ../sass/global.scss */
 body #main .page,
 body #main .grid {
   pointer-events: none;
@@ -979,23 +1011,23 @@ body #main .grid {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 441, ../sass/global.scss */
+/* line 444, ../sass/global.scss */
 .on-specimen-slide body #main .page, .on-specimen-slide
 body #main .grid {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 446, ../sass/global.scss */
+/* line 449, ../sass/global.scss */
 body #main .page {
   bottom: 20px;
   right: 80px;
 }
-/* line 453, ../sass/global.scss */
+/* line 456, ../sass/global.scss */
 .aquarium-ipad-large body #main .page {
   right: auto;
   left: 80px;
 }
-/* line 459, ../sass/global.scss */
+/* line 462, ../sass/global.scss */
 body #main .grid {
   position: absolute;
   bottom: 27px;
@@ -1011,14 +1043,14 @@ body #main .grid {
   display: block;
   line-height: 0;
 }
-/* line 470, ../sass/global.scss */
+/* line 473, ../sass/global.scss */
 .on-specimen-slide body #main .grid {
   cursor: pointer;
   pointer-events: auto;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 476, ../sass/global.scss */
+/* line 479, ../sass/global.scss */
 .no-touch.on-specimen-slide body #main .grid:hover, .touch.on-specimen-slide body #main .grid:active {
   -moz-transition: none;
   -o-transition: none;
@@ -1027,21 +1059,21 @@ body #main .grid {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 486, ../sass/global.scss */
+/* line 489, ../sass/global.scss */
 body #updated li,
 body #splash li {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-/* line 494, ../sass/global.scss */
+/* line 497, ../sass/global.scss */
 body #updated .cap {
   top: 21px;
   left: 1012px;
   color: #dbdcdd;
   font-weight: 400;
 }
-/* line 502, ../sass/global.scss */
+/* line 505, ../sass/global.scss */
 body #updated li h2 {
   font-size: 57px;
   line-height: 68px;
@@ -1049,36 +1081,36 @@ body #updated li h2 {
   position: absolute;
   letter-spacing: -1px;
 }
-/* line 509, ../sass/global.scss */
+/* line 512, ../sass/global.scss */
 body #updated li h2 em {
   font-weight: 500;
   font-family: 'Whitney ON A', 'Whitney ON B', Helvetica, Arial, sans-serif;
 }
-/* line 518, ../sass/global.scss */
+/* line 521, ../sass/global.scss */
 body #updated li:nth-child(odd) h2 {
   bottom: 73px;
   left: 222px;
 }
-/* line 524, ../sass/global.scss */
+/* line 527, ../sass/global.scss */
 body #updated li:nth-child(even) h2 {
   top: 56px;
   left: 68px;
 }
-/* line 533, ../sass/global.scss */
+/* line 536, ../sass/global.scss */
 body #splash .slides li {
   text-align: center;
   pointer-events: none;
 }
-/* line 539, ../sass/global.scss */
+/* line 542, ../sass/global.scss */
 body #splash .slides li.flex-active-slide {
   pointer-events: auto;
 }
-/* line 543, ../sass/global.scss */
+/* line 546, ../sass/global.scss */
 body #splash .slides li h1, body #splash .slides li h2 {
   text-transform: uppercase;
   font-family: 'Whitney SC A', 'Whitney SC B', Helvetica, Arial, sans-serif;
 }
-/* line 548, ../sass/global.scss */
+/* line 551, ../sass/global.scss */
 body #splash .slides li h2 {
   color: #00e3ff;
   margin-top: 57px;
@@ -1110,7 +1142,11 @@ body #splash .slides li h2 {
 .theme-162 body #splash .slides li h2 {
   color: #ffd100;
 }
-/* line 557, ../sass/global.scss */
+/* line 51, ../sass/_mixins.scss */
+.theme-167 body #splash .slides li h2 {
+  color: #ffffff;
+}
+/* line 560, ../sass/global.scss */
 body #splash .slides li h1 {
   display: inline-block;
   margin-top: 150px;
@@ -1126,36 +1162,40 @@ body #splash .slides li h1 {
   -webkit-box-shadow: inset 0 12px 12px rgba(0, 0, 0, 0.12), 0 0 12px 12px rgba(0, 0, 0, 0.12);
   box-shadow: inset 0 12px 12px rgba(0, 0, 0, 0.12), 0 0 12px 12px rgba(0, 0, 0, 0.12);
 }
-/* line 56, ../sass/_mixins.scss */
+/* line 59, ../sass/_mixins.scss */
 .theme-1 body #splash .slides li h1 {
   border: 23px solid rgba(241, 86, 47, 0.6);
 }
-/* line 59, ../sass/_mixins.scss */
+/* line 62, ../sass/_mixins.scss */
 .theme-3 body #splash .slides li h1 {
   border: 23px solid rgba(243, 193, 26, 0.6);
 }
-/* line 62, ../sass/_mixins.scss */
+/* line 65, ../sass/_mixins.scss */
 .theme-13 body #splash .slides li h1 {
   border: 23px solid rgba(150, 196, 136, 0.6);
 }
-/* line 65, ../sass/_mixins.scss */
+/* line 68, ../sass/_mixins.scss */
 .theme-145 body #splash .slides li h1 {
   border: 23px solid rgba(243, 193, 26, 0.6);
 }
-/* line 68, ../sass/_mixins.scss */
+/* line 71, ../sass/_mixins.scss */
 .theme-153 body #splash .slides li h1 {
   border: 23px solid rgba(0, 255, 255, 0.6);
 }
-/* line 71, ../sass/_mixins.scss */
+/* line 74, ../sass/_mixins.scss */
 .theme-162 body #splash .slides li h1 {
   border: 23px solid rgba(255, 209, 0, 0.6);
 }
-/* line 576, ../sass/global.scss */
+/* line 77, ../sass/_mixins.scss */
+.theme-167 body #splash .slides li h1 {
+  border: 23px solid rgba(255, 255, 255, 0.6);
+}
+/* line 579, ../sass/global.scss */
 body #thumbnails {
   padding: 70px;
   padding-top: 55px;
 }
-/* line 580, ../sass/global.scss */
+/* line 583, ../sass/global.scss */
 body #thumbnails h1 {
   text-transform: uppercase;
   font-family: 'Whitney SC A', 'Whitney SC B', Helvetica, Arial, sans-serif;
@@ -1165,16 +1205,16 @@ body #thumbnails h1 {
   margin-bottom: 55px;
   margin-left: -2px;
 }
-/* line 593, ../sass/global.scss */
+/* line 596, ../sass/global.scss */
 body #thumbnails.flexslider .flex-direction-nav a.flex-prev {
   padding-right: 25px;
 }
-/* line 596, ../sass/global.scss */
+/* line 599, ../sass/global.scss */
 body #thumbnails.flexslider .flex-direction-nav a.flex-next {
   width: inherit;
   padding-left: 45px;
 }
-/* line 603, ../sass/global.scss */
+/* line 606, ../sass/global.scss */
 body #thumbnails.flexslider .flex-direction-nav a.flex-prev img,
 body #thumbnails.flexslider .flex-direction-nav a.flex-next img {
   -moz-animation: none;
@@ -1183,27 +1223,27 @@ body #thumbnails.flexslider .flex-direction-nav a.flex-next img {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 610, ../sass/global.scss */
+/* line 613, ../sass/global.scss */
 body #thumbnails.flexslider .flex-direction-nav a.flex-next div,
 body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
 body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(3) {
   display: none;
 }
-/* line 619, ../sass/global.scss */
+/* line 622, ../sass/global.scss */
 body #thumbnails.flexslider .flex-viewport {
   -moz-animation: fadein 0.6s;
   -webkit-animation: fadein 0.6s;
   animation: fadein 0.6s;
 }
-/* line 624, ../sass/global.scss */
+/* line 627, ../sass/global.scss */
 body #thumbnails .slides {
   z-index: 100;
 }
-/* line 628, ../sass/global.scss */
+/* line 631, ../sass/global.scss */
 body #thumbnails .slides, body #thumbnails .slides li {
   height: 431px;
 }
-/* line 634, ../sass/global.scss */
+/* line 637, ../sass/global.scss */
 body #thumbnails .slides .thumbnail, body #thumbnails .slides li .thumbnail {
   float: left;
   margin-bottom: 21px;
@@ -1214,11 +1254,11 @@ body #thumbnails .slides .thumbnail, body #thumbnails .slides li .thumbnail {
   background-position: center;
   background-color: rgba(0, 0, 0, 0.15);
 }
-/* line 639, ../sass/global.scss */
+/* line 642, ../sass/global.scss */
 body #thumbnails .slides .thumbnail:nth-child(4n), body #thumbnails .slides li .thumbnail:nth-child(4n) {
   margin-right: 0;
 }
-/* line 649, ../sass/global.scss */
+/* line 652, ../sass/global.scss */
 body #thumbnails .slides .thumbnail, body #thumbnails .slides .thumbnail .inner, body #thumbnails .slides li .thumbnail, body #thumbnails .slides li .thumbnail .inner {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1226,7 +1266,7 @@ body #thumbnails .slides .thumbnail, body #thumbnails .slides .thumbnail .inner,
   width: 205px;
   height: 205px;
 }
-/* line 655, ../sass/global.scss */
+/* line 658, ../sass/global.scss */
 body #thumbnails .slides .thumbnail .inner, body #thumbnails .slides li .thumbnail .inner {
   border: 0px solid #00e3ff;
   -moz-transition: border-width 0.1s ease-out;
@@ -1234,42 +1274,46 @@ body #thumbnails .slides .thumbnail .inner, body #thumbnails .slides li .thumbna
   -webkit-transition: border-width 0.1s ease-out;
   transition: border-width 0.1s ease-out;
 }
-/* line 56, ../sass/_mixins.scss */
+/* line 59, ../sass/_mixins.scss */
 .theme-1 body #thumbnails .slides .thumbnail .inner, .theme-1 body #thumbnails .slides li .thumbnail .inner {
   border: 0px solid #f1562f;
 }
-/* line 59, ../sass/_mixins.scss */
+/* line 62, ../sass/_mixins.scss */
 .theme-3 body #thumbnails .slides .thumbnail .inner, .theme-3 body #thumbnails .slides li .thumbnail .inner {
   border: 0px solid #f3c11a;
 }
-/* line 62, ../sass/_mixins.scss */
+/* line 65, ../sass/_mixins.scss */
 .theme-13 body #thumbnails .slides .thumbnail .inner, .theme-13 body #thumbnails .slides li .thumbnail .inner {
   border: 0px solid #96c488;
 }
-/* line 65, ../sass/_mixins.scss */
+/* line 68, ../sass/_mixins.scss */
 .theme-145 body #thumbnails .slides .thumbnail .inner, .theme-145 body #thumbnails .slides li .thumbnail .inner {
   border: 0px solid #f3c11a;
 }
-/* line 68, ../sass/_mixins.scss */
+/* line 71, ../sass/_mixins.scss */
 .theme-153 body #thumbnails .slides .thumbnail .inner, .theme-153 body #thumbnails .slides li .thumbnail .inner {
   border: 0px solid cyan;
 }
-/* line 71, ../sass/_mixins.scss */
+/* line 74, ../sass/_mixins.scss */
 .theme-162 body #thumbnails .slides .thumbnail .inner, .theme-162 body #thumbnails .slides li .thumbnail .inner {
   border: 0px solid #ffd100;
 }
-/* line 665, ../sass/global.scss */
+/* line 77, ../sass/_mixins.scss */
+.theme-167 body #thumbnails .slides .thumbnail .inner, .theme-167 body #thumbnails .slides li .thumbnail .inner {
+  border: 0px solid white;
+}
+/* line 668, ../sass/global.scss */
 .no-touch body #thumbnails .slides .thumbnail:hover .inner, .touch body #thumbnails .slides .thumbnail:active .inner, .no-touch body #thumbnails .slides li .thumbnail:hover .inner, .touch body #thumbnails .slides li .thumbnail:active .inner {
   border-width: 8px;
 }
-/* line 672, ../sass/global.scss */
+/* line 675, ../sass/global.scss */
 body #thumbnails .taxa-menu {
   position: absolute;
   z-index: 200;
   margin-left: -20px;
   margin-top: 40px;
 }
-/* line 678, ../sass/global.scss */
+/* line 681, ../sass/global.scss */
 body #thumbnails .taxa-menu li {
   display: inline-block;
   margin-right: 16px;
@@ -1280,11 +1324,11 @@ body #thumbnails .taxa-menu li {
   font-size: 36px;
   letter-spacing: 3px;
 }
-/* line 683, ../sass/global.scss */
+/* line 686, ../sass/global.scss */
 body #thumbnails .taxa-menu li:last-child {
   margin-right: 0;
 }
-/* line 694, ../sass/global.scss */
+/* line 697, ../sass/global.scss */
 body #thumbnails .taxa-menu li a {
   padding: 12px;
   padding-top: 0;
@@ -1293,59 +1337,67 @@ body #thumbnails .taxa-menu li a {
   text-decoration: none;
   border: 8px solid rgba(0, 227, 255, 0);
 }
-/* line 56, ../sass/_mixins.scss */
+/* line 59, ../sass/_mixins.scss */
 .theme-1 body #thumbnails .taxa-menu li a {
   border: 8px solid rgba(241, 86, 47, 0);
 }
-/* line 59, ../sass/_mixins.scss */
+/* line 62, ../sass/_mixins.scss */
 .theme-3 body #thumbnails .taxa-menu li a {
   border: 8px solid rgba(243, 193, 26, 0);
 }
-/* line 62, ../sass/_mixins.scss */
+/* line 65, ../sass/_mixins.scss */
 .theme-13 body #thumbnails .taxa-menu li a {
   border: 8px solid rgba(150, 196, 136, 0);
 }
-/* line 65, ../sass/_mixins.scss */
+/* line 68, ../sass/_mixins.scss */
 .theme-145 body #thumbnails .taxa-menu li a {
   border: 8px solid rgba(243, 193, 26, 0);
 }
-/* line 68, ../sass/_mixins.scss */
+/* line 71, ../sass/_mixins.scss */
 .theme-153 body #thumbnails .taxa-menu li a {
   border: 8px solid rgba(0, 255, 255, 0);
 }
-/* line 71, ../sass/_mixins.scss */
+/* line 74, ../sass/_mixins.scss */
 .theme-162 body #thumbnails .taxa-menu li a {
   border: 8px solid rgba(255, 209, 0, 0);
 }
-/* line 702, ../sass/global.scss */
+/* line 77, ../sass/_mixins.scss */
+.theme-167 body #thumbnails .taxa-menu li a {
+  border: 8px solid rgba(255, 255, 255, 0);
+}
+/* line 705, ../sass/global.scss */
 .no-touch body #thumbnails .taxa-menu li a:hover, .touch body #thumbnails .taxa-menu li a:active {
   color: #00e3ff;
 }
-/* line 706, ../sass/global.scss */
+/* line 709, ../sass/global.scss */
 .no-touch.theme-1 body #thumbnails .taxa-menu li a:hover, .touch.theme-1 body #thumbnails .taxa-menu li a:active {
   color: #f1562f;
 }
-/* line 710, ../sass/global.scss */
+/* line 713, ../sass/global.scss */
 .no-touch.theme-3 body #thumbnails .taxa-menu li a:hover, .touch.theme-3 body #thumbnails .taxa-menu li a:active {
   color: #f3c11a;
 }
-/* line 714, ../sass/global.scss */
+/* line 717, ../sass/global.scss */
 .no-touch.theme-13 body #thumbnails .taxa-menu li a:hover, .touch.theme-13 body #thumbnails .taxa-menu li a:active {
   color: #96c488;
 }
-/* line 718, ../sass/global.scss */
+/* line 721, ../sass/global.scss */
 .no-touch.theme-145 body #thumbnails .taxa-menu li a:hover, .touch.theme-145 body #thumbnails .taxa-menu li a:active {
   color: #f3c11a;
 }
-/* line 722, ../sass/global.scss */
+/* line 725, ../sass/global.scss */
 .no-touch.theme-153 body #thumbnails .taxa-menu li a:hover, .touch.theme-153 body #thumbnails .taxa-menu li a:active {
   color: #00ffff;
 }
-/* line 726, ../sass/global.scss */
+/* line 729, ../sass/global.scss */
 .no-touch.theme-162 body #thumbnails .taxa-menu li a:hover, .touch.theme-162 body #thumbnails .taxa-menu li a:active {
   color: #ffd100;
 }
 /* line 733, ../sass/global.scss */
+.no-touch.theme-167 body #thumbnails .taxa-menu li a:hover, .touch.theme-167 body #thumbnails .taxa-menu li a:active {
+  color: #ffffff;
+}
+/* line 740, ../sass/global.scss */
 body #thumbnails .taxa-menu li.selected a {
   color: #00e3ff;
   border: 8px solid #00e3ff;
@@ -1376,31 +1428,39 @@ body #thumbnails .taxa-menu li.selected a {
 .theme-162 body #thumbnails .taxa-menu li.selected a {
   color: #ffd100;
 }
-/* line 56, ../sass/_mixins.scss */
+/* line 51, ../sass/_mixins.scss */
+.theme-167 body #thumbnails .taxa-menu li.selected a {
+  color: #ffffff;
+}
+/* line 59, ../sass/_mixins.scss */
 .theme-1 body #thumbnails .taxa-menu li.selected a {
   border: 8px solid #f1562f;
 }
-/* line 59, ../sass/_mixins.scss */
+/* line 62, ../sass/_mixins.scss */
 .theme-3 body #thumbnails .taxa-menu li.selected a {
   border: 8px solid #f3c11a;
 }
-/* line 62, ../sass/_mixins.scss */
+/* line 65, ../sass/_mixins.scss */
 .theme-13 body #thumbnails .taxa-menu li.selected a {
   border: 8px solid #96c488;
 }
-/* line 65, ../sass/_mixins.scss */
+/* line 68, ../sass/_mixins.scss */
 .theme-145 body #thumbnails .taxa-menu li.selected a {
   border: 8px solid #f3c11a;
 }
-/* line 68, ../sass/_mixins.scss */
+/* line 71, ../sass/_mixins.scss */
 .theme-153 body #thumbnails .taxa-menu li.selected a {
   border: 8px solid cyan;
 }
-/* line 71, ../sass/_mixins.scss */
+/* line 74, ../sass/_mixins.scss */
 .theme-162 body #thumbnails .taxa-menu li.selected a {
   border: 8px solid #ffd100;
 }
-/* line 742, ../sass/global.scss */
+/* line 77, ../sass/_mixins.scss */
+.theme-167 body #thumbnails .taxa-menu li.selected a {
+  border: 8px solid white;
+}
+/* line 749, ../sass/global.scss */
 body #thumbnails .page {
   right: 70px;
   bottom: 24px;
@@ -1408,7 +1468,7 @@ body #thumbnails .page {
   -webkit-animation: fadein 0.6s;
   animation: fadein 0.6s;
 }
-/* line 750, ../sass/global.scss */
+/* line 757, ../sass/global.scss */
 .theme-162 body .title-slide {
   background-image: url("../images/spotlight.png");
   -moz-background-size: cover;
@@ -1416,18 +1476,38 @@ body #thumbnails .page {
   -webkit-background-size: cover;
   background-size: cover;
 }
-/* line 754, ../sass/global.scss */
+/* line 761, ../sass/global.scss */
 .theme-162 body .title-slide h1 {
   visibility: hidden;
 }
-/* line 768, ../sass/global.scss */
+/* line 765, ../sass/global.scss */
 .theme-162 body .title-slide h2 {
   width: 50%;
   line-height: 1 !important;
   padding-top: 80px;
   padding-left: 480px;
 }
-/* line 776, ../sass/global.scss */
+/* line 773, ../sass/global.scss */
 .theme-162 body .field_exhibit_or_theme {
   color: #00b5e2;
+}
+/* line 778, ../sass/global.scss */
+.theme-167 body .title-slide {
+  background-image: url("../images/hidden-reef.gif");
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+/* line 782, ../sass/global.scss */
+.theme-167 body .title-slide h1, .theme-167 body .title-slide h2 {
+  visibility: hidden;
+}
+/* line 787, ../sass/global.scss */
+.theme-167 body .specimen {
+  background-color: #c93791;
+}
+/* line 791, ../sass/global.scss */
+.theme-167 body .field_exhibit_or_theme {
+  color: #1c3665;
 }

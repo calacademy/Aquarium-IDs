@@ -48,6 +48,9 @@
 	.theme-162 & {
 		color: $twilight-zone-highlight;
 	}
+	.theme-167 & {
+		color: $hidden-reef-highlight;
+	}
 }
 
 @mixin highlight-border($size: 23px, $opacity: .6) {
@@ -70,6 +73,9 @@
 	}
 	.theme-162 & {
 		border: $size solid rgba($twilight-zone-highlight, $opacity);
+	}
+	.theme-167 & {
+		border: $size solid rgba($hidden-reef-highlight, $opacity);
 	}
 }
 

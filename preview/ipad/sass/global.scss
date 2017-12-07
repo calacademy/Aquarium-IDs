@@ -405,6 +405,9 @@ body {
 		.theme-162 & {
 			background-color: $twilight-zone-background;
 		}
+		.theme-167 & {
+			background-color: $hidden-reef-background;
+		}
 	}
 
 	// captions
@@ -727,6 +730,10 @@ body {
 					.touch.theme-162 &:active {
 						color: $twilight-zone-highlight;
 					}
+					.no-touch.theme-167 &:hover,
+					.touch.theme-167 &:active {
+						color: $hidden-reef-highlight;
+					}
 				}
 
 				&.selected {
@@ -752,16 +759,6 @@ body {
 			@include background-size(cover);
 
 			h1 {
-				// line-height: 160px !important;
-				// width: 75% !important;
-				// color: $twilight-zone-background !important;
-				// letter-spacing: -10px !important;
-				// padding-top: 50px;
-
-				// &:first-letter {
-				// 	letter-spacing: -28px;
-				// }
-
 				visibility: hidden;
 			}
 
@@ -775,6 +772,24 @@ body {
 
 		.field_exhibit_or_theme {
 			color: $twilight-zone-subhead;
+		}
+	}
+	.theme-167 & {
+		.title-slide {
+			background-image: url('../images/hidden-reef.gif');
+			@include background-size(cover);
+
+			h1, h2 {
+				visibility: hidden;
+			}
+		}
+
+		.specimen {
+			background-color: $hidden-reef-specimen-background;
+		}
+
+		.field_exhibit_or_theme {
+			color: $hidden-reef-subhead;
 		}
 	}
 }
