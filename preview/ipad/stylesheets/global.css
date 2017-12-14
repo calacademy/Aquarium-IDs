@@ -1529,7 +1529,7 @@ body #msg p:last-child {
 }
 /* line 816, ../sass/global.scss */
 .theme-167 body .title-slide {
-  background-image: url("../images/hidden-reef-sprites/octopus-animation-01.png");
+  background-image: url("../images/hidden-reef.png");
   -moz-background-size: cover;
   -o-background-size: cover;
   -webkit-background-size: cover;

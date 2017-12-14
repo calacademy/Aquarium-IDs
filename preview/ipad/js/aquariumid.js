@@ -442,18 +442,6 @@ var AquariumID = function () {
 	}
 
 	var _initMainSlideshow = function (slideshow, initialSlide) {
-		if ($('html').hasClass('theme-167') && !$('html').hasClass('frames-preloaded')) {
-			_frameAnimation = new FrameAnimation('images/hidden-reef-sprites/octopus-animation-', 'png', 29);
-			
-			_frameAnimation.start(function () {
-				calacademy.Utils.log('! frames preloaded');
-				$('html').addClass('frames-preloaded');
-				_initMainSlideshow(slideshow, initialSlide);
-			});
-
-			return;
-		}
-
 		if (typeof(initialSlide) == 'undefined') initialSlide = 0;
 
 		if ($('#main').data('flexslider')) {
