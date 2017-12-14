@@ -1468,7 +1468,43 @@ body #thumbnails .page {
   -webkit-animation: fadein 0.6s;
   animation: fadein 0.6s;
 }
-/* line 757, ../sass/global.scss */
+/* line 756, ../sass/global.scss */
+body #msg {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  bottom: 10px;
+  left: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  cursor: hand;
+  cursor: pointer;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1;
+  max-width: 250px;
+}
+/* line 759, ../sass/global.scss */
+.no-touch body #msg {
+  display: block;
+}
+/* line 774, ../sass/global.scss */
+body #msg strong {
+  font-weight: 600;
+}
+/* line 778, ../sass/global.scss */
+body #msg p {
+  margin-bottom: 10px;
+}
+/* line 781, ../sass/global.scss */
+body #msg p:last-child {
+  margin-bottom: 0;
+}
+/* line 795, ../sass/global.scss */
 .theme-162 body .title-slide {
   background-image: url("../images/spotlight.png");
   -moz-background-size: cover;
@@ -1476,38 +1512,38 @@ body #thumbnails .page {
   -webkit-background-size: cover;
   background-size: cover;
 }
-/* line 761, ../sass/global.scss */
+/* line 799, ../sass/global.scss */
 .theme-162 body .title-slide h1 {
   visibility: hidden;
 }
-/* line 765, ../sass/global.scss */
+/* line 803, ../sass/global.scss */
 .theme-162 body .title-slide h2 {
   width: 50%;
   line-height: 1 !important;
   padding-top: 80px;
   padding-left: 480px;
 }
-/* line 773, ../sass/global.scss */
+/* line 811, ../sass/global.scss */
 .theme-162 body .field_exhibit_or_theme {
   color: #00b5e2;
 }
-/* line 778, ../sass/global.scss */
+/* line 816, ../sass/global.scss */
 .theme-167 body .title-slide {
-  background-image: url("../images/hidden-reef.gif");
+  background-image: url("../images/hidden-reef-sprites/octopus-animation-01.png");
   -moz-background-size: cover;
   -o-background-size: cover;
   -webkit-background-size: cover;
   background-size: cover;
 }
-/* line 782, ../sass/global.scss */
+/* line 820, ../sass/global.scss */
 .theme-167 body .title-slide h1, .theme-167 body .title-slide h2 {
   visibility: hidden;
 }
-/* line 787, ../sass/global.scss */
+/* line 825, ../sass/global.scss */
 .theme-167 body .specimen {
   background-color: #c93791;
 }
-/* line 791, ../sass/global.scss */
+/* line 829, ../sass/global.scss */
 .theme-167 body .field_exhibit_or_theme {
   color: #1c3665;
 }

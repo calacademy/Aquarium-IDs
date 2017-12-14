@@ -19,6 +19,7 @@ var AquariumID = function () {
 	var _isBig = false;
 	var _activeSlideshow;
 	var _timeoutDisableLinks;
+	var _frameAnimation;
 
 	var _setIdleTimer = function () {
 		if ($('html').hasClass('no-idle')) return;
@@ -441,6 +442,18 @@ var AquariumID = function () {
 	}
 
 	var _initMainSlideshow = function (slideshow, initialSlide) {
+		if ($('html').hasClass('theme-167') && !$('html').hasClass('frames-preloaded')) {
+			_frameAnimation = new FrameAnimation('images/hidden-reef-sprites/octopus-animation-', 'png', 29);
+			
+			_frameAnimation.start(function () {
+				calacademy.Utils.log('! frames preloaded');
+				$('html').addClass('frames-preloaded');
+				_initMainSlideshow(slideshow, initialSlide);
+			});
+
+			return;
+		}
+
 		if (typeof(initialSlide) == 'undefined') initialSlide = 0;
 
 		if ($('#main').data('flexslider')) {
@@ -655,6 +668,10 @@ var AquariumID = function () {
 	this.initialize = function () {
 		calacademy.Utils.log('AquariumID.initialize');
 		_addExtraClasses();
+
+		$('#msg').on('click', function () {
+			$(this).remove();
+		});
 
 		// setup
 		_view = new AquariumIDView();

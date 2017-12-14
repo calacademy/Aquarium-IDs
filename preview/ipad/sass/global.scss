@@ -753,6 +753,44 @@ body {
 		}
 	}
 
+	#msg {
+		display: none;
+
+		.no-touch & {
+			display: block;
+		}
+
+		position: absolute;
+		z-index: 999;
+		bottom: 10px;
+		left: 10px;
+		@include border-radius(10px);
+		
+		cursor: hand;
+		cursor: pointer;
+
+		font-weight: $book;
+
+		strong {
+			font-weight: $semibold;
+		}
+
+		p {
+			margin-bottom: 10px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		background-color: rgba(#000000, 0.5);
+		color: $white;
+		padding: 10px;
+		font-size: 16px;
+		line-height: 1;
+		max-width: 250px;
+	}
+
 	.theme-162 & {
 		.title-slide {
 			background-image: url('../images/spotlight.png');
@@ -776,7 +814,7 @@ body {
 	}
 	.theme-167 & {
 		.title-slide {
-			background-image: url('../images/hidden-reef.gif');
+			background-image: url('../images/hidden-reef-sprites/octopus-animation-01.png');
 			@include background-size(cover);
 
 			h1, h2 {
