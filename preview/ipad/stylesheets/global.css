@@ -1540,10 +1540,6 @@ body #msg p:last-child {
   visibility: hidden;
 }
 /* line 825, ../sass/global.scss */
-.theme-167 body .specimen {
-  background-color: #c93791;
-}
-/* line 829, ../sass/global.scss */
 .theme-167 body .field_exhibit_or_theme {
-  color: #1c3665;
+  color: #ffffff;
 }
