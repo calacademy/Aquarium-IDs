@@ -49,6 +49,11 @@ body {
 		@include animation(fadein .6s);
 	}
 
+	.slides > li,
+	.img-container {
+		@include backface-visibility(hidden);
+	}
+
 	#container,
 	#main,
 	#splash,
