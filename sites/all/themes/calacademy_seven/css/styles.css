@@ -28,3 +28,11 @@
 	font-weight: normal;
 	pointer-events: all;
 }
+
+.view-admin-views-node .views-field-field-scientific-name {
+	font-style: italic;
+}
+
+.view-admin-views-node .views-field-field-scientific-name mark {
+	font-style: normal;
+}
