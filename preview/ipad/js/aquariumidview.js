@@ -22,7 +22,7 @@ var AquariumIDView = function () {
 	var _getImageData = function (obj, crop) {
 		if (typeof(crop) == 'undefined') crop = false;
 		var field = crop ? obj.field_image_square_crop : obj.field_image;
-		
+
 		if (!field) return false;
 
 		var imgData;
@@ -33,6 +33,13 @@ var AquariumIDView = function () {
 			imgData = field[0];
 		} else {
 			imgData = field;
+		}
+
+		if (typeof(obj.imgwidth) == 'string') {
+			imgData.width = parseInt(obj.imgwidth);
+		}
+		if (typeof(obj.imgheight) == 'string') {
+			imgData.height = parseInt(obj.imgheight);
 		}
 
 		if (!imgData) return false;
@@ -54,19 +61,23 @@ var AquariumIDView = function () {
 		var img = $('<div />');
 		img.addClass('img');
 
+		var imgEl = $('<img />');
+		
+		if (!isNaN(imgData.width) && !isNaN(imgData.height)) {
+			imgEl.attr({
+				'raw-width': imgData.width,
+				'raw-height': imgData.height
+			});
+		}
+
 		if (typeof(imgData) == 'string') {
 			// in case the views datasource module hasn't been patched
-			img.css('background-image', 'url(' + imgData + ')');
+			imgEl.attr('src', imgData);
 		} else {
-			img.css('background-image', 'url(' + imgData.src + ')');
+			imgEl.attr('src', imgData.src);
 		}
 
-		if (typeof(imgData.alt) == 'string') {
-			if ($.trim(imgData.alt) != '') {
-				img.html(imgData.alt);
-			}
-		}
-
+		img.append(imgEl);
 		container.append(img);
 
 		// add caption
@@ -202,6 +213,75 @@ var AquariumIDView = function () {
 
 		ul.data('total-thumb-slides', $('li', ul).length);
 		return ul;
+	}
+
+	var _center = function (img, width, height) {
+		var parentWidth = img.parent().width();
+		var parentHeight = img.parent().height();
+
+		var diff = width / parentWidth;
+
+		if ((height / diff) < parentHeight) {
+			img.css({
+				'width': 'auto',
+				'height': Math.round(parentHeight)
+			});
+
+			width = width / (height / parentHeight);
+			height = parentHeight;
+		} else {
+			img.css({
+				'height': 'auto',
+				'width': Math.round(parentWidth)
+			});
+
+	        width = parentWidth;
+	        height = height / diff;
+		}
+
+		var leftOffset = (width - parentWidth) / -2;
+      	var topOffset = (height - parentHeight) / -2;
+
+		img.css({
+			'margin-left': Math.round(leftOffset),
+			'margin-top': Math.round(topOffset)
+		});
+	}
+
+	var _getTitleImgSrc = function () {
+		switch (parseInt($('html').data('theme-id'))) {
+			case 162:
+				return 'images/spotlight.png';
+				break;
+			case 167:
+				return 'images/hidden-reef.png';
+				break;
+			default:
+				return false;
+		}
+	}
+
+	this.onSlideshowAdded = function () {
+		$('.img img').each(function () {
+			var width = parseInt($(this).attr('raw-width'));
+			var height = parseInt($(this).attr('raw-height'));
+
+			if (!isNaN(width) && !isNaN(height)) {
+				_center($(this), width, height);
+			}
+		});
+
+		var titleImgSrc = _getTitleImgSrc();
+
+		if (titleImgSrc !== false) {
+			$('.title-slide').each(function () {
+				var img = $('<img />');
+				img.addClass('title-img');
+				img.attr('src', titleImgSrc);
+
+				$(this).append(img);
+			});
+		}
 	}
 
 	this.getThumbPageForSpecimen = function (index) {
@@ -362,6 +442,7 @@ var AquariumIDView = function () {
 		});
 
 		// add new one
+		$('html').data('theme-id', tid);
 		$('html').addClass('theme-' + tid);
 	}
 

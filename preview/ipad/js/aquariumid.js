@@ -496,6 +496,7 @@ var AquariumID = function () {
 		});
 
 		_hackSliderArrows();
+		_view.onSlideshowAdded();
 
 		// add page indicator
 		$('#main').append(_view.getPageIndicator());

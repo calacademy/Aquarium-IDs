@@ -4,15 +4,6 @@
 @import "compass/css3/user-interface";
 @import "compass/css3/animation";
 
-@include keyframes(fadein) {
-	from {
-		@include opacity(0);
-	}
-	to {
-		@include opacity(1);
-	}
-}
-
 // disable user select
 * {
 	-webkit-touch-callout: none;
@@ -31,7 +22,7 @@ body {
 	font-family: 'Whitney A', 'Whitney B', Helvetica, Arial, sans-serif;
 	font-weight: $book;
 	color: $white;
-
+	
 	font-size: 34px;
 	line-height: 43px;
 
@@ -50,7 +41,8 @@ body {
 	}
 
 	.slides > li,
-	.img-container {
+	.title-slide img,
+	.img-container img {
 		@include backface-visibility(hidden);
 	}
 
@@ -145,20 +137,22 @@ body {
 						}
 
 						img {
-							@include animation(fade 1s);
-							@include animation-iteration-count(infinite);
-							@include animation-direction(alternate);
-							@include animation-delay(.41s);
+							@include opacity(1);
+							@include animation(fade 1s infinite alternate);
+						}
+
+						img:nth-child(1) {
+							@include animation-delay(.45s);
 						}
 
 						img:nth-child(2) {
 							right: $w + 50px;
-							@include animation-delay(.21s);
+							@include animation-delay(.25s);
 						}
 
 						img:nth-child(3) {
 							right: ($w * 2) + 50px;
-							@include animation-delay(.01s);
+							@include animation-delay(.05s);
 						}
 
 						div {
@@ -213,13 +207,19 @@ body {
 						float: right;
 
 						.img {
+							position: relative;
+							overflow: hidden;
+
 							width: 500px;
 							height: 320px;
 
-							@include hide-text-calacademy;
-							background-repeat: no-repeat;
-							background-size: cover;
-							background-position: center;
+							/*
+							img {
+								position: absolute;
+								left: 0;
+								top: 0;
+							}
+							*/
 						}
 					}
 
@@ -363,6 +363,22 @@ body {
 				}
 
 				&.title-slide {
+					.container,
+					.title-img {
+						position: relative;
+						z-index: 2;
+					}
+
+					.title-img {
+						z-index: 1;
+						display: none;
+
+						width: $stageWidth;
+						height: $stageHeight;
+
+						margin-top: -$stageHeight;
+					}
+
 					h1 {
 						font-weight: $book;
 						font-size: 166px;
@@ -796,20 +812,38 @@ body {
 		max-width: 250px;
 	}
 
+	.theme-162 &,
+	.theme-167 & {
+		.title-slide {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+
+			.title-img {
+				display: block !important;
+			}
+		}
+	}
+
 	.theme-162 & {
 		.title-slide {
-			background-image: url('../images/spotlight.png');
-			@include background-size(cover);
+			.container {
+				margin-top: -$stageHeight;
+				
+				@include box-sizing(border-box);
+				width: 100%;
+				padding-left: 90px;
+				padding-right: 90px;
 
-			h1 {
-				visibility: hidden;
-			}
+				h1 {
+					visibility: hidden;
+				}
 
-			h2 {
-				width: 50%;
-				line-height: 1 !important;
-				padding-top: 80px;
-				padding-left: 480px;
+				h2 {
+					width: 50%;
+					line-height: 1 !important;
+					padding-top: 80px;
+					padding-left: 480px;
+				}
 			}
 		}
 
@@ -819,11 +853,8 @@ body {
 	}
 	.theme-167 & {
 		.title-slide {
-			background-image: url('../images/hidden-reef.png');
-			@include background-size(cover);
-
 			h1, h2 {
-				visibility: hidden;
+				display: none;
 			}
 		}
 
