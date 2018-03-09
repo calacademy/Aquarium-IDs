@@ -332,9 +332,6 @@ var AquariumIDView = function () {
 						div.html($.trim(val));
 
 						switch (field) {
-							case 'field_scientific_name':
-								div.html($.trim(calacademy.Utils.htmlDecode($.trim(val))));
-								break;
 							case 'field_diet':
 								div.prepend('<em>Diet: </em>');
 								break;
