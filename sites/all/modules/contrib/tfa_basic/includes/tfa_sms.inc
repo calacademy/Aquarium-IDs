@@ -107,11 +107,24 @@ class TfaBasicSms extends TfaBasePlugin implements TfaValidationPluginInterface,
   }
 
   protected function generate() {
-    $characters = '0123456789';
+    $allowable_characters = '0123456789';
+
+    // Zero-based count of characters in the allowable list:
+    $len = strlen($allowable_characters) - 1;
+
+    // Declare the password as a blank string.
     $string = '';
-    $max = strlen($characters) - 1;
-    for ($p = 0; $p < $this->codeLength; $p++) {
-      $string .= $characters[mt_rand(0, $max)];
+
+    // Loop the number of times specified by codeLength.
+    for ($i = 0; $i < $this->codeLength; $i++) {
+      do {
+        // Find a secure random number within the range needed.
+        $index = ord(drupal_random_bytes(1));
+      } while ($index > $len);
+
+      // Each iteration, pick a random character from the
+      // allowable string and append it to the password:
+      $string .= $allowable_characters[$index];
     }
     return $string;
   }

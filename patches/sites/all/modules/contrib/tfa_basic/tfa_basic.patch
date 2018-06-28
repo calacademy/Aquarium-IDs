@@ -1,15 +1,14 @@
-diff --git a/includes/tfa_sms.inc b/includes/tfa_sms.inc
-index 5036b86..ddcf75f 100644
---- a/includes/tfa_sms.inc
-+++ b/includes/tfa_sms.inc
-@@ -147,6 +147,22 @@ class TfaBasicSms extends TfaBasePlugin implements TfaValidationPluginInterface,
-       return FALSE;
-     }
+diff --git a/Users/grotter/Desktop/tfa_basic/includes/tfa_sms.inc b/tfa_basic/includes/tfa_sms.inc
+index 27861e2d..8eb70c94 100644
+--- a/Users/grotter/Desktop/tfa_basic/includes/tfa_sms.inc
++++ b/tfa_basic/includes/tfa_sms.inc
+@@ -224,4 +224,18 @@ class TfaBasicSmsSetup extends TfaBasicSms implements TfaSetupPluginInterface {
+     return TRUE;
    }
-+
+ 
 +  /**
-+   * {@inheritdoc}
-+   */
++  * {@inheritdoc}
++  */
 +  public function ready() {
 +    // We can only send a code if there is a phone number.
 +    if (!empty($this->mobileNumber)) {
@@ -21,15 +20,12 @@ index 5036b86..ddcf75f 100644
 +    }
 +    return FALSE;
 +  }
-+
  }
- 
- /**
-diff --git a/tfa_basic.module b/tfa_basic.module
-index 181a1e9..ef70920 100644
---- a/tfa_basic.module
-+++ b/tfa_basic.module
-@@ -229,7 +229,7 @@ function tfa_basic_tfa_context_alter(&$context) {
+diff --git a/Users/grotter/Desktop/tfa_basic/tfa_basic.module b/tfa_basic/tfa_basic.module
+index af6254e0..3d3ba0f1 100644
+--- a/Users/grotter/Desktop/tfa_basic/tfa_basic.module
++++ b/tfa_basic/tfa_basic.module
+@@ -266,7 +266,7 @@ function tfa_basic_tfa_context_alter(&$context) {
        }
      }
      // Remove SMS from validation if set.
