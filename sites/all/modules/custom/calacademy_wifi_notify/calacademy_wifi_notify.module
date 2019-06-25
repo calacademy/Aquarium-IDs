@@ -135,6 +135,11 @@ function calacademy_wifi_notify_node_presave($node) {
     _calacademy_wifi_notify_send_notification($tanksToNotify);
 }
 
+function _calacademy_wifi_notify_get_preview_link ($tank) {
+    global $base_url;
+    return $base_url . '/preview/ipad/?tank=' . trim($tank);
+}
+
 function _calacademy_wifi_notify_send_notification($term) {    
     if (empty($term)) return;
 
@@ -152,9 +157,12 @@ function _calacademy_wifi_notify_send_notification($term) {
         
         foreach ($term as $t) {
             $msgBody .= $t->name . "\n";
+            $msgBody .= _calacademy_wifi_notify_get_preview_link($t->name) . "\n";
         }
     } else {
-        $msgBody = t($term[0]->name . ' updated by ' . $user->name . ' at ' . date('Y-m-d H:i:s'));    
+        $msgBody = t($term[0]->name . ' updated by ' . $user->name . ' at ' . date('Y-m-d H:i:s'));
+        $msgBody .= "\n";
+        $msgBody .= _calacademy_wifi_notify_get_preview_link($term[0]->name);  
     }
 
     $params = array(
