@@ -1,0 +1,197 @@
+<?php
+
+function calacademy_archive_entity_postsave($entity, $entity_type) {
+  if ($entity_type != 'taxonomy_term') return;
+
+  switch ($entity->vocabulary_machine_name) {
+    case 'tanks_and_displays':
+      _calacademy_archive_create($entity->tid, trim(strtolower($entity->name)));
+      break;
+  }
+}
+
+function calacademy_archive_node_postsave($node) {
+  // skip if wrong type or not published
+  if ($node->type != 'organism' || $node->status != NODE_PUBLISHED) return;
+
+  // no values
+  if (_calacademy_archive_is_empty($node->field_tank_or_display)) return;
+
+  $tids = $node->field_tank_or_display['und'];
+  
+  foreach ($tids as $tid) {
+      // get info for each tank specified
+      $term = taxonomy_term_load($tid['tid']);
+
+      if ($term === FALSE) continue;
+
+      // @todo
+      // error handling
+      _calacademy_archive_create($term->tid, trim(strtolower($term->name)));        
+  }
+}
+
+function _calacademy_archive_get_file_uri () {
+  return file_create_url(file_default_scheme() . '://');
+}
+
+function _calacademy_archive_is_empty($arr) {
+    if (!is_array($arr)) return true;
+    if (count($arr) == 0 || !isset($arr['und'])) return true;
+    if (count($arr['und']) == 0) return true;
+
+    return false;
+}
+
+function _calacademy_archive_get_assets($nodes, $themes) {
+  // create an array of media assets to package
+  $content = array();
+  $assetDir = 'assets/';
+
+  $fileUri = _calacademy_archive_get_file_uri();
+  $fileDir = file_default_scheme() . '://';
+
+  foreach ($nodes as $node) {
+    $node = $node->node;
+
+    // specimen image
+    if ($node->field_image) {
+      $content[] = array(
+        'url' => $node->field_image[0]->src,
+        'src' => str_replace($fileUri, $fileDir, $node->field_image[0]->src),
+        'target' => $assetDir . str_replace($fileUri, '', $node->field_image[0]->src)
+      );
+    }
+
+    // specimen image crop
+    if ($node->field_image_square_crop) {
+      $content[] = array(
+        'url' => $node->field_image_square_crop[0]->src,
+        'src' => str_replace($fileUri, $fileDir, $node->field_image_square_crop[0]->src),
+        'target' => $assetDir . str_replace($fileUri, '', $node->field_image_square_crop[0]->src)
+      );
+    }
+  }
+
+  foreach ($themes as $theme) {
+    $node = $theme->node;
+
+    if (is_array($node->ebu_images)) {
+      foreach ($node->ebu_images as $ebuImg) {
+        $content[] = array(
+          'url' => $ebuImg->src,
+          'src' => str_replace($fileUri, $fileDir, $ebuImg->src),
+          'target' => $assetDir . str_replace($fileUri, '', $ebuImg->src)
+        );
+      }
+    }
+
+    if (is_array($node->parent_ebu_images)) {
+      foreach ($node->parent_ebu_images as $ebuImg) {
+        $content[] = array(
+          'url' => $ebuImg->src,
+          'src' => str_replace($fileUri, $fileDir, $ebuImg->src),
+          'target' => $assetDir . str_replace($fileUri, '', $ebuImg->src)
+        );
+      }
+    }
+
+    if (is_string($node->field_taxa_images)) {
+      try {
+        $doc = phpQuery::newDocumentXML($node->field_taxa_images);
+      } catch (Exception $e) {
+        try {
+          $doc = phpQuery::newDocumentHTML($node->field_taxa_images);
+        } catch (Exception $e2) {
+          continue;
+        }
+      }
+
+      foreach ($doc['img'] as $img) {
+        $src = pq($img)->attr('src');
+
+        $content[] = array(
+          'url' => $src,
+          'src' => str_replace($fileUri, $fileDir, $src),
+          'target' => $assetDir . str_replace($fileUri, '', $src)
+        );
+      }
+    }
+  }
+
+  // convert drupal paths to file system paths
+  foreach ($content as $key => $val) {
+    $content[$key]['src'] = drupal_realpath($val['src']);
+  }
+
+  return $content;
+}
+
+function _calacademy_archive_create($tid, $tankName) {
+  // create tmp dir if it doesn't already exist
+  $filesPath = drupal_realpath(file_default_scheme() . '://');
+  $tmp = $filesPath . '/touchscreen-archives';
+
+  if (!file_exists($tmp)) {
+    if (drupal_mkdir($tmp) === false) {
+      return false;
+    }
+  }
+
+  global $base_url;
+  
+  // load and append json
+  $tanks = json_decode(file_get_contents($base_url . '/display-list'));
+  $tanks->selected_tank = $tankName;
+
+  $tankContents = json_decode(file_get_contents($base_url . '/displays/' . $tid . '/json'));
+  
+  $themes = json_decode(file_get_contents($base_url . '/exhibit-theme-list'));
+  $themes->fileUri = _calacademy_archive_get_file_uri();
+
+  $json = array(
+    'themes' => json_encode($themes),
+    'tanks' => json_encode($tanks),
+    'content' => json_encode($tankContents) 
+  );
+
+  error_log(var_export($tankContents, true));
+
+  // validate json
+  foreach ($json as $val) {
+    if ($val === false) return false;  
+  }
+
+  // parse content
+  $content = json_decode($json['content']);
+  if ($content === NULL || !is_array($content->nodes)) return false;
+  $content = _calacademy_archive_get_assets($content->nodes, $themes->nodes);
+
+  // create archive
+  global $user;
+  global $base_url;
+  
+  $target = drupal_realpath(DRUPAL_ROOT . '/preview/touchscreen');
+  $author = empty($user->mail) ? 'anonymous' : $user->mail;
+  
+  $foo = new CreateZip($target, $author, $base_url);
+  
+  $foo->delete($tankName);
+  $foo->setTempDirectory(realpath($tmp));
+  $foo->setJSON($json);
+  $foo->addContent($content);
+
+  $path = $foo->getPath(date('Ymd') . '_' . $tankName . '.zip');
+  if ($path === false) return false;
+
+  // upload
+  if ($foo->upload($path)) {
+    // delete local
+    unlink($path);
+
+    // create and upload index
+    return $foo->setIndex();
+  }
+
+  return false;
+}

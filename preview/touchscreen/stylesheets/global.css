@@ -1,0 +1,1640 @@
+@font-face {
+  font-family: 'Whitney';
+  src: url("../fonts/WhitneyBook.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Whitney';
+  src: url("../fonts/WhitneyMedium.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Whitney';
+  src: url("../fonts/WhitneySemibold.otf") format("opentype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Whitney Narrow';
+  src: url("../fonts/WhitneyNarrowBook.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Whitney Narrow';
+  src: url("../fonts/WhitneyNarrowSemibold.otf") format("opentype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Whitney Condensed';
+  src: url("../fonts/WhitneyCondensedMedium.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Whitney Condensed';
+  src: url("../fonts/WhitneyCondensedSemibold.otf") format("opentype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'HanSans';
+  src: url("../fonts/HanSansNormal.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'HanSans';
+  src: url("../fonts/HanSansMedium.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'HanSans';
+  src: url("../fonts/HanSansBold.otf") format("opentype");
+  font-weight: 600;
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fade {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* line 5, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../../usr/local/Cellar/ruby/2.1.5/lib/ruby/gems/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 8, ../sass/global.scss */
+* {
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* line 14, ../sass/global.scss */
+html {
+  height: 100%;
+}
+
+/* line 18, ../sass/global.scss */
+body {
+  -webkit-font-feature-settings: 'ss17' 1, 'onum' 1;
+  font-feature-settings: 'ss17' 1, 'onum' 1;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: 'Whitney', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 34px;
+  line-height: 43px;
+}
+/* line 34, ../sass/global.scss */
+body.disable-links a {
+  pointer-events: none;
+}
+/* line 39, ../sass/global.scss */
+body .hide {
+  display: none;
+}
+/* line 43, ../sass/global.scss */
+body .flexslider.active {
+  -moz-animation: fadein 0.6s;
+  -webkit-animation: fadein 0.6s;
+  animation: fadein 0.6s;
+}
+/* line 47, ../sass/global.scss */
+body .slides > li,
+body .title-slide img,
+body .img-container img {
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/* line 53, ../sass/global.scss */
+body #container,
+body #main,
+body #splash,
+body #thumbnails,
+body #updated {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #434345;
+}
+/* line 63, ../sass/global.scss */
+body #container, body #container .slides, body #container .slides li,
+body #main,
+body #main .slides,
+body #main .slides li,
+body #splash,
+body #splash .slides,
+body #splash .slides li,
+body #thumbnails,
+body #thumbnails .slides,
+body #thumbnails .slides li,
+body #updated,
+body #updated .slides,
+body #updated .slides li {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 1024px;
+  height: 768px;
+  overflow: hidden;
+}
+/* line 72, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav,
+body #main.flexslider .flex-direction-nav,
+body #splash.flexslider .flex-direction-nav,
+body #thumbnails.flexslider .flex-direction-nav,
+body #updated.flexslider .flex-direction-nav {
+  width: 100%;
+  position: absolute;
+  top: 349px;
+  left: 0;
+}
+/* line 82, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a,
+body #main.flexslider .flex-direction-nav a,
+body #splash.flexslider .flex-direction-nav a,
+body #thumbnails.flexslider .flex-direction-nav a,
+body #updated.flexslider .flex-direction-nav a {
+  padding: 50px;
+  padding-top: 342px;
+  padding-bottom: 300px;
+  margin-top: -350px;
+  position: absolute;
+  overflow: hidden;
+  -moz-transition: left 0.3s ease, right 0.3s ease;
+  -o-transition: left 0.3s ease, right 0.3s ease;
+  -webkit-transition: left 0.3s ease, right 0.3s ease;
+  transition: left 0.3s ease, right 0.3s ease;
+}
+/* line 96, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a, body #container.flexslider .flex-direction-nav a img,
+body #main.flexslider .flex-direction-nav a,
+body #main.flexslider .flex-direction-nav a img,
+body #splash.flexslider .flex-direction-nav a,
+body #splash.flexslider .flex-direction-nav a img,
+body #thumbnails.flexslider .flex-direction-nav a,
+body #thumbnails.flexslider .flex-direction-nav a img,
+body #updated.flexslider .flex-direction-nav a,
+body #updated.flexslider .flex-direction-nav a img {
+  width: 15px;
+  height: 42px;
+  border: 0;
+  outline: none;
+}
+/* line 103, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a div,
+body #container.flexslider .flex-direction-nav a img,
+body #main.flexslider .flex-direction-nav a div,
+body #main.flexslider .flex-direction-nav a img,
+body #splash.flexslider .flex-direction-nav a div,
+body #splash.flexslider .flex-direction-nav a img,
+body #thumbnails.flexslider .flex-direction-nav a div,
+body #thumbnails.flexslider .flex-direction-nav a img,
+body #updated.flexslider .flex-direction-nav a div,
+body #updated.flexslider .flex-direction-nav a img {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+  -moz-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+/* line 113, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a.flex-prev,
+body #main.flexslider .flex-direction-nav a.flex-prev,
+body #splash.flexslider .flex-direction-nav a.flex-prev,
+body #thumbnails.flexslider .flex-direction-nav a.flex-prev,
+body #updated.flexslider .flex-direction-nav a.flex-prev {
+  margin-left: -50px;
+  left: 28px;
+}
+/* line 118, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a.flex-prev img,
+body #main.flexslider .flex-direction-nav a.flex-prev img,
+body #splash.flexslider .flex-direction-nav a.flex-prev img,
+body #thumbnails.flexslider .flex-direction-nav a.flex-prev img,
+body #updated.flexslider .flex-direction-nav a.flex-prev img {
+  padding-top: 8px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 124, ../sass/global.scss */
+.on-specimen-slide body #container.flexslider .flex-direction-nav a.flex-prev img, .on-specimen-slide
+body #main.flexslider .flex-direction-nav a.flex-prev img, .on-specimen-slide
+body #splash.flexslider .flex-direction-nav a.flex-prev img, .on-specimen-slide
+body #thumbnails.flexslider .flex-direction-nav a.flex-prev img, .on-specimen-slide
+body #updated.flexslider .flex-direction-nav a.flex-prev img {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+}
+/* line 130, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a.flex-next,
+body #main.flexslider .flex-direction-nav a.flex-next,
+body #splash.flexslider .flex-direction-nav a.flex-next,
+body #thumbnails.flexslider .flex-direction-nav a.flex-next,
+body #updated.flexslider .flex-direction-nav a.flex-next {
+  margin-right: -50px;
+  padding-left: 0;
+  right: 28px;
+  width: 145px;
+}
+/* line 137, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a.flex-next img, body #container.flexslider .flex-direction-nav a.flex-next div,
+body #main.flexslider .flex-direction-nav a.flex-next img,
+body #main.flexslider .flex-direction-nav a.flex-next div,
+body #splash.flexslider .flex-direction-nav a.flex-next img,
+body #splash.flexslider .flex-direction-nav a.flex-next div,
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img,
+body #thumbnails.flexslider .flex-direction-nav a.flex-next div,
+body #updated.flexslider .flex-direction-nav a.flex-next img,
+body #updated.flexslider .flex-direction-nav a.flex-next div {
+  position: absolute;
+  right: 50px;
+  top: 350px;
+}
+/* line 143, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a.flex-next img,
+body #main.flexslider .flex-direction-nav a.flex-next img,
+body #splash.flexslider .flex-direction-nav a.flex-next img,
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img,
+body #updated.flexslider .flex-direction-nav a.flex-next img {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -moz-animation: fade 1s infinite alternate;
+  -webkit-animation: fade 1s infinite alternate;
+  animation: fade 1s infinite alternate;
+}
+/* line 148, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a.flex-next img:nth-child(1),
+body #main.flexslider .flex-direction-nav a.flex-next img:nth-child(1),
+body #splash.flexslider .flex-direction-nav a.flex-next img:nth-child(1),
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(1),
+body #updated.flexslider .flex-direction-nav a.flex-next img:nth-child(1) {
+  -moz-animation-delay: 0.45s;
+  -webkit-animation-delay: 0.45s;
+  animation-delay: 0.45s;
+}
+/* line 152, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
+body #main.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
+body #splash.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
+body #updated.flexslider .flex-direction-nav a.flex-next img:nth-child(2) {
+  right: 65px;
+  -moz-animation-delay: 0.25s;
+  -webkit-animation-delay: 0.25s;
+  animation-delay: 0.25s;
+}
+/* line 157, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a.flex-next img:nth-child(3),
+body #main.flexslider .flex-direction-nav a.flex-next img:nth-child(3),
+body #splash.flexslider .flex-direction-nav a.flex-next img:nth-child(3),
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(3),
+body #updated.flexslider .flex-direction-nav a.flex-next img:nth-child(3) {
+  right: 80px;
+  -moz-animation-delay: 0.05s;
+  -webkit-animation-delay: 0.05s;
+  animation-delay: 0.05s;
+}
+/* line 162, ../sass/global.scss */
+body #container.flexslider .flex-direction-nav a.flex-next div,
+body #main.flexslider .flex-direction-nav a.flex-next div,
+body #splash.flexslider .flex-direction-nav a.flex-next div,
+body #thumbnails.flexslider .flex-direction-nav a.flex-next div,
+body #updated.flexslider .flex-direction-nav a.flex-next div {
+  color: #ffffff;
+  display: block;
+  right: 100px;
+  top: 346px;
+}
+/* line 172, ../sass/global.scss */
+.on-specimen-slide body #container.flexslider .flex-direction-nav a.flex-next img, .on-specimen-slide
+body #main.flexslider .flex-direction-nav a.flex-next img, .on-specimen-slide
+body #splash.flexslider .flex-direction-nav a.flex-next img, .on-specimen-slide
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img, .on-specimen-slide
+body #updated.flexslider .flex-direction-nav a.flex-next img {
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
+}
+/* line 176, ../sass/global.scss */
+.on-specimen-slide body #container.flexslider .flex-direction-nav a.flex-next div,
+.on-specimen-slide body #container.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
+.on-specimen-slide body #container.flexslider .flex-direction-nav a.flex-next img:nth-child(3), .on-specimen-slide
+body #main.flexslider .flex-direction-nav a.flex-next div,
+.on-specimen-slide
+body #main.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
+.on-specimen-slide
+body #main.flexslider .flex-direction-nav a.flex-next img:nth-child(3), .on-specimen-slide
+body #splash.flexslider .flex-direction-nav a.flex-next div,
+.on-specimen-slide
+body #splash.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
+.on-specimen-slide
+body #splash.flexslider .flex-direction-nav a.flex-next img:nth-child(3), .on-specimen-slide
+body #thumbnails.flexslider .flex-direction-nav a.flex-next div,
+.on-specimen-slide
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
+.on-specimen-slide
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(3), .on-specimen-slide
+body #updated.flexslider .flex-direction-nav a.flex-next div,
+.on-specimen-slide
+body #updated.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
+.on-specimen-slide
+body #updated.flexslider .flex-direction-nav a.flex-next img:nth-child(3) {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 186, ../sass/global.scss */
+body #container.flexslider .page,
+body #main.flexslider .page,
+body #splash.flexslider .page,
+body #thumbnails.flexslider .page,
+body #updated.flexslider .page {
+  -webkit-transform: translateZ(0px);
+  position: absolute;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 28px;
+  line-height: 34px;
+}
+/* line 199, ../sass/global.scss */
+body #container .slides li.specimen,
+body #main .slides li.specimen,
+body #splash .slides li.specimen,
+body #thumbnails .slides li.specimen,
+body #updated .slides li.specimen {
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 70px;
+}
+/* line 207, ../sass/global.scss */
+body #container .slides li.specimen .img-container,
+body #main .slides li.specimen .img-container,
+body #splash .slides li.specimen .img-container,
+body #thumbnails .slides li.specimen .img-container,
+body #updated .slides li.specimen .img-container {
+  position: relative;
+  margin-left: 30px;
+  float: right;
+}
+/* line 213, ../sass/global.scss */
+body #container .slides li.specimen .img-container .img,
+body #main .slides li.specimen .img-container .img,
+body #splash .slides li.specimen .img-container .img,
+body #thumbnails .slides li.specimen .img-container .img,
+body #updated .slides li.specimen .img-container .img {
+  position: relative;
+  overflow: hidden;
+  width: 500px;
+  height: 320px;
+  /*
+  img {
+  	position: absolute;
+  	left: 0;
+  	top: 0;
+  }
+  */
+}
+/* line 230, ../sass/global.scss */
+body #container .slides li.specimen .title,
+body #container .slides li.specimen .field_scientific_name,
+body #container .slides li.specimen .field_exhibit_or_theme,
+body #main .slides li.specimen .title,
+body #main .slides li.specimen .field_scientific_name,
+body #main .slides li.specimen .field_exhibit_or_theme,
+body #splash .slides li.specimen .title,
+body #splash .slides li.specimen .field_scientific_name,
+body #splash .slides li.specimen .field_exhibit_or_theme,
+body #thumbnails .slides li.specimen .title,
+body #thumbnails .slides li.specimen .field_scientific_name,
+body #thumbnails .slides li.specimen .field_exhibit_or_theme,
+body #updated .slides li.specimen .title,
+body #updated .slides li.specimen .field_scientific_name,
+body #updated .slides li.specimen .field_exhibit_or_theme {
+  max-width: 330px;
+  font-weight: 500;
+}
+/* line 237, ../sass/global.scss */
+body #container .slides li.specimen .field_exhibit_or_theme,
+body #main .slides li.specimen .field_exhibit_or_theme,
+body #splash .slides li.specimen .field_exhibit_or_theme,
+body #thumbnails .slides li.specimen .field_exhibit_or_theme,
+body #updated .slides li.specimen .field_exhibit_or_theme {
+  text-transform: uppercase;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 26px;
+  margin-bottom: 30px;
+  padding-left: 3px;
+  letter-spacing: 5px;
+}
+/* line 248, ../sass/global.scss */
+body #container .slides li.specimen .title,
+body #main .slides li.specimen .title,
+body #splash .slides li.specimen .title,
+body #thumbnails .slides li.specimen .title,
+body #updated .slides li.specimen .title {
+  font-size: 60px;
+  line-height: 64px;
+  margin-bottom: 10px;
+}
+/* line 254, ../sass/global.scss */
+body #container .slides li.specimen .field_scientific_name,
+body #main .slides li.specimen .field_scientific_name,
+body #splash .slides li.specimen .field_scientific_name,
+body #thumbnails .slides li.specimen .field_scientific_name,
+body #updated .slides li.specimen .field_scientific_name {
+  font-size: 28px;
+  line-height: 33px;
+  font-style: italic;
+}
+/* line 259, ../sass/global.scss */
+body #container .slides li.specimen .field_scientific_name mark,
+body #main .slides li.specimen .field_scientific_name mark,
+body #splash .slides li.specimen .field_scientific_name mark,
+body #thumbnails .slides li.specimen .field_scientific_name mark,
+body #updated .slides li.specimen .field_scientific_name mark {
+  font-style: normal;
+  background-color: transparent;
+  color: inherit;
+}
+/* line 266, ../sass/global.scss */
+body #container .slides li.specimen .body_1,
+body #main .slides li.specimen .body_1,
+body #splash .slides li.specimen .body_1,
+body #thumbnails .slides li.specimen .body_1,
+body #updated .slides li.specimen .body_1 {
+  clear: both;
+  padding-top: 30px;
+}
+/* line 270, ../sass/global.scss */
+body #container .slides li.specimen .body_1 p,
+body #main .slides li.specimen .body_1 p,
+body #splash .slides li.specimen .body_1 p,
+body #thumbnails .slides li.specimen .body_1 p,
+body #updated .slides li.specimen .body_1 p {
+  margin-bottom: 30px;
+}
+/* line 274, ../sass/global.scss */
+body #container .slides li.specimen .body_1 em,
+body #main .slides li.specimen .body_1 em,
+body #splash .slides li.specimen .body_1 em,
+body #thumbnails .slides li.specimen .body_1 em,
+body #updated .slides li.specimen .body_1 em {
+  font-style: italic;
+}
+/* line 278, ../sass/global.scss */
+body #container .slides li.specimen .body_1 strong,
+body #main .slides li.specimen .body_1 strong,
+body #splash .slides li.specimen .body_1 strong,
+body #thumbnails .slides li.specimen .body_1 strong,
+body #updated .slides li.specimen .body_1 strong {
+  font-weight: 600;
+}
+/* line 283, ../sass/global.scss */
+body #container .slides li.specimen .field_diet,
+body #container .slides li.specimen .field_distribution,
+body #main .slides li.specimen .field_diet,
+body #main .slides li.specimen .field_distribution,
+body #splash .slides li.specimen .field_diet,
+body #splash .slides li.specimen .field_distribution,
+body #thumbnails .slides li.specimen .field_diet,
+body #thumbnails .slides li.specimen .field_distribution,
+body #updated .slides li.specimen .field_diet,
+body #updated .slides li.specimen .field_distribution {
+  font-size: 28px;
+  line-height: 34px;
+}
+/* line 288, ../sass/global.scss */
+body #container .slides li.specimen .field_diet em,
+body #container .slides li.specimen .field_distribution em,
+body #main .slides li.specimen .field_diet em,
+body #main .slides li.specimen .field_distribution em,
+body #splash .slides li.specimen .field_diet em,
+body #splash .slides li.specimen .field_distribution em,
+body #thumbnails .slides li.specimen .field_diet em,
+body #thumbnails .slides li.specimen .field_distribution em,
+body #updated .slides li.specimen .field_diet em,
+body #updated .slides li.specimen .field_distribution em {
+  font-weight: 600;
+}
+/* line 293, ../sass/global.scss */
+body #container .slides li.specimen .field_tagline,
+body #container .slides li.specimen .field_source,
+body #main .slides li.specimen .field_tagline,
+body #main .slides li.specimen .field_source,
+body #splash .slides li.specimen .field_tagline,
+body #splash .slides li.specimen .field_source,
+body #thumbnails .slides li.specimen .field_tagline,
+body #thumbnails .slides li.specimen .field_source,
+body #updated .slides li.specimen .field_tagline,
+body #updated .slides li.specimen .field_source {
+  width: 750px;
+  float: left;
+  font-size: 20px;
+  line-height: 24px;
+  margin-top: 30px;
+}
+/* line 302, ../sass/global.scss */
+body #container .slides li.specimen .field_tagline,
+body #main .slides li.specimen .field_tagline,
+body #splash .slides li.specimen .field_tagline,
+body #thumbnails .slides li.specimen .field_tagline,
+body #updated .slides li.specimen .field_tagline {
+  font-weight: 600;
+}
+/* line 306, ../sass/global.scss */
+body #container .slides li.specimen .field_source,
+body #main .slides li.specimen .field_source,
+body #splash .slides li.specimen .field_source,
+body #thumbnails .slides li.specimen .field_source,
+body #updated .slides li.specimen .field_source {
+  color: rgba(255, 255, 255, 0.8);
+}
+/* line 311, ../sass/global.scss */
+body #container .slides li.updated, body #container .slides li.title-slide,
+body #main .slides li.updated,
+body #main .slides li.title-slide,
+body #splash .slides li.updated,
+body #splash .slides li.title-slide,
+body #thumbnails .slides li.updated,
+body #thumbnails .slides li.title-slide,
+body #updated .slides li.updated,
+body #updated .slides li.title-slide {
+  padding-left: 90px;
+  padding-right: 90px;
+}
+/* line 318, ../sass/global.scss */
+body #container .slides li.updated .container, body #container .slides li.title-slide .container,
+body #main .slides li.updated .container,
+body #main .slides li.title-slide .container,
+body #splash .slides li.updated .container,
+body #splash .slides li.title-slide .container,
+body #thumbnails .slides li.updated .container,
+body #thumbnails .slides li.title-slide .container,
+body #updated .slides li.updated .container,
+body #updated .slides li.title-slide .container {
+  display: table-cell;
+  vertical-align: middle;
+  height: 768px;
+}
+/* line 325, ../sass/global.scss */
+body #container .slides li.photosensitive,
+body #main .slides li.photosensitive,
+body #splash .slides li.photosensitive,
+body #thumbnails .slides li.photosensitive,
+body #updated .slides li.photosensitive {
+  padding-left: 180px;
+  padding-right: 180px;
+}
+/* line 331, ../sass/global.scss */
+body #container .slides li.photosensitive .container,
+body #main .slides li.photosensitive .container,
+body #splash .slides li.photosensitive .container,
+body #thumbnails .slides li.photosensitive .container,
+body #updated .slides li.photosensitive .container {
+  margin-top: 90px;
+  padding-top: 270px;
+  background-image: url("../images/photosensitive.png");
+  -moz-background-size: 225px, 225px;
+  -o-background-size: 225px, 225px;
+  -webkit-background-size: 225px, 225px;
+  background-size: 225px, 225px;
+  background-repeat: no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 1.5 / 1), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx) {
+  /* line 129, ../sass/_mixins.scss */
+  body #container .slides li.photosensitive .container,
+  body #main .slides li.photosensitive .container,
+  body #splash .slides li.photosensitive .container,
+  body #thumbnails .slides li.photosensitive .container,
+  body #updated .slides li.photosensitive .container {
+    background-image: url("../images/photosensitive@2x.png");
+  }
+}
+/* line 339, ../sass/global.scss */
+body #container .slides li.photosensitive h2,
+body #main .slides li.photosensitive h2,
+body #splash .slides li.photosensitive h2,
+body #thumbnails .slides li.photosensitive h2,
+body #updated .slides li.photosensitive h2 {
+  font-weight: 600;
+  font-size: 94px;
+  line-height: 1;
+}
+/* line 345, ../sass/global.scss */
+body #container .slides li.photosensitive p,
+body #main .slides li.photosensitive p,
+body #splash .slides li.photosensitive p,
+body #thumbnails .slides li.photosensitive p,
+body #updated .slides li.photosensitive p {
+  margin-top: 30px;
+  font-size: 29px;
+  line-height: 40px;
+}
+/* line 350, ../sass/global.scss */
+body #container .slides li.photosensitive p em,
+body #main .slides li.photosensitive p em,
+body #splash .slides li.photosensitive p em,
+body #thumbnails .slides li.photosensitive p em,
+body #updated .slides li.photosensitive p em {
+  font-weight: 600;
+}
+/* line 357, ../sass/global.scss */
+body #container .slides li.updated .container,
+body #main .slides li.updated .container,
+body #splash .slides li.updated .container,
+body #thumbnails .slides li.updated .container,
+body #updated .slides li.updated .container {
+  width: 1024px;
+  text-align: center;
+}
+/* line 362, ../sass/global.scss */
+body #container .slides li.updated h2,
+body #main .slides li.updated h2,
+body #splash .slides li.updated h2,
+body #thumbnails .slides li.updated h2,
+body #updated .slides li.updated h2 {
+  font-size: 57px;
+  line-height: 1;
+  padding-bottom: 50px;
+}
+/* line 370, ../sass/global.scss */
+body #container .slides li.title-slide .container,
+body #container .slides li.title-slide .title-img,
+body #main .slides li.title-slide .container,
+body #main .slides li.title-slide .title-img,
+body #splash .slides li.title-slide .container,
+body #splash .slides li.title-slide .title-img,
+body #thumbnails .slides li.title-slide .container,
+body #thumbnails .slides li.title-slide .title-img,
+body #updated .slides li.title-slide .container,
+body #updated .slides li.title-slide .title-img {
+  position: relative;
+  z-index: 2;
+}
+/* line 376, ../sass/global.scss */
+body #container .slides li.title-slide .title-img,
+body #main .slides li.title-slide .title-img,
+body #splash .slides li.title-slide .title-img,
+body #thumbnails .slides li.title-slide .title-img,
+body #updated .slides li.title-slide .title-img {
+  z-index: 1;
+  display: none;
+  width: 1024px;
+  height: 768px;
+  margin-top: -768px;
+}
+/* line 386, ../sass/global.scss */
+body #container .slides li.title-slide h1,
+body #main .slides li.title-slide h1,
+body #splash .slides li.title-slide h1,
+body #thumbnails .slides li.title-slide h1,
+body #updated .slides li.title-slide h1 {
+  font-weight: 400;
+  font-size: 166px;
+  line-height: 172px;
+  letter-spacing: -4px;
+}
+/* line 393, ../sass/global.scss */
+body #container .slides li.title-slide h2,
+body #main .slides li.title-slide h2,
+body #splash .slides li.title-slide h2,
+body #thumbnails .slides li.title-slide h2,
+body #updated .slides li.title-slide h2 {
+  font-weight: 500;
+  font-size: 80px;
+  line-height: 140px;
+  letter-spacing: -1px;
+}
+/* line 402, ../sass/global.scss */
+body #container .slides li > h2 em, body #container .slides li.title-slide h1, body #container .slides li.specimen .title, body #container .slides li.specimen .field_scientific_name, body #container .slides li.specimen .field_tagline,
+body #main .slides li > h2 em,
+body #main .slides li.title-slide h1,
+body #main .slides li.specimen .title,
+body #main .slides li.specimen .field_scientific_name,
+body #main .slides li.specimen .field_tagline,
+body #splash .slides li > h2 em,
+body #splash .slides li.title-slide h1,
+body #splash .slides li.specimen .title,
+body #splash .slides li.specimen .field_scientific_name,
+body #splash .slides li.specimen .field_tagline,
+body #thumbnails .slides li > h2 em,
+body #thumbnails .slides li.title-slide h1,
+body #thumbnails .slides li.specimen .title,
+body #thumbnails .slides li.specimen .field_scientific_name,
+body #thumbnails .slides li.specimen .field_tagline,
+body #updated .slides li > h2 em,
+body #updated .slides li.title-slide h1,
+body #updated .slides li.specimen .title,
+body #updated .slides li.specimen .field_scientific_name,
+body #updated .slides li.specimen .field_tagline {
+  color: #00e3ff;
+}
+/* line 34, ../sass/_mixins.scss */
+.theme-1 body #container .slides li > h2 em, .theme-1 body #container .slides li.title-slide h1, .theme-1 body #container .slides li.specimen .title, .theme-1 body #container .slides li.specimen .field_scientific_name, .theme-1 body #container .slides li.specimen .field_tagline, .theme-1
+body #main .slides li > h2 em, .theme-1
+body #main .slides li.title-slide h1, .theme-1
+body #main .slides li.specimen .title, .theme-1
+body #main .slides li.specimen .field_scientific_name, .theme-1
+body #main .slides li.specimen .field_tagline, .theme-1
+body #splash .slides li > h2 em, .theme-1
+body #splash .slides li.title-slide h1, .theme-1
+body #splash .slides li.specimen .title, .theme-1
+body #splash .slides li.specimen .field_scientific_name, .theme-1
+body #splash .slides li.specimen .field_tagline, .theme-1
+body #thumbnails .slides li > h2 em, .theme-1
+body #thumbnails .slides li.title-slide h1, .theme-1
+body #thumbnails .slides li.specimen .title, .theme-1
+body #thumbnails .slides li.specimen .field_scientific_name, .theme-1
+body #thumbnails .slides li.specimen .field_tagline, .theme-1
+body #updated .slides li > h2 em, .theme-1
+body #updated .slides li.title-slide h1, .theme-1
+body #updated .slides li.specimen .title, .theme-1
+body #updated .slides li.specimen .field_scientific_name, .theme-1
+body #updated .slides li.specimen .field_tagline {
+  color: #f1562f;
+}
+/* line 37, ../sass/_mixins.scss */
+.theme-3 body #container .slides li > h2 em, .theme-3 body #container .slides li.title-slide h1, .theme-3 body #container .slides li.specimen .title, .theme-3 body #container .slides li.specimen .field_scientific_name, .theme-3 body #container .slides li.specimen .field_tagline, .theme-3
+body #main .slides li > h2 em, .theme-3
+body #main .slides li.title-slide h1, .theme-3
+body #main .slides li.specimen .title, .theme-3
+body #main .slides li.specimen .field_scientific_name, .theme-3
+body #main .slides li.specimen .field_tagline, .theme-3
+body #splash .slides li > h2 em, .theme-3
+body #splash .slides li.title-slide h1, .theme-3
+body #splash .slides li.specimen .title, .theme-3
+body #splash .slides li.specimen .field_scientific_name, .theme-3
+body #splash .slides li.specimen .field_tagline, .theme-3
+body #thumbnails .slides li > h2 em, .theme-3
+body #thumbnails .slides li.title-slide h1, .theme-3
+body #thumbnails .slides li.specimen .title, .theme-3
+body #thumbnails .slides li.specimen .field_scientific_name, .theme-3
+body #thumbnails .slides li.specimen .field_tagline, .theme-3
+body #updated .slides li > h2 em, .theme-3
+body #updated .slides li.title-slide h1, .theme-3
+body #updated .slides li.specimen .title, .theme-3
+body #updated .slides li.specimen .field_scientific_name, .theme-3
+body #updated .slides li.specimen .field_tagline {
+  color: #f3c11a;
+}
+/* line 40, ../sass/_mixins.scss */
+.theme-13 body #container .slides li > h2 em, .theme-13 body #container .slides li.title-slide h1, .theme-13 body #container .slides li.specimen .title, .theme-13 body #container .slides li.specimen .field_scientific_name, .theme-13 body #container .slides li.specimen .field_tagline, .theme-13
+body #main .slides li > h2 em, .theme-13
+body #main .slides li.title-slide h1, .theme-13
+body #main .slides li.specimen .title, .theme-13
+body #main .slides li.specimen .field_scientific_name, .theme-13
+body #main .slides li.specimen .field_tagline, .theme-13
+body #splash .slides li > h2 em, .theme-13
+body #splash .slides li.title-slide h1, .theme-13
+body #splash .slides li.specimen .title, .theme-13
+body #splash .slides li.specimen .field_scientific_name, .theme-13
+body #splash .slides li.specimen .field_tagline, .theme-13
+body #thumbnails .slides li > h2 em, .theme-13
+body #thumbnails .slides li.title-slide h1, .theme-13
+body #thumbnails .slides li.specimen .title, .theme-13
+body #thumbnails .slides li.specimen .field_scientific_name, .theme-13
+body #thumbnails .slides li.specimen .field_tagline, .theme-13
+body #updated .slides li > h2 em, .theme-13
+body #updated .slides li.title-slide h1, .theme-13
+body #updated .slides li.specimen .title, .theme-13
+body #updated .slides li.specimen .field_scientific_name, .theme-13
+body #updated .slides li.specimen .field_tagline {
+  color: #96c488;
+}
+/* line 43, ../sass/_mixins.scss */
+.theme-145 body #container .slides li > h2 em, .theme-145 body #container .slides li.title-slide h1, .theme-145 body #container .slides li.specimen .title, .theme-145 body #container .slides li.specimen .field_scientific_name, .theme-145 body #container .slides li.specimen .field_tagline, .theme-145
+body #main .slides li > h2 em, .theme-145
+body #main .slides li.title-slide h1, .theme-145
+body #main .slides li.specimen .title, .theme-145
+body #main .slides li.specimen .field_scientific_name, .theme-145
+body #main .slides li.specimen .field_tagline, .theme-145
+body #splash .slides li > h2 em, .theme-145
+body #splash .slides li.title-slide h1, .theme-145
+body #splash .slides li.specimen .title, .theme-145
+body #splash .slides li.specimen .field_scientific_name, .theme-145
+body #splash .slides li.specimen .field_tagline, .theme-145
+body #thumbnails .slides li > h2 em, .theme-145
+body #thumbnails .slides li.title-slide h1, .theme-145
+body #thumbnails .slides li.specimen .title, .theme-145
+body #thumbnails .slides li.specimen .field_scientific_name, .theme-145
+body #thumbnails .slides li.specimen .field_tagline, .theme-145
+body #updated .slides li > h2 em, .theme-145
+body #updated .slides li.title-slide h1, .theme-145
+body #updated .slides li.specimen .title, .theme-145
+body #updated .slides li.specimen .field_scientific_name, .theme-145
+body #updated .slides li.specimen .field_tagline {
+  color: #f3c11a;
+}
+/* line 46, ../sass/_mixins.scss */
+.theme-153 body #container .slides li > h2 em, .theme-153 body #container .slides li.title-slide h1, .theme-153 body #container .slides li.specimen .title, .theme-153 body #container .slides li.specimen .field_scientific_name, .theme-153 body #container .slides li.specimen .field_tagline, .theme-153
+body #main .slides li > h2 em, .theme-153
+body #main .slides li.title-slide h1, .theme-153
+body #main .slides li.specimen .title, .theme-153
+body #main .slides li.specimen .field_scientific_name, .theme-153
+body #main .slides li.specimen .field_tagline, .theme-153
+body #splash .slides li > h2 em, .theme-153
+body #splash .slides li.title-slide h1, .theme-153
+body #splash .slides li.specimen .title, .theme-153
+body #splash .slides li.specimen .field_scientific_name, .theme-153
+body #splash .slides li.specimen .field_tagline, .theme-153
+body #thumbnails .slides li > h2 em, .theme-153
+body #thumbnails .slides li.title-slide h1, .theme-153
+body #thumbnails .slides li.specimen .title, .theme-153
+body #thumbnails .slides li.specimen .field_scientific_name, .theme-153
+body #thumbnails .slides li.specimen .field_tagline, .theme-153
+body #updated .slides li > h2 em, .theme-153
+body #updated .slides li.title-slide h1, .theme-153
+body #updated .slides li.specimen .title, .theme-153
+body #updated .slides li.specimen .field_scientific_name, .theme-153
+body #updated .slides li.specimen .field_tagline {
+  color: #00ffff;
+}
+/* line 49, ../sass/_mixins.scss */
+.theme-162 body #container .slides li > h2 em, .theme-162 body #container .slides li.title-slide h1, .theme-162 body #container .slides li.specimen .title, .theme-162 body #container .slides li.specimen .field_scientific_name, .theme-162 body #container .slides li.specimen .field_tagline, .theme-162
+body #main .slides li > h2 em, .theme-162
+body #main .slides li.title-slide h1, .theme-162
+body #main .slides li.specimen .title, .theme-162
+body #main .slides li.specimen .field_scientific_name, .theme-162
+body #main .slides li.specimen .field_tagline, .theme-162
+body #splash .slides li > h2 em, .theme-162
+body #splash .slides li.title-slide h1, .theme-162
+body #splash .slides li.specimen .title, .theme-162
+body #splash .slides li.specimen .field_scientific_name, .theme-162
+body #splash .slides li.specimen .field_tagline, .theme-162
+body #thumbnails .slides li > h2 em, .theme-162
+body #thumbnails .slides li.title-slide h1, .theme-162
+body #thumbnails .slides li.specimen .title, .theme-162
+body #thumbnails .slides li.specimen .field_scientific_name, .theme-162
+body #thumbnails .slides li.specimen .field_tagline, .theme-162
+body #updated .slides li > h2 em, .theme-162
+body #updated .slides li.title-slide h1, .theme-162
+body #updated .slides li.specimen .title, .theme-162
+body #updated .slides li.specimen .field_scientific_name, .theme-162
+body #updated .slides li.specimen .field_tagline {
+  color: #ffd100;
+}
+/* line 52, ../sass/_mixins.scss */
+.theme-167 body #container .slides li > h2 em, .theme-167 body #container .slides li.title-slide h1, .theme-167 body #container .slides li.specimen .title, .theme-167 body #container .slides li.specimen .field_scientific_name, .theme-167 body #container .slides li.specimen .field_tagline, .theme-167
+body #main .slides li > h2 em, .theme-167
+body #main .slides li.title-slide h1, .theme-167
+body #main .slides li.specimen .title, .theme-167
+body #main .slides li.specimen .field_scientific_name, .theme-167
+body #main .slides li.specimen .field_tagline, .theme-167
+body #splash .slides li > h2 em, .theme-167
+body #splash .slides li.title-slide h1, .theme-167
+body #splash .slides li.specimen .title, .theme-167
+body #splash .slides li.specimen .field_scientific_name, .theme-167
+body #splash .slides li.specimen .field_tagline, .theme-167
+body #thumbnails .slides li > h2 em, .theme-167
+body #thumbnails .slides li.title-slide h1, .theme-167
+body #thumbnails .slides li.specimen .title, .theme-167
+body #thumbnails .slides li.specimen .field_scientific_name, .theme-167
+body #thumbnails .slides li.specimen .field_tagline, .theme-167
+body #updated .slides li > h2 em, .theme-167
+body #updated .slides li.title-slide h1, .theme-167
+body #updated .slides li.specimen .title, .theme-167
+body #updated .slides li.specimen .field_scientific_name, .theme-167
+body #updated .slides li.specimen .field_tagline {
+  color: #ffffff;
+}
+/* line 415, ../sass/global.scss */
+.theme-1 body #container, .theme-1
+body #main, .theme-1
+body #splash, .theme-1
+body #thumbnails, .theme-1
+body #updated {
+  background-color: #00344d;
+}
+/* line 418, ../sass/global.scss */
+.theme-3 body #container, .theme-3
+body #main, .theme-3
+body #splash, .theme-3
+body #thumbnails, .theme-3
+body #updated {
+  background-color: #008cae;
+}
+/* line 421, ../sass/global.scss */
+.theme-13 body #container, .theme-13
+body #main, .theme-13
+body #splash, .theme-13
+body #thumbnails, .theme-13
+body #updated {
+  background-color: #640000;
+}
+/* line 424, ../sass/global.scss */
+.theme-145 body #container, .theme-145
+body #main, .theme-145
+body #splash, .theme-145
+body #thumbnails, .theme-145
+body #updated {
+  background-color: #008cae;
+}
+/* line 427, ../sass/global.scss */
+.theme-153 body #container, .theme-153
+body #main, .theme-153
+body #splash, .theme-153
+body #thumbnails, .theme-153
+body #updated {
+  background-color: #006225;
+}
+/* line 430, ../sass/global.scss */
+.theme-162 body #container, .theme-162
+body #main, .theme-162
+body #splash, .theme-162
+body #thumbnails, .theme-162
+body #updated {
+  background-color: #002855;
+}
+/* line 433, ../sass/global.scss */
+.theme-167 body #container, .theme-167
+body #main, .theme-167
+body #splash, .theme-167
+body #thumbnails, .theme-167
+body #updated {
+  background-color: #005396;
+}
+/* line 439, ../sass/global.scss */
+body .cap {
+  -moz-transform-origin: 0 0 0;
+  -ms-transform-origin: 0 0 0;
+  -o-transform-origin: 0 0 0;
+  -webkit-transform-origin: 0 0 0;
+  transform-origin: 0 0 0;
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  position: absolute;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+}
+/* line 20, ../sass/_mixins.scss */
+.lt-ie9 body .cap {
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+/* line 452, ../sass/global.scss */
+body #main .cap {
+  top: 0;
+  left: 525px;
+}
+/* line 458, ../sass/global.scss */
+body #main .page,
+body #main .grid {
+  pointer-events: none;
+  cursor: default;
+  -moz-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 469, ../sass/global.scss */
+.on-specimen-slide body #main .page, .on-specimen-slide
+body #main .grid {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 474, ../sass/global.scss */
+body #main .page {
+  bottom: 20px;
+  right: 80px;
+}
+/* line 481, ../sass/global.scss */
+.aquarium-ipad-large body #main .page {
+  right: auto;
+  left: 80px;
+}
+/* line 487, ../sass/global.scss */
+body #main .grid {
+  position: absolute;
+  bottom: 27px;
+  right: 80px;
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/grid.svg");
+  z-index: 100;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  text-transform: capitalize;
+  display: block;
+  line-height: 0;
+}
+/* line 498, ../sass/global.scss */
+.on-specimen-slide body #main .grid {
+  cursor: pointer;
+  pointer-events: auto;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+}
+/* line 504, ../sass/global.scss */
+.no-touch.on-specimen-slide body #main .grid:hover, .touch.on-specimen-slide body #main .grid:active {
+  -moz-transition: none;
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 514, ../sass/global.scss */
+body #updated li,
+body #splash li {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+/* line 522, ../sass/global.scss */
+body #updated .cap {
+  top: 21px;
+  left: 1012px;
+  color: #dbdcdd;
+  font-weight: 400;
+}
+/* line 530, ../sass/global.scss */
+body #updated li h2 {
+  font-size: 57px;
+  line-height: 68px;
+  width: 750px;
+  position: absolute;
+  letter-spacing: -1px;
+}
+/* line 537, ../sass/global.scss */
+body #updated li h2 em {
+  font-weight: 500;
+}
+/* line 545, ../sass/global.scss */
+body #updated li:nth-child(odd) h2 {
+  bottom: 73px;
+  left: 222px;
+}
+/* line 551, ../sass/global.scss */
+body #updated li:nth-child(even) h2 {
+  top: 56px;
+  left: 68px;
+}
+/* line 560, ../sass/global.scss */
+body #splash .slides li {
+  text-align: center;
+  pointer-events: none;
+}
+/* line 566, ../sass/global.scss */
+body #splash .slides li.flex-active-slide {
+  pointer-events: auto;
+}
+/* line 570, ../sass/global.scss */
+body #splash .slides li h1, body #splash .slides li h2 {
+  text-transform: uppercase;
+  text-transform: lowercase;
+  font-variant: small-caps;
+}
+/* line 575, ../sass/global.scss */
+body #splash .slides li h2 {
+  color: #00e3ff;
+  margin-top: 57px;
+  font-weight: 400;
+  font-size: 50px;
+  letter-spacing: 5px;
+}
+/* line 34, ../sass/_mixins.scss */
+.theme-1 body #splash .slides li h2 {
+  color: #f1562f;
+}
+/* line 37, ../sass/_mixins.scss */
+.theme-3 body #splash .slides li h2 {
+  color: #f3c11a;
+}
+/* line 40, ../sass/_mixins.scss */
+.theme-13 body #splash .slides li h2 {
+  color: #96c488;
+}
+/* line 43, ../sass/_mixins.scss */
+.theme-145 body #splash .slides li h2 {
+  color: #f3c11a;
+}
+/* line 46, ../sass/_mixins.scss */
+.theme-153 body #splash .slides li h2 {
+  color: #00ffff;
+}
+/* line 49, ../sass/_mixins.scss */
+.theme-162 body #splash .slides li h2 {
+  color: #ffd100;
+}
+/* line 52, ../sass/_mixins.scss */
+.theme-167 body #splash .slides li h2 {
+  color: #ffffff;
+}
+/* line 584, ../sass/global.scss */
+body #splash .slides li h1 {
+  display: inline-block;
+  margin-top: 150px;
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 70px;
+  letter-spacing: 1px;
+  padding: 100px;
+  padding-bottom: 115px;
+  border: 23px solid rgba(0, 227, 255, 0.6);
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 12px 12px rgba(0, 0, 0, 0.12), 0 0 12px 12px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: inset 0 12px 12px rgba(0, 0, 0, 0.12), 0 0 12px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 12px 12px rgba(0, 0, 0, 0.12), 0 0 12px 12px rgba(0, 0, 0, 0.12);
+}
+/* line 60, ../sass/_mixins.scss */
+.theme-1 body #splash .slides li h1 {
+  border: 23px solid rgba(241, 86, 47, 0.6);
+}
+/* line 63, ../sass/_mixins.scss */
+.theme-3 body #splash .slides li h1 {
+  border: 23px solid rgba(243, 193, 26, 0.6);
+}
+/* line 66, ../sass/_mixins.scss */
+.theme-13 body #splash .slides li h1 {
+  border: 23px solid rgba(150, 196, 136, 0.6);
+}
+/* line 69, ../sass/_mixins.scss */
+.theme-145 body #splash .slides li h1 {
+  border: 23px solid rgba(243, 193, 26, 0.6);
+}
+/* line 72, ../sass/_mixins.scss */
+.theme-153 body #splash .slides li h1 {
+  border: 23px solid rgba(0, 255, 255, 0.6);
+}
+/* line 75, ../sass/_mixins.scss */
+.theme-162 body #splash .slides li h1 {
+  border: 23px solid rgba(255, 209, 0, 0.6);
+}
+/* line 78, ../sass/_mixins.scss */
+.theme-167 body #splash .slides li h1 {
+  border: 23px solid rgba(255, 255, 255, 0.6);
+}
+/* line 603, ../sass/global.scss */
+body #thumbnails {
+  padding: 70px;
+  padding-top: 55px;
+}
+/* line 607, ../sass/global.scss */
+body #thumbnails h1 {
+  text-transform: uppercase;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-weight: 400;
+  font-size: 40px;
+  letter-spacing: 5px;
+  margin-bottom: 55px;
+  margin-left: -2px;
+}
+/* line 620, ../sass/global.scss */
+body #thumbnails.flexslider .flex-direction-nav a.flex-prev {
+  padding-right: 25px;
+}
+/* line 623, ../sass/global.scss */
+body #thumbnails.flexslider .flex-direction-nav a.flex-next {
+  width: inherit;
+  padding-left: 45px;
+}
+/* line 630, ../sass/global.scss */
+body #thumbnails.flexslider .flex-direction-nav a.flex-prev img,
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img {
+  -moz-animation: none;
+  -webkit-animation: none;
+  animation: none;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+}
+/* line 637, ../sass/global.scss */
+body #thumbnails.flexslider .flex-direction-nav a.flex-next div,
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
+body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(3) {
+  display: none;
+}
+/* line 646, ../sass/global.scss */
+body #thumbnails.flexslider .flex-viewport {
+  -moz-animation: fadein 0.6s;
+  -webkit-animation: fadein 0.6s;
+  animation: fadein 0.6s;
+}
+/* line 651, ../sass/global.scss */
+body #thumbnails .slides {
+  z-index: 100;
+}
+/* line 655, ../sass/global.scss */
+body #thumbnails .slides, body #thumbnails .slides li {
+  height: 431px;
+}
+/* line 661, ../sass/global.scss */
+body #thumbnails .slides .thumbnail, body #thumbnails .slides li .thumbnail {
+  float: left;
+  margin-bottom: 21px;
+  margin-right: 21px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+/* line 666, ../sass/global.scss */
+body #thumbnails .slides .thumbnail:nth-child(4n), body #thumbnails .slides li .thumbnail:nth-child(4n) {
+  margin-right: 0;
+}
+/* line 676, ../sass/global.scss */
+body #thumbnails .slides .thumbnail, body #thumbnails .slides .thumbnail .inner, body #thumbnails .slides li .thumbnail, body #thumbnails .slides li .thumbnail .inner {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 205px;
+  height: 205px;
+}
+/* line 682, ../sass/global.scss */
+body #thumbnails .slides .thumbnail .inner, body #thumbnails .slides li .thumbnail .inner {
+  border: 0px solid #00e3ff;
+  -moz-transition: border-width 0.1s ease-out;
+  -o-transition: border-width 0.1s ease-out;
+  -webkit-transition: border-width 0.1s ease-out;
+  transition: border-width 0.1s ease-out;
+}
+/* line 60, ../sass/_mixins.scss */
+.theme-1 body #thumbnails .slides .thumbnail .inner, .theme-1 body #thumbnails .slides li .thumbnail .inner {
+  border: 0px solid #f1562f;
+}
+/* line 63, ../sass/_mixins.scss */
+.theme-3 body #thumbnails .slides .thumbnail .inner, .theme-3 body #thumbnails .slides li .thumbnail .inner {
+  border: 0px solid #f3c11a;
+}
+/* line 66, ../sass/_mixins.scss */
+.theme-13 body #thumbnails .slides .thumbnail .inner, .theme-13 body #thumbnails .slides li .thumbnail .inner {
+  border: 0px solid #96c488;
+}
+/* line 69, ../sass/_mixins.scss */
+.theme-145 body #thumbnails .slides .thumbnail .inner, .theme-145 body #thumbnails .slides li .thumbnail .inner {
+  border: 0px solid #f3c11a;
+}
+/* line 72, ../sass/_mixins.scss */
+.theme-153 body #thumbnails .slides .thumbnail .inner, .theme-153 body #thumbnails .slides li .thumbnail .inner {
+  border: 0px solid cyan;
+}
+/* line 75, ../sass/_mixins.scss */
+.theme-162 body #thumbnails .slides .thumbnail .inner, .theme-162 body #thumbnails .slides li .thumbnail .inner {
+  border: 0px solid #ffd100;
+}
+/* line 78, ../sass/_mixins.scss */
+.theme-167 body #thumbnails .slides .thumbnail .inner, .theme-167 body #thumbnails .slides li .thumbnail .inner {
+  border: 0px solid white;
+}
+/* line 692, ../sass/global.scss */
+.no-touch body #thumbnails .slides .thumbnail:hover .inner, .touch body #thumbnails .slides .thumbnail:active .inner, .no-touch body #thumbnails .slides li .thumbnail:hover .inner, .touch body #thumbnails .slides li .thumbnail:active .inner {
+  border-width: 8px;
+}
+/* line 699, ../sass/global.scss */
+body #thumbnails .taxa-menu {
+  position: absolute;
+  z-index: 200;
+  margin-left: -20px;
+  margin-top: 40px;
+}
+/* line 705, ../sass/global.scss */
+body #thumbnails .taxa-menu li {
+  display: inline-block;
+  margin-right: 16px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: 36px;
+  letter-spacing: 3px;
+}
+/* line 710, ../sass/global.scss */
+body #thumbnails .taxa-menu li:last-child {
+  margin-right: 0;
+}
+/* line 721, ../sass/global.scss */
+body #thumbnails .taxa-menu li a {
+  padding: 12px;
+  padding-top: 0;
+  padding-bottom: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  border: 8px solid rgba(0, 227, 255, 0);
+}
+/* line 60, ../sass/_mixins.scss */
+.theme-1 body #thumbnails .taxa-menu li a {
+  border: 8px solid rgba(241, 86, 47, 0);
+}
+/* line 63, ../sass/_mixins.scss */
+.theme-3 body #thumbnails .taxa-menu li a {
+  border: 8px solid rgba(243, 193, 26, 0);
+}
+/* line 66, ../sass/_mixins.scss */
+.theme-13 body #thumbnails .taxa-menu li a {
+  border: 8px solid rgba(150, 196, 136, 0);
+}
+/* line 69, ../sass/_mixins.scss */
+.theme-145 body #thumbnails .taxa-menu li a {
+  border: 8px solid rgba(243, 193, 26, 0);
+}
+/* line 72, ../sass/_mixins.scss */
+.theme-153 body #thumbnails .taxa-menu li a {
+  border: 8px solid rgba(0, 255, 255, 0);
+}
+/* line 75, ../sass/_mixins.scss */
+.theme-162 body #thumbnails .taxa-menu li a {
+  border: 8px solid rgba(255, 209, 0, 0);
+}
+/* line 78, ../sass/_mixins.scss */
+.theme-167 body #thumbnails .taxa-menu li a {
+  border: 8px solid rgba(255, 255, 255, 0);
+}
+/* line 729, ../sass/global.scss */
+.no-touch body #thumbnails .taxa-menu li a:hover, .touch body #thumbnails .taxa-menu li a:active {
+  color: #00e3ff;
+}
+/* line 733, ../sass/global.scss */
+.no-touch.theme-1 body #thumbnails .taxa-menu li a:hover, .touch.theme-1 body #thumbnails .taxa-menu li a:active {
+  color: #f1562f;
+}
+/* line 737, ../sass/global.scss */
+.no-touch.theme-3 body #thumbnails .taxa-menu li a:hover, .touch.theme-3 body #thumbnails .taxa-menu li a:active {
+  color: #f3c11a;
+}
+/* line 741, ../sass/global.scss */
+.no-touch.theme-13 body #thumbnails .taxa-menu li a:hover, .touch.theme-13 body #thumbnails .taxa-menu li a:active {
+  color: #96c488;
+}
+/* line 745, ../sass/global.scss */
+.no-touch.theme-145 body #thumbnails .taxa-menu li a:hover, .touch.theme-145 body #thumbnails .taxa-menu li a:active {
+  color: #f3c11a;
+}
+/* line 749, ../sass/global.scss */
+.no-touch.theme-153 body #thumbnails .taxa-menu li a:hover, .touch.theme-153 body #thumbnails .taxa-menu li a:active {
+  color: #00ffff;
+}
+/* line 753, ../sass/global.scss */
+.no-touch.theme-162 body #thumbnails .taxa-menu li a:hover, .touch.theme-162 body #thumbnails .taxa-menu li a:active {
+  color: #ffd100;
+}
+/* line 757, ../sass/global.scss */
+.no-touch.theme-167 body #thumbnails .taxa-menu li a:hover, .touch.theme-167 body #thumbnails .taxa-menu li a:active {
+  color: #ffffff;
+}
+/* line 764, ../sass/global.scss */
+body #thumbnails .taxa-menu li.selected a {
+  color: #00e3ff;
+  border: 8px solid #00e3ff;
+  pointer-events: none;
+  cursor: default;
+}
+/* line 34, ../sass/_mixins.scss */
+.theme-1 body #thumbnails .taxa-menu li.selected a {
+  color: #f1562f;
+}
+/* line 37, ../sass/_mixins.scss */
+.theme-3 body #thumbnails .taxa-menu li.selected a {
+  color: #f3c11a;
+}
+/* line 40, ../sass/_mixins.scss */
+.theme-13 body #thumbnails .taxa-menu li.selected a {
+  color: #96c488;
+}
+/* line 43, ../sass/_mixins.scss */
+.theme-145 body #thumbnails .taxa-menu li.selected a {
+  color: #f3c11a;
+}
+/* line 46, ../sass/_mixins.scss */
+.theme-153 body #thumbnails .taxa-menu li.selected a {
+  color: #00ffff;
+}
+/* line 49, ../sass/_mixins.scss */
+.theme-162 body #thumbnails .taxa-menu li.selected a {
+  color: #ffd100;
+}
+/* line 52, ../sass/_mixins.scss */
+.theme-167 body #thumbnails .taxa-menu li.selected a {
+  color: #ffffff;
+}
+/* line 60, ../sass/_mixins.scss */
+.theme-1 body #thumbnails .taxa-menu li.selected a {
+  border: 8px solid #f1562f;
+}
+/* line 63, ../sass/_mixins.scss */
+.theme-3 body #thumbnails .taxa-menu li.selected a {
+  border: 8px solid #f3c11a;
+}
+/* line 66, ../sass/_mixins.scss */
+.theme-13 body #thumbnails .taxa-menu li.selected a {
+  border: 8px solid #96c488;
+}
+/* line 69, ../sass/_mixins.scss */
+.theme-145 body #thumbnails .taxa-menu li.selected a {
+  border: 8px solid #f3c11a;
+}
+/* line 72, ../sass/_mixins.scss */
+.theme-153 body #thumbnails .taxa-menu li.selected a {
+  border: 8px solid cyan;
+}
+/* line 75, ../sass/_mixins.scss */
+.theme-162 body #thumbnails .taxa-menu li.selected a {
+  border: 8px solid #ffd100;
+}
+/* line 78, ../sass/_mixins.scss */
+.theme-167 body #thumbnails .taxa-menu li.selected a {
+  border: 8px solid white;
+}
+/* line 773, ../sass/global.scss */
+body #thumbnails .page {
+  right: 70px;
+  bottom: 24px;
+  -moz-animation: fadein 0.6s;
+  -webkit-animation: fadein 0.6s;
+  animation: fadein 0.6s;
+}
+/* line 780, ../sass/global.scss */
+body #msg {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  bottom: 10px;
+  left: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  cursor: hand;
+  cursor: pointer;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1;
+  max-width: 250px;
+}
+/* line 783, ../sass/global.scss */
+.no-touch body #msg {
+  display: block;
+}
+/* line 798, ../sass/global.scss */
+body #msg strong {
+  font-weight: 600;
+}
+/* line 802, ../sass/global.scss */
+body #msg p {
+  margin-bottom: 10px;
+}
+/* line 805, ../sass/global.scss */
+body #msg p:last-child {
+  margin-bottom: 0;
+}
+/* line 820, ../sass/global.scss */
+.theme-162 body .title-slide, .theme-167 body .title-slide {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+/* line 824, ../sass/global.scss */
+.theme-162 body .title-slide .title-img, .theme-167 body .title-slide .title-img {
+  display: block !important;
+}
+/* line 832, ../sass/global.scss */
+.theme-162 body .title-slide .container {
+  margin-top: -768px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 90px;
+  padding-right: 90px;
+}
+/* line 840, ../sass/global.scss */
+.theme-162 body .title-slide .container h1 {
+  visibility: hidden;
+}
+/* line 844, ../sass/global.scss */
+.theme-162 body .title-slide .container h2 {
+  width: 50%;
+  line-height: 1 !important;
+  padding-top: 80px;
+  padding-left: 480px;
+}
+/* line 853, ../sass/global.scss */
+.theme-162 body .field_exhibit_or_theme {
+  color: #00b5e2;
+}
+/* line 859, ../sass/global.scss */
+.theme-167 body .title-slide h1, .theme-167 body .title-slide h2 {
+  display: none;
+}
+/* line 864, ../sass/global.scss */
+.theme-167 body .field_exhibit_or_theme {
+  color: #f36f2f;
+}

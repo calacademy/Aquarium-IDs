@@ -1,0 +1,8 @@
+name = CalAcademy Archive
+description = Package and distribute .zip archives for on-floor touchscreens
+package = CalAcademy
+dependencies[] = hook_post_action
+files[] = classes/CreateZip.php
+files[] = classes/phpQuery.php
+core = 7.x
+php = 5.2
