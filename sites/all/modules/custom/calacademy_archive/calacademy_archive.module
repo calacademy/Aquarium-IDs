@@ -49,7 +49,7 @@ function _calacademy_archive_get_stripped_query($path) {
 }
 
 function _calacademy_archive_get_content_data($src) {
-  $src = _calacademy_archive_get_stripped_query($src);
+  $strippedSrc = _calacademy_archive_get_stripped_query($src);
 
   $assetDir = 'assets/';
   $fileUri = _calacademy_archive_get_file_uri();
@@ -57,8 +57,8 @@ function _calacademy_archive_get_content_data($src) {
 
   return array(
     'url' => $src,
-    'src' => str_replace($fileUri, $fileDir, $src),
-    'target' => $assetDir . str_replace($fileUri, '', $src)
+    'src' => str_replace($fileUri, $fileDir, $strippedSrc),
+    'target' => $assetDir . str_replace($fileUri, '', $strippedSrc)
   );
 }
 
