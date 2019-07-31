@@ -43,33 +43,40 @@ function _calacademy_archive_is_empty($arr) {
     return false;
 }
 
+function _calacademy_archive_get_stripped_query($path) {
+  $arr = explode('?', $path, 2);
+  return $arr[0];
+}
+
+function _calacademy_archive_get_content_data($src) {
+  $src = _calacademy_archive_get_stripped_query($src);
+
+  $assetDir = 'assets/';
+  $fileUri = _calacademy_archive_get_file_uri();
+  $fileDir = file_default_scheme() . '://';
+
+  return array(
+    'url' => $src,
+    'src' => str_replace($fileUri, $fileDir, $src),
+    'target' => $assetDir . str_replace($fileUri, '', $src)
+  );
+}
+
 function _calacademy_archive_get_assets($nodes, $themes) {
   // create an array of media assets to package
   $content = array();
-  $assetDir = 'assets/';
-
-  $fileUri = _calacademy_archive_get_file_uri();
-  $fileDir = file_default_scheme() . '://';
 
   foreach ($nodes as $node) {
     $node = $node->node;
 
     // specimen image
     if ($node->field_image) {
-      $content[] = array(
-        'url' => $node->field_image[0]->src,
-        'src' => str_replace($fileUri, $fileDir, $node->field_image[0]->src),
-        'target' => $assetDir . str_replace($fileUri, '', $node->field_image[0]->src)
-      );
+      $content[] = _calacademy_archive_get_content_data($node->field_image[0]->src);
     }
 
     // specimen image crop
     if ($node->field_image_square_crop) {
-      $content[] = array(
-        'url' => $node->field_image_square_crop[0]->src,
-        'src' => str_replace($fileUri, $fileDir, $node->field_image_square_crop[0]->src),
-        'target' => $assetDir . str_replace($fileUri, '', $node->field_image_square_crop[0]->src)
-      );
+      $content[] = _calacademy_archive_get_content_data($node->field_image_square_crop[0]->src);
     }
   }
 
@@ -78,21 +85,13 @@ function _calacademy_archive_get_assets($nodes, $themes) {
 
     if (is_array($node->ebu_images)) {
       foreach ($node->ebu_images as $ebuImg) {
-        $content[] = array(
-          'url' => $ebuImg->src,
-          'src' => str_replace($fileUri, $fileDir, $ebuImg->src),
-          'target' => $assetDir . str_replace($fileUri, '', $ebuImg->src)
-        );
+        $content[] = _calacademy_archive_get_content_data($ebuImg->src);
       }
     }
 
     if (is_array($node->parent_ebu_images)) {
       foreach ($node->parent_ebu_images as $ebuImg) {
-        $content[] = array(
-          'url' => $ebuImg->src,
-          'src' => str_replace($fileUri, $fileDir, $ebuImg->src),
-          'target' => $assetDir . str_replace($fileUri, '', $ebuImg->src)
-        );
+        $content[] = _calacademy_archive_get_content_data($ebuImg->src);
       }
     }
 
@@ -109,12 +108,7 @@ function _calacademy_archive_get_assets($nodes, $themes) {
 
       foreach ($doc['img'] as $img) {
         $src = pq($img)->attr('src');
-
-        $content[] = array(
-          'url' => $src,
-          'src' => str_replace($fileUri, $fileDir, $src),
-          'target' => $assetDir . str_replace($fileUri, '', $src)
-        );
+        $content[] = _calacademy_archive_get_content_data($src);
       }
     }
   }
@@ -154,8 +148,6 @@ function _calacademy_archive_create($tid, $tankName) {
     'tanks' => json_encode($tanks),
     'content' => json_encode($tankContents) 
   );
-
-  error_log(var_export($tankContents, true));
 
   // validate json
   foreach ($json as $val) {

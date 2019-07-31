@@ -121,11 +121,6 @@
 			return false;
 		}
 
-		public function getStrippedQuery ($path) {
-			$arr = explode('?', $path, 2);
-			return $arr[0];
-		}
-
 		private function _getCleanFilename ($string) {
    			$string = str_replace(' ', '-', $string);
    			return preg_replace('/[^A-Za-z0-9\-\_\.]/', '', $string);
@@ -202,9 +197,6 @@
 
 			// add content to archive
 			foreach ($this->_content as $file) {
-				$file['src'] = $this->getStrippedQuery($file['src']);
-				$file['target'] = $this->getStrippedQuery($file['target']);
-
 				if (!file_exists($file['src'])) {
 					// do a fake request to generate image derivative
 					file_get_contents($file['url']);
