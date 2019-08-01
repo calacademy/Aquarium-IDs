@@ -41,8 +41,9 @@
 				$arr = explode(' ', trim($line));
 				$file = array_pop($arr);
 
-				// skip index
-				if ($file == $this->_index) continue;
+				// skip non .zip files
+				$ext = pathinfo($file, PATHINFO_EXTENSION);
+				if (strtolower($ext) != 'zip') continue;
 
 				$objects[] = $file;
 			}
