@@ -198,17 +198,19 @@
 
 			// add content to archive
 			foreach ($this->_content as $file) {
-				if (!file_exists($file['src'])) {
-					// do a fake request to generate image derivative
-					file_get_contents($file['url']);
-				}
-
-				if ($this->_isSkip($file['src'], false)) {
-					continue;
-				}
-
 				$target = basename($this->_sourceDirectory) . '/' . $file['target'];
-				$zip->addFile($file['src'], $target);
+
+				if (file_exists($file['src'])) {
+					$zip->addFile($file['src'], $target);
+				} else {
+					// do a fake request to generate image derivative
+					$str = file_get_contents($file['url']);
+
+					if (is_string($str)) {
+						// add as string
+						$zip->addFromString($target, $str);
+					}
+				}
 			}
 
 			// add JSON config to archive
