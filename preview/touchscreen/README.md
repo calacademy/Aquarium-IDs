@@ -1,8 +1,5 @@
-## iPad frontend
-Served from a webserver run locally on each iPad. Content is loaded over the internet as JSON and associated images from the Aquarium ID CMS.
+## Touchscreen frontend
+Self-contained package served from a locally-run webserver on each touchscreen. All content is packaged and pushed to an [AWS S3 bucket](http://touchscreen-archives.calacademy.org) by the CMS. AVEE runs a system to scrape for fresh content packages and install as-needed on a daily schedule. 
 
-The web preview for content editors is accessed entirely over the internet, e.g.
-https://displays.calacademy.org/preview/ipad/?tank=AQG10
-
-The web preview and the locally run frontend code should be in parity, with a few exceptions per AVEE’s requirements. The Whitney webfont is served locally, see… https://github.com/calacademy/Aquarium-IDs/commit/c3e4e036a97b2a8f9e800bb72d830972e2dffda2
-
+The web preview for content editors is accessed over the internet, e.g.
+https://displays.calacademy.org/preview/touchscreen/?tank=AQG10
