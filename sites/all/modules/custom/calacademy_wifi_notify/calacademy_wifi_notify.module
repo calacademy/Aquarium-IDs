@@ -39,11 +39,13 @@ function _calacademy_wifi_notify_is_notification_ready($term) {
         return false;
     }
 
+    /*
     // not spotty
     if (_calacademy_wifi_notify_is_empty($term->field_is_wifi_spotty)) return false;
     
     // not spotty
     if ($term->field_is_wifi_spotty['und'][0]['value'] != '1') return false;
+    */
 
     // have we sent a notification already?
     if (!_calacademy_wifi_notify_is_empty($term->field_last_notification_sent)) {
