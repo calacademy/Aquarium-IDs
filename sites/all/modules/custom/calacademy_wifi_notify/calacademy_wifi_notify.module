@@ -195,14 +195,14 @@ function _calacademy_wifi_notify_send_notification($term) {
             $responseTankName .= $t->name; 
         }
 
-        $responseVerb = 'are';
+        $responseVerb = 'have';
     } else {
         $responseTankName = $term[0]->name;
-        $responseVerb = 'is';    
+        $responseVerb = 'has';    
     }
 
     if ($message['result']) {
-        drupal_set_message(t('<strong>' . $responseTankName . '</strong> ' . $responseVerb . ' known to have spotty wifi connectivity. Update notification sent to <em>' . CALACADEMY_WIFI_NOTIFY_RECIPIENT . '</em>.'));
+        drupal_set_message(t('<strong>' . $responseTankName . '</strong> ' . $responseVerb . ' been updated. Notification sent to <em>' . CALACADEMY_WIFI_NOTIFY_RECIPIENT . '</em>.'));
         
         // update timestamp if successful send
         foreach ($term as $t) {
@@ -218,7 +218,7 @@ function _calacademy_wifi_notify_send_notification($term) {
             taxonomy_term_save($t);
         }
     } else {
-        drupal_set_message(t('<strong>' . $responseTankName . '</strong> ' . $responseVerb . ' known to have spotty wifi connectivity. However, the update notification failed to send! Please contact <em>' . CALACADEMY_WIFI_NOTIFY_RECIPIENT . '</em>.'), 'error'); 
+        drupal_set_message(t('<strong>' . $responseTankName . '</strong> ' . $responseVerb . ' been updated. However, the notification failed to send! Please contact <em>' . CALACADEMY_WIFI_NOTIFY_RECIPIENT . '</em>.'), 'error'); 
     }
 }
 
