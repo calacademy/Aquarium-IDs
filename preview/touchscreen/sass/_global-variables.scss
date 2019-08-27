@@ -2,6 +2,9 @@ $assetPath : "../images";
 $stageWidth: 1024px;
 $stageHeight: 768px;
 
+$easing: cubic-bezier(.215, .61, .355, 1);
+$easeOut: cubic-bezier(0, 0, 0.58, 1);
+
 // font weights
 $book: 400;
 $medium: 500;

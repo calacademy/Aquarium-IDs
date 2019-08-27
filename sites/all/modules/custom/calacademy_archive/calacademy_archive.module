@@ -78,6 +78,11 @@ function _calacademy_archive_get_assets($nodes, $themes) {
     if ($node->field_image_square_crop) {
       $content[] = _calacademy_archive_get_content_data($node->field_image_square_crop[0]->src);
     }
+
+    // video
+    if (!empty($node->video)) {
+      $content[] = _calacademy_archive_get_content_data($node->video);
+    }
   }
 
   foreach ($themes as $theme) {

@@ -68,23 +68,29 @@ var AquariumIDView = function () {
 		var img = $('<div />');
 		img.addClass('img');
 
-		var imgEl = $('<img />');
+		var mediaElement = $('<img />');
 		
 		if (!isNaN(imgData.width) && !isNaN(imgData.height)) {
-			imgEl.attr({
+			mediaElement.attr({
 				'raw-width': imgData.width,
 				'raw-height': imgData.height
 			});
 		}
 
+		var imgSrc = false;
+
 		if (typeof(imgData) == 'string') {
 			// in case the views datasource module hasn't been patched
-			imgEl.attr('src', _getImgSrc(imgData));
+			imgSrc = _getImgSrc(imgData);
 		} else {
-			imgEl.attr('src', _getImgSrc(imgData.src));
+			imgSrc = _getImgSrc(imgData.src);
 		}
 
-		img.append(imgEl);
+		if (imgSrc) {
+			mediaElement.attr('src', imgSrc);
+		}
+
+		img.append(mediaElement);
 		container.append(img);
 
 		// add caption
@@ -96,6 +102,10 @@ var AquariumIDView = function () {
 
 				container.append(cap);
 			}
+		}
+
+		if (obj.video) {
+			var foo = new AquariumIDVideo(img, _getImgSrc(obj.video));
 		}
 
 		return container;
@@ -338,7 +348,7 @@ var AquariumIDView = function () {
 				var field = _fields[j];
 				var val = obj[field];
 
-				// reset this this field to the parent term per spec
+				// reset this field to the parent term per spec
 				if (field == 'field_exhibit_or_theme' && _tankTitles != false) {
 					val = _tankTitles.parent;
 				}

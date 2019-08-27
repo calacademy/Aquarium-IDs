@@ -32,6 +32,10 @@ var AquariumID = function () {
 			timeout: (_idleTime - _slideshowSpeed)
 		});
 
+		$(document).on('videoprogress videoend', function () {
+			$(document).idleTimer('reset');
+		});
+
 		$(document).on('idle.idleTimer', function (event, elem, obj) {
 			calacademy.Utils.log('idle / ' + Math.random());
 

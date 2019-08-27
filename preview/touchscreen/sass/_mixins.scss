@@ -1,6 +1,22 @@
 @import "compass/css3";
 @import "compass/utilities";
-@import "compass/css3/user-interface";
+
+@mixin buttony($before:false) {
+	cursor: hand;
+	cursor: pointer;
+
+	&.highlight,
+	.touch &:active,
+	.no-touch &:hover {
+		@if $before {
+			&:before {
+				@include opacity(.7);
+			}
+		} @else {
+			@include opacity(.7);
+		}
+	}
+}
 
 @mixin calacademy-transform-origin($x, $y, $z:null) {
 	$myVal: $x $y $z;

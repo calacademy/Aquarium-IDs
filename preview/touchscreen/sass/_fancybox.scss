@@ -1,0 +1,79 @@
+/*
+
+fancybox customizations
+@see https://fancyapps.com/fancybox/3/
+
+*/
+
+.fancybox-fx-zoom-in-out.fancybox-slide--previous {
+    opacity: 0;
+    transform: scale3d(.5, .5, .5);
+}
+
+.fancybox-slide {
+	padding: 0 !important;
+
+	.fancybox-content {
+		.close {
+			@include animation(fadein 0.6s $easing);
+			@include buttony;
+
+			position: absolute;
+			top: 20px;
+			left: 20px;
+
+			@include box-sizing(border-box);
+
+			z-index: 2;
+			position: absolute;
+			
+			text-indent: -999px;
+			overflow: hidden;
+
+			$dim: 91px;
+
+			$left: 20px;
+			$top: 20px;
+
+			width: $dim + ($left * 2);
+			height: $dim + ($top * 2);
+
+			background-color: transparent;
+			border: none;
+
+			background-image: url('../images/close@2x.png');
+			background-repeat: no-repeat;
+			background-position: $left $top;
+			@include background-size($dim $dim);
+		}
+
+		.progress-indicator {
+			@include animation(fadein 0.6s $easing);
+
+			z-index: 3;
+			position: absolute;
+			top: 20px;
+			right: 20px;
+
+			svg {
+				@include transform(rotate(-90deg));
+
+				width: 60px;
+				height: 60px;
+
+				circle {
+					fill: none;
+
+					&.progress {
+						stroke: #ffffff;
+						stroke-width: 6;
+					}
+					&.bg {
+						stroke: #000000;
+						stroke-width: 2;
+					}
+				}
+			}
+		}
+	}
+}
