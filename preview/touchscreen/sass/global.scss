@@ -34,6 +34,14 @@ body {
 		}
 	}
 
+	&.fancybox-active {
+		#container {
+			&, * {
+				pointer-events: none !important;
+			}
+		}
+	}
+
 	.hide {
 		display: none;
 	}
@@ -84,7 +92,7 @@ body {
 					margin-top: -350px;
 
 					position: absolute;
-					overflow: hidden;
+					overflow: visible;
 
 					@include transition(
 						left .3s ease,
@@ -215,21 +223,36 @@ body {
 							width: 500px;
 							height: 320px;
 
+							&:before {
+								content: '';
+								position: absolute;
+								top: 0;
+								left: 0;
+								right: 0;
+								bottom: 0;
+								background-repeat: no-repeat;
+								z-index: 2;
+							}
+
 							&.with-video {
 								@include buttony(true);
 
 								&:before {
-									content: '';
-									position: absolute;
-									top: 0;
-									left: 0;
-									right: 0;
-									bottom: 0;
+									@include svg-shadow;
 									@include background-size(100px 100px);
 									background-image: url('../images/play.svg');
-									background-repeat: no-repeat;
 									background-position: center center;
-									z-index: 2;
+								}
+							}
+
+							&.with-expand {
+								@include buttony(true);
+
+								&:before {
+									@include svg-shadow;
+									@include background-size(60px 60px);
+									background-image: url('../images/expand.svg');
+									background-position: right 20px bottom 20px;
 								}
 							}
 						}
@@ -386,7 +409,7 @@ body {
 						display: none;
 
 						width: $stageWidth;
-						height: $stageHeight;
+						// height: $stageHeight;
 
 						margin-top: -$stageHeight;
 					}

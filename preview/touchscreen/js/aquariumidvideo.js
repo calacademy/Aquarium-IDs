@@ -13,7 +13,12 @@ var AquariumIDVideo = function (container, src) {
 	}
 
 	var _onAfterClose = function () {
-		$('html').removeClass('video-playing');	
+		$('html').removeClass('video-playing');
+		$('html').removeClass('closing');	
+	}
+
+	var _onBeforeClose = function () {
+		$('html').addClass('closing');
 	}
 
 	var _onAfterShow = function (instance, current) {
@@ -28,7 +33,7 @@ var AquariumIDVideo = function (container, src) {
 			return false;
 		});
 
-		$('.fancybox-content').prepend(close);
+		$('.fancybox-container').prepend(close);
 
 		// add progress indicator
 		var prog = $('<div />');
@@ -44,6 +49,8 @@ var AquariumIDVideo = function (container, src) {
 	}
 
 	var _onMediaSelect = function (e) {
+		if ($('body').hasClass('fancybox-active')) return false;
+
 		$.fancybox.open({
 			src: src,
 			type: 'video',
@@ -56,7 +63,8 @@ var AquariumIDVideo = function (container, src) {
 					autoStart: true
 				},
 				afterShow: _onAfterShow,
-				afterClose: _onAfterClose
+				afterClose: _onAfterClose,
+				beforeClose: _onBeforeClose
 			}
 		});
 
@@ -65,7 +73,7 @@ var AquariumIDVideo = function (container, src) {
 
 	this.initialize = function () {
 		container.addClass('with-video');
-		container.on('click touchend', _onMediaSelect);
+		container.on('click touchend', _onMediaSelect);	
 	}
 
 	this.initialize();	

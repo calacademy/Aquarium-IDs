@@ -5,72 +5,93 @@ fancybox customizations
 
 */
 
-.fancybox-fx-zoom-in-out.fancybox-slide--previous {
-    opacity: 0;
-    transform: scale3d(.5, .5, .5);
+.fancybox-fx-zoom-in-out {
+	transform-origin: bottom left;
+}
+.fancybox-fx-zoom-in-out.fancybox-slide--previous,
+.fancybox-fx-zoom-in-out.fancybox-slide--next {
+	transform: scale3d(.5, .5, .5) translate3d(200px, -200px, 0);
+}
+.fancybox-fx-zoom-in-out.fancybox-slide--current {
+	transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
 }
 
-.fancybox-slide {
-	padding: 0 !important;
+.fancybox-container {
+	.close {
+		@include animation(fadein 0.6s $easing);
+		@include buttony;
+		@include svg-shadow;
 
-	.fancybox-content {
-		.close {
-			@include animation(fadein 0.6s $easing);
-			@include buttony;
+		position: absolute;
+		z-index: 99999999;
+		top: 20px;
+		left: 20px;
 
-			position: absolute;
-			top: 20px;
-			left: 20px;
+		@include box-sizing(border-box);
 
-			@include box-sizing(border-box);
+		position: absolute;
+		
+		text-indent: -999px;
+		overflow: hidden;
 
-			z-index: 2;
-			position: absolute;
+		$dim: 60px;
+
+		$left: 20px;
+		$top: 20px;
+
+		width: $dim + ($left * 2);
+		height: $dim + ($top * 2);
+
+		background-color: transparent;
+		border: none;
+
+		background-image: url('../images/close.svg');
+		background-repeat: no-repeat;
+		background-position: $left $top;
+		@include background-size($dim $dim);
+
+		@include opacity(1);
+
+		.closing & {
+			@include transition(
+				opacity .2s $easing
+			);
 			
-			text-indent: -999px;
-			overflow: hidden;
-
-			$dim: 91px;
-
-			$left: 20px;
-			$top: 20px;
-
-			width: $dim + ($left * 2);
-			height: $dim + ($top * 2);
-
-			background-color: transparent;
-			border: none;
-
-			background-image: url('../images/close@2x.png');
-			background-repeat: no-repeat;
-			background-position: $left $top;
-			@include background-size($dim $dim);
+			@include opacity(0);
+			pointer-events: none;
 		}
+	}
 
-		.progress-indicator {
-			@include animation(fadein 0.6s $easing);
+	.fancybox-slide {
+		padding: 0 !important;
 
-			z-index: 3;
-			position: absolute;
-			top: 20px;
-			right: 20px;
+		.fancybox-content {
+			.progress-indicator {
+				@include animation(fadein 0.6s $easing);
+				@include svg-shadow;
 
-			svg {
-				@include transform(rotate(-90deg));
+				z-index: 3;
+				position: absolute;
+				top: 20px;
+				right: 20px;
 
-				width: 60px;
-				height: 60px;
+				svg {
+					@include transform(rotate(-90deg));
 
-				circle {
-					fill: none;
+					width: 60px;
+					height: 60px;
 
-					&.progress {
-						stroke: #ffffff;
-						stroke-width: 6;
-					}
-					&.bg {
-						stroke: #000000;
-						stroke-width: 2;
+					circle {
+						fill: none;
+
+						&.progress {
+							stroke: #ffffff;
+							stroke-width: 6;
+						}
+						&.bg {
+							stroke: #000000;
+							stroke-width: 2;
+						}
 					}
 				}
 			}

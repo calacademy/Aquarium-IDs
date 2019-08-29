@@ -104,8 +104,17 @@ var AquariumIDView = function () {
 			}
 		}
 
+		var extra = null;
+
 		if (obj.video) {
-			var foo = new AquariumIDVideo(img, _getImgSrc(obj.video));
+			extra = new AquariumIDVideo(img, _getImgSrc(obj.video));
+		} else {
+			if (typeof(obj.image_raw[0].src) == 'string') {
+				extra = new AquariumIDExpand(img, _getImgSrc(obj.image_raw[0].src), {
+					width: parseInt(obj.imgwidth),
+					height: parseInt(obj.imgheight)
+				});
+			}
 		}
 
 		return container;

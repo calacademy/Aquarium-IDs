@@ -1,9 +1,14 @@
 @import "compass/css3";
 @import "compass/utilities";
 
+@mixin svg-shadow {
+	@include filter(drop-shadow(0 0 8px rgba(0, 0, 0, .75)));
+}
+
 @mixin buttony($before:false) {
 	cursor: hand;
 	cursor: pointer;
+	outline: none;
 
 	&.highlight,
 	.touch &:active,
