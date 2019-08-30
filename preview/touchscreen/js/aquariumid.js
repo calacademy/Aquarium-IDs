@@ -39,6 +39,10 @@ var AquariumID = function () {
 		$(document).on('idle.idleTimer', function (event, elem, obj) {
 			calacademy.Utils.log('idle / ' + Math.random());
 
+			if ($('body').hasClass('fancybox-active')) {
+				$.fancybox.close();
+			}
+
 			if (_isBig) {
 				// init the splash slideshow
 				var splash = _view.getTaxaSlideshow(_taxaInTank, _taxaImages);

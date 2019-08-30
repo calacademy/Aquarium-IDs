@@ -11,6 +11,11 @@ var AquariumIDExpand = function (container, src, dims) {
 	var _onAfterShow = function (instance, current) {
 		$('html').addClass('expanding');
 
+		// go to appropriate slide
+		if (!isNaN(current.slideIndex)) {
+			$('#main').flexslider(current.slideIndex);	
+		}
+
 		// add close button
 		var close = $('<button>Close</button>');
 		close.addClass('close');
@@ -27,6 +32,7 @@ var AquariumIDExpand = function (container, src, dims) {
 		if ($('body').hasClass('fancybox-active')) return false;
 
 		$.fancybox.open({
+			slideIndex: $(e.target).closest('li').data('slide-index'),
 			src: src,
 			opts: {
 				animationEffect: 'zoom-in-out',

@@ -24,6 +24,11 @@ var AquariumIDVideo = function (container, src) {
 	var _onAfterShow = function (instance, current) {
 		$('html').addClass('video-playing');
 
+		// go to appropriate slide
+		if (!isNaN(current.slideIndex)) {
+			$('#main').flexslider(current.slideIndex);	
+		}
+
 		// add close button
 		var close = $('<button>Close</button>');
 		close.addClass('close');
@@ -52,6 +57,7 @@ var AquariumIDVideo = function (container, src) {
 		if ($('body').hasClass('fancybox-active')) return false;
 
 		$.fancybox.open({
+			slideIndex: $(e.target).closest('li').data('slide-index'),
 			src: src,
 			type: 'video',
 			opts: {

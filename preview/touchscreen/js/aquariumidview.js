@@ -416,6 +416,13 @@ var AquariumIDView = function () {
 			}
 		});
 
+		var i = 0;
+
+		ul.children('li').each(function () {
+			$(this).data('slide-index', i);
+			i++;
+		});
+
 		return ul;
 	}
 
