@@ -17,6 +17,11 @@ fancybox customizations
 }
 
 .fancybox-container {
+	width: $stageWidth;
+	height: $stageHeight;
+	left: 50%;
+	margin-left: -($stageWidth / 2);
+
 	.close {
 		@include animation(fadein 0.6s $easing);
 		@include buttony;
@@ -65,33 +70,31 @@ fancybox customizations
 	.fancybox-slide {
 		padding: 0 !important;
 
-		.fancybox-content {
-			.progress-indicator {
-				@include animation(fadein 0.6s $easing);
-				@include svg-shadow;
+		.progress-indicator {
+			@include animation(fadein 0.6s $easing);
+			@include svg-shadow;
 
-				z-index: 3;
-				position: absolute;
-				top: 20px;
-				right: 20px;
+			z-index: 3;
+			position: absolute;
+			top: 20px;
+			right: 20px;
 
-				svg {
-					@include transform(rotate(-90deg));
+			svg {
+				@include transform(rotate(-90deg));
 
-					width: 60px;
-					height: 60px;
+				width: 60px;
+				height: 60px;
 
-					circle {
-						fill: none;
+				circle {
+					fill: none;
 
-						&.progress {
-							stroke: #ffffff;
-							stroke-width: 6;
-						}
-						&.bg {
-							stroke: #000000;
-							stroke-width: 2;
-						}
+					&.progress {
+						stroke: #ffffff;
+						stroke-width: 6;
+					}
+					&.bg {
+						stroke: #000000;
+						stroke-width: 2;
 					}
 				}
 			}

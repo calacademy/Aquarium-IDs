@@ -1,10 +1,12 @@
 var AquariumIDExpand = function (container, src, dims) {
+	
 	var _onAfterClose = function () {
 		$('html').removeClass('expanding');
 		$('html').removeClass('closing');	
 	}
 
 	var _onBeforeClose = function () {
+		$('#main').data('flexslider').animating = false;
 		$('html').addClass('closing');
 	}
 
@@ -13,14 +15,14 @@ var AquariumIDExpand = function (container, src, dims) {
 
 		// go to appropriate slide
 		if (!isNaN(current.slideIndex)) {
-			$('#main').flexslider(current.slideIndex);	
+			$('#main').data('flexslider').flexAnimate(current.slideIndex, true, true);	
 		}
 
 		// add close button
 		var close = $('<button>Close</button>');
 		close.addClass('close');
 		
-		close.on('click touchend', function (e) {
+		close.on(calacademy.selectEvent, function (e) {
 			$.fancybox.close();
 			return false;
 		});
@@ -49,9 +51,11 @@ var AquariumIDExpand = function (container, src, dims) {
 
 	this.initialize = function () {
 		if (isNaN(dims.width)) return;
+		if (dims.width < $('#main').outerWidth()) return;
 
 		container.addClass('with-expand');
-		container.on('click touchend', _onExpand);	
+		calacademy.addHighlight(container);
+		container.on(calacademy.selectEvent, _onExpand);	
 	}
 
 	this.initialize();	

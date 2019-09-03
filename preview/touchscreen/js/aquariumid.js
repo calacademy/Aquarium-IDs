@@ -425,14 +425,12 @@ var AquariumID = function () {
 	}
 
 	var _initTaxaMenu = function (container) {
-		var myEvent = Modernizr.touch ? 'touchend' : 'click';
-		$('a', container).on(myEvent, _onTaxaSelect);
+		$('a', container).on(calacademy.selectEvent, _onTaxaSelect);
 	}
 
 	var _initSplashSlideshow = function (slideshow) {
 		// listen for selection
-		var myEvent = Modernizr.touch ? 'touchend' : 'click';
-		$('li', slideshow).on(myEvent, _onTaxaSelect);
+		$('li', slideshow).on(calacademy.selectEvent, _onTaxaSelect);
 
 		// setup slideshow
 		if ($('#splash').data('flexslider')) {
@@ -471,8 +469,7 @@ var AquariumID = function () {
 		// add UI to go back to thumbnails
 		if (_isBig) {
 			var grid = _view.getGridButton();
-			var myEvent = Modernizr.touch ? 'touchend' : 'click';
-			grid.on(myEvent, _onGridSelect);
+			grid.on(calacademy.selectEvent, _onGridSelect);
 			$('#main').append(grid);
 		}
 

@@ -27,6 +27,7 @@ if (typeof(jQuery) != 'undefined') {
 
 var calacademy = {
 	isLocal: (typeof($.getQueryString('tank')) != 'string'),
+	selectEvent: Modernizr.touch ? 'touchend' : 'click',
 	Constants: {
 		previewMsg: 'This is a preview intended to proof content only. Display layouts may not be accurately reflected.',
 		ebuMsg: 'While this exhibit is being updated, please visit some of our other <em>38,000 live animals.</em>',
@@ -42,6 +43,17 @@ var calacademy = {
 				cap: 'Kathryn Whitney © California Academy of Sciences'
 			}
 		]
+	},
+	addHighlight: function (el) {
+		var over = Modernizr.touch ? 'touchstart' : 'mouseover';
+		var out = Modernizr.touch ? 'touchend' : 'mouseout click';
+
+		el.on(over, function () {
+			$(this).addClass('highlight');
+		});
+		el.on(out, function () {
+			$(this).removeClass('highlight');
+		});
 	},
 	Utils: {
 		log: function (obj) {

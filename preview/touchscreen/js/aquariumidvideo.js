@@ -18,6 +18,7 @@ var AquariumIDVideo = function (container, src) {
 	}
 
 	var _onBeforeClose = function () {
+		$('#main').data('flexslider').animating = false;
 		$('html').addClass('closing');
 	}
 
@@ -26,14 +27,15 @@ var AquariumIDVideo = function (container, src) {
 
 		// go to appropriate slide
 		if (!isNaN(current.slideIndex)) {
-			$('#main').flexslider(current.slideIndex);	
+			$('#main').data('flexslider').flexAnimate(current.slideIndex, true, true);
 		}
 
 		// add close button
 		var close = $('<button>Close</button>');
 		close.addClass('close');
+		calacademy.addHighlight(close);
 		
-		close.on('click touchend', function (e) {
+		close.on(calacademy.selectEvent, function (e) {
 			$.fancybox.close();
 			return false;
 		});
@@ -79,7 +81,8 @@ var AquariumIDVideo = function (container, src) {
 
 	this.initialize = function () {
 		container.addClass('with-video');
-		container.on('click touchend', _onMediaSelect);	
+		calacademy.addHighlight(container);
+		container.on(calacademy.selectEvent, _onMediaSelect);	
 	}
 
 	this.initialize();	
