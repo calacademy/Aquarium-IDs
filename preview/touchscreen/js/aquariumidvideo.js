@@ -12,19 +12,7 @@ var AquariumIDVideo = function (container, src) {
 		if (_prog) _prog.update(per);
 	}
 
-	var _onAfterClose = function () {
-		$('html').removeClass('video-playing');
-		$('html').removeClass('closing');	
-	}
-
-	var _onBeforeClose = function () {
-		$('#main').data('flexslider').animating = false;
-		$('html').addClass('closing');
-	}
-
 	var _onAfterShow = function (instance, current) {
-		$('html').addClass('video-playing');
-
 		// go to appropriate slide
 		if (!isNaN(current.slideIndex)) {
 			$('#main').data('flexslider').flexAnimate(current.slideIndex, true, true);
@@ -63,16 +51,11 @@ var AquariumIDVideo = function (container, src) {
 			src: src,
 			type: 'video',
 			opts: {
-				gutter: 0,
-				toolbar: false,
-				animationEffect: 'zoom-in-out',
 				video: {
 					tpl: '<video class="fancybox-video" muted src="{{src}}"></video>',
 					autoStart: true
 				},
-				afterShow: _onAfterShow,
-				afterClose: _onAfterClose,
-				beforeClose: _onBeforeClose
+				afterShow: _onAfterShow
 			}
 		});
 

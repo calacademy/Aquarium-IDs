@@ -29,6 +29,7 @@ var calacademy = {
 	isLocal: (typeof($.getQueryString('tank')) != 'string'),
 	selectEvent: Modernizr.touch ? 'touchend' : 'click',
 	Constants: {
+		expandImageWidth: 2600,
 		previewMsg: 'This is a preview intended to proof content only. Display layouts may not be accurately reflected.',
 		ebuMsg: 'While this exhibit is being updated, please visit some of our other <em>38,000 live animals.</em>',
 		localAssetPath: 'assets/',

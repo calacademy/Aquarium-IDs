@@ -495,8 +495,29 @@ var AquariumIDView = function () {
 		};
 	}
 
+	var _onAfterClose = function () {
+		$('html').removeClass('closing');	
+	}
+
+	var _onBeforeClose = function () {
+		$('#main').data('flexslider').animating = false;
+		$('html').addClass('closing');
+	}
+
+	var _setModalDefaults = function () {
+		if (!$.fancybox) return;
+
+		$.fancybox.defaults.closeExisting = true;
+		$.fancybox.defaults.animationEffect = 'zoom-in-out';
+		$.fancybox.defaults.gutter = 0;
+		$.fancybox.defaults.toolbar = false;
+		$.fancybox.defaults.afterClose = _onAfterClose;
+		$.fancybox.defaults.beforeClose = _onBeforeClose;
+	}
+
 	this.initialize = function () {
 		calacademy.Utils.log('AquariumIDView.initialize');
+		_setModalDefaults();
 	}
 
 	this.initialize();
