@@ -12,6 +12,14 @@ var AquariumIDVideo = function (container, src) {
 		if (_prog) _prog.update(per);
 	}
 
+	var _onAfterLoad = function () {
+		// once we know the video's dims, scale to fill
+		$('.fancybox-video').on('loadedmetadata', function (e) {
+			$(this).off('loadedmetadata');
+			calacademy.Utils.scaleToFill($(this), $(this).parent());
+		});
+	}
+
 	var _onAfterShow = function (instance, current) {
 		// go to appropriate slide
 		if (!isNaN(current.slideIndex)) {
@@ -35,10 +43,9 @@ var AquariumIDVideo = function (container, src) {
 		prog.addClass('progress-indicator');
 		$('.fancybox-content').prepend(prog);
 
-		var video = $('.fancybox-content video');
+		var video = $('.fancybox-video');
 		_prog = new ProgressIndicator(prog, true);
 		
-		video.off();
 		video.on('ended', _onVideoEnd);
 		video.on('timeupdate', _onVideoProgress);
 	}
@@ -55,7 +62,9 @@ var AquariumIDVideo = function (container, src) {
 					tpl: '<video class="fancybox-video" muted src="{{src}}"></video>',
 					autoStart: true
 				},
-				afterShow: _onAfterShow
+				ratio: $('#main').outerWidth() / $('#main').outerHeight(),
+				afterShow: _onAfterShow,
+				afterLoad: _onAfterLoad
 			}
 		});
 

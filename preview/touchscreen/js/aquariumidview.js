@@ -500,6 +500,7 @@ var AquariumIDView = function () {
 	}
 
 	var _onBeforeClose = function () {
+		$('.fancybox-video').off();
 		$('#main').data('flexslider').animating = false;
 		$('html').addClass('closing');
 	}
@@ -510,6 +511,7 @@ var AquariumIDView = function () {
 		$.fancybox.defaults.closeExisting = true;
 		$.fancybox.defaults.animationEffect = 'zoom-in-out';
 		$.fancybox.defaults.gutter = 0;
+		$.fancybox.defaults.idleTime = false;
 		$.fancybox.defaults.toolbar = false;
 		$.fancybox.defaults.afterClose = _onAfterClose;
 		$.fancybox.defaults.beforeClose = _onBeforeClose;

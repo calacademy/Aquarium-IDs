@@ -92,6 +92,28 @@ var calacademy = {
 			});
 
 			return a;
+		},
+		scaleToFill: function (item, container) {
+			var w = Math.ceil((item.width() * container.height()) / item.height());
+			
+			if (w >= container.width()) {
+				item.css('width', w + 'px');
+				item.css('height', container.height() + 'px');
+
+				var x = Math.round((container.width() - w) / 2);
+				item.css('left', x + 'px');
+				item.css('top', '0px');
+			} else {
+				var h = Math.ceil((item.height() * container.width()) / item.width());
+
+				item.css('width', container.width() + 'px');
+				item.css('height', h + 'px');
+				
+				var y = Math.round((container.height() - h) / 2);
+				
+				item.css('left', '0px');
+				item.css('top', y + 'px');
+			}
 		}
 	}
 };
