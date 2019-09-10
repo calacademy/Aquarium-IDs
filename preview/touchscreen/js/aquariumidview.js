@@ -86,11 +86,12 @@ var AquariumIDView = function () {
 			imgSrc = _getImgSrc(imgData.src);
 		}
 
-		if (imgSrc) {
-			mediaElement.attr('src', imgSrc);
-		}
+		if (!imgSrc) return container;
+		mediaElement.attr('src', imgSrc);
 
 		img.append(mediaElement);
+		img.css('background-image', 'url("' + imgSrc + '")');
+		
 		container.append(img);
 
 		// add caption
@@ -300,14 +301,14 @@ var AquariumIDView = function () {
 	}
 
 	this.onSlideshowAdded = function () {
-		$('.img img').each(function () {
-			var width = parseInt($(this).attr('raw-width'));
-			var height = parseInt($(this).attr('raw-height'));
+		// $('.img img').each(function () {
+		// 	var width = parseInt($(this).attr('raw-width'));
+		// 	var height = parseInt($(this).attr('raw-height'));
 
-			if (!isNaN(width) && !isNaN(height)) {
-				_center($(this), width, height);
-			}
-		});
+		// 	if (!isNaN(width) && !isNaN(height)) {
+		// 		_center($(this), width, height);
+		// 	}
+		// });
 
 		var titleImgSrc = _getTitleImgSrc();
 
@@ -346,9 +347,9 @@ var AquariumIDView = function () {
 			li.addClass('specimen');
 			li.html(container);
 
-			// add image if we have one
-			var imageEl = _getImageElement(obj);
-			if (imageEl != false) container.append(imageEl);
+			var col = $('<div />');
+			col.addClass('column');
+			container.html(col);
 
 			// iterate all relevant fields
 			var j = 0;
@@ -378,20 +379,44 @@ var AquariumIDView = function () {
 								break;
 						}
 
-						container.append(div);
+						col.append(div);
 					}
 				}
 
 				j++;
 			}
 
-			// tagline / source logic
-			// from the spec...
-			// NOTE that Source or Tagline will appear on the front-end, not both!
+			// add image if we have one
+			var imageEl = _getImageElement(obj);
+
+			// Source or Tagline will appear on the front-end, not both!
 			// If both fields contain content, Tagline supersedes.
 			if ($('.field_tagline', container).length == 1 && $('.field_source', container).length == 1) {
 				$('.field_source', container).addClass('hide');
 			}
+
+			// rearrange some elements
+			var colBottom = $('<div />');
+			colBottom.addClass('column-bottom');
+			col.find('.field_scientific_name').after(colBottom);
+
+			var special = container.find('.field_tagline, .field_source');
+			colBottom.append(special);
+
+			if (imageEl != false) {
+				colBottom.append(imageEl);
+			}
+
+			var col2 = $('<div />');
+			col2.addClass('column');
+			container.append(col2);
+
+			var colBottom2 = $('<div />');
+			colBottom2.addClass('column-bottom');
+			container.find('.field_diet, .field_distribution').appendTo(colBottom2);
+			
+			container.find('.body_1').appendTo(col2);
+			col2.append(colBottom2);
 
 			// add slide to slideshow
 			ul.append(li);

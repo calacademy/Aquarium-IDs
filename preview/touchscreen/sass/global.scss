@@ -25,9 +25,13 @@ body {
 	margin: 0;
 	padding: 0;
 	min-height: 100%;
-	font-family: 'Whitney', Helvetica, Arial, sans-serif;
 	font-weight: $book;
 	color: $white;
+	font-family: 'Whitney', Helvetica, Arial, sans-serif;
+
+	#cn, .cn, .cn * {
+		font-family: 'HanSans', Helvetica, Arial, sans-serif;
+	}
 	
 	font-size: 34px;
 	line-height: 43px;
@@ -212,24 +216,59 @@ body {
 					$padding: 80px;
 					padding-left: $padding;
 					padding-right: $padding;
-					padding-top: $padding - 10px;
+					padding-top: $padding + $translationUIHeight - 20px;
 
 					$space: 30px;
 
+					.container {
+						position: relative;
+
+						&, .column {
+							height: 100%;
+						}
+
+						.column {
+							position: relative;
+							float: left;
+							width: calc(50% - #{$padding / 4});
+							margin-right: $padding / 4;
+
+							.column-bottom {
+								position: absolute;
+								width: 100%;
+								bottom: 80px;
+							}
+
+							&:last-child {
+								margin-right: 0;
+								margin-left: $padding / 4;
+
+								.column-bottom {
+									margin-bottom: -5px;
+								}
+							}
+						}
+					}
+
 					.img-container {
 						position: relative;
-						margin-left: $space;
-
-						float: right;
 
 						.img {
 							position: relative;
 							overflow: hidden;
-							width: 500px;
-							height: 320px;
+							width: 100%;
+							height: $imgHeight;
 
 							pointer-events: none;
 							@include buttony(true);
+
+							@include background-size(cover);
+							background-repeat: no-repeat;
+							background-position: center center;
+							
+							img {
+								@include opacity(0);
+							}
 
 							&.with-video:before,
 							&.with-expand:before {
@@ -243,39 +282,63 @@ body {
 								z-index: 2;
 							}
 
-							&.with-video:before {
-								$vidIconDim: 140px;
+							&.with-video {
+								&:before {
+									$vidIconDim: 145px;
+									$vidIconWithPadding: $vidIconDim + 30px;
 
-								width: $vidIconDim;
-								height: $vidIconDim;
-								
-								top: 50%;
-								left: 50%;
-								margin-top: -($vidIconDim / 2);
-								margin-left: -($vidIconDim / 2);
+									width: $vidIconWithPadding;
+									height: $vidIconWithPadding;
+									
+									top: 50%;
+									left: 50%;
+									margin-top: -($vidIconWithPadding / 2);
+									margin-left: -($vidIconWithPadding / 2);
 
-								@include background-size(100px 100px);
-								background-image: url('../images/play.svg');
-								background-position: center center;
+									@include background-size($vidIconDim $vidIconDim);
+									background-image: url('../images/play.svg');
+									background-position: center center;
+								}
+
+								.duration {
+									@include backface-visibility(hidden);
+									font-size: 24px;
+									line-height: 1;
+
+									z-index: 3;
+									position: absolute;
+									bottom: 5px;
+									right: 10px;
+								}
 							}
 
-							&.with-expand:before {
-								bottom: 0;
-								right: 0;
-								width: 100px;
-								height: 100px;
+							&.with-expand {
+								&:before {
+									bottom: 0;
+									right: 0;
+									width: 100px;
+									height: 100px;
 
-								@include background-size(60px 60px);
-								background-image: url('../images/expand.svg');
-								background-position: right 20px bottom 20px;
+									@include background-size(60px 60px);
+									background-image: url('../images/expand.svg');
+									background-position: right 10px bottom 10px;
+								}
 							}
+						}
+
+						.cap {
+							color: rgba($white, .6);
+							@include smallprint;
+
+							width: 100%;
+							position: absolute;
+							left: 0;
+							top: $imgHeight + 3px;
 						}
 					}
 
 					.title,
-					.field_scientific_name,
 					.field_exhibit_or_theme {
-						max-width: 330px;
 						font-weight: $medium;
 					}
 
@@ -288,6 +351,7 @@ body {
 						margin-bottom: $space;
 						padding-left: 3px;
 						letter-spacing: 5px;
+						display: none;
 					}
 
 					.title {
@@ -310,7 +374,6 @@ body {
 
 					.body_1 {
 						clear: both;
-						padding-top: $space;
 
 						p {
 							margin-bottom: $space;
@@ -337,19 +400,10 @@ body {
 
 					.field_tagline,
 					.field_source {
-						width: 750px;
-						float: left;
 						font-size: 20px;
 						line-height: 24px;
-						margin-top: $space;
-					}
-
-					.field_tagline {
 						font-weight: $semibold;
-					}
-
-					.field_source {
-						color: rgba(255, 255, 255, .8);
+						margin-bottom: 10px;
 					}
 				}
 
@@ -478,19 +532,6 @@ body {
 		.theme-167 & {
 			background-color: $hidden-reef-background;
 		}
-	}
-
-	// captions
-	.cap {
-		@include calacademy-transform-origin(0, 0, 0);
-		@include rotate(90deg);
-		position: absolute;
-		width: 100%;
-
-		color: rgba(255, 255, 255, .6);
-		font-size: 12px;
-		line-height: 14px;
-		font-weight: $medium;
 	}
 
 	#main {
@@ -912,4 +953,6 @@ body {
 	}
 }
 
+@import "translate";
+@import "nav";
 @import "fancybox";

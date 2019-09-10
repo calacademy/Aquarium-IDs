@@ -71,10 +71,28 @@ var AquariumIDVideo = function (container, src) {
 		return false;
 	}
 
+	var _insertDuration = function () {
+		container.find('.duration').remove();
+
+		var dur = $('<div />');
+		dur.addClass('duration');
+		container.append(dur);
+
+		var video = $('<video muted src="' + src + '" />');
+
+		video.on('loadedmetadata', function (e) {
+			$(this).off('loadedmetadata');
+			dur.html(this.duration.toHHMMSS());
+			$(document).trigger('durationdata');
+		});
+	}
+
 	this.initialize = function () {
 		container.addClass('with-video');
 		calacademy.addHighlight(container);
-		container.on(calacademy.selectEvent, _onMediaSelect);	
+		container.on(calacademy.selectEvent, _onMediaSelect);
+
+		_insertDuration();	
 	}
 
 	this.initialize();	

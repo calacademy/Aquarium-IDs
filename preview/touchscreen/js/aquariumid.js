@@ -6,6 +6,8 @@ var AquariumID = function () {
 	var _filteredTankContents;
 	var _dotTimeout;
 	var _tank = false;
+	var _initialSlide = 0;
+	var _numVideos = 0;
 
 	var _idleTime = 30000;
 	var _slideshowSpeed = 5000;
@@ -459,6 +461,7 @@ var AquariumID = function () {
 
 	var _initMainSlideshow = function (slideshow, initialSlide) {
 		if (typeof(initialSlide) == 'undefined') initialSlide = 0;
+		_initialSlide = initialSlide;
 
 		if ($('#main').data('flexslider')) {
 			$('#main').flexslider('destroy');
@@ -479,6 +482,22 @@ var AquariumID = function () {
 			$('html').removeClass('on-specimen-slide');
 		}
 
+		_numVideos = 0;
+
+		if ($('.with-video').length == 0) {
+			_onSlideshowReady();
+		}
+	}
+
+	var _onDurationData = function () {
+		_numVideos++;
+
+		if (_numVideos == $('.with-video').length) {
+			_onSlideshowReady();
+		}
+	}
+
+	var _onSlideshowReady = function () {
 		var _updatePageIndicator = function (slider) {
 			// populate the page indicator
 			var li = slider.slides.eq(slider.animatingTo);
@@ -488,7 +507,7 @@ var AquariumID = function () {
 		}
 
 		$('#main').flexslider({
-			startAt: initialSlide,
+			startAt: _initialSlide,
 			slideshow: false,
 			animationLoop: true,
 			animation: 'slide',
@@ -517,7 +536,7 @@ var AquariumID = function () {
 		$('#main').append(_view.getPageIndicator());
 
 		_transition('#main');
-		_truncate();
+		// _truncate();
 		_activeSlideshow = $('#main');
 		_setIdleTimer();
 	}
@@ -682,6 +701,9 @@ var AquariumID = function () {
 		$('#msg').on('click', function () {
 			$(this).remove();
 		});
+
+		$('#languages li').contents().wrap('<span />');
+		$(document).on('durationdata', _onDurationData);
 
 		// setup
 		_view = new AquariumIDView();
