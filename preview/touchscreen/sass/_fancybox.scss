@@ -29,8 +29,9 @@ fancybox customizations
 
 		position: absolute;
 		z-index: 99999999;
-		top: 20px;
-		left: 20px;
+		padding: 0;
+		top: 5px;
+		left: 10px;
 
 		@include box-sizing(border-box);
 
@@ -41,18 +42,15 @@ fancybox customizations
 
 		$dim: 60px;
 
-		$left: 20px;
-		$top: 20px;
-
-		width: $dim + ($left * 2);
-		height: $dim + ($top * 2);
+		width: 100px;
+		height: 100px;
 
 		background-color: transparent;
 		border: none;
 
 		background-image: url('../images/close.svg');
 		background-repeat: no-repeat;
-		background-position: $left $top;
+		background-position: center center;
 		@include background-size($dim $dim);
 
 		@include opacity(1);
@@ -83,7 +81,7 @@ fancybox customizations
 
 			z-index: 3;
 			position: absolute;
-			top: 20px;
+			top: 22px;
 			right: 20px;
 
 			svg {
