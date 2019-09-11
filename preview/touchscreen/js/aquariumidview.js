@@ -534,7 +534,6 @@ var AquariumIDView = function () {
 		if (!$.fancybox) return;
 
 		$.fancybox.defaults.closeExisting = true;
-		$.fancybox.defaults.animationEffect = 'zoom-in-out';
 		$.fancybox.defaults.gutter = 0;
 		$.fancybox.defaults.idleTime = false;
 		$.fancybox.defaults.toolbar = false;

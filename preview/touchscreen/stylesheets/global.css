@@ -1924,7 +1924,7 @@ fancybox customizations
 /* line 11, ../sass/_fancybox.scss */
 .fancybox-fx-zoom-in-out.fancybox-slide--previous,
 .fancybox-fx-zoom-in-out.fancybox-slide--next {
-  transform: scale3d(0.5, 0.5, 0.5) translate3d(200px, -150px, 0);
+  transform: scale3d(0.5, 0.5, 0.5) translate3d(160px, -170px, 0);
 }
 
 /* line 15, ../sass/_fancybox.scss */
@@ -2001,11 +2001,14 @@ fancybox customizations
 }
 /* line 73, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .fancybox-video {
+  -moz-animation: fadein 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-animation: fadein 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: fadein 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
   width: auto;
   height: auto;
   position: absolute;
 }
-/* line 79, ../sass/_fancybox.scss */
+/* line 80, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .progress-indicator {
   -moz-animation: fadein 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-animation: fadein 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -2017,7 +2020,7 @@ fancybox customizations
   top: 22px;
   right: 20px;
 }
-/* line 88, ../sass/_fancybox.scss */
+/* line 89, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .progress-indicator svg {
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -2026,16 +2029,16 @@ fancybox customizations
   width: 60px;
   height: 60px;
 }
-/* line 94, ../sass/_fancybox.scss */
+/* line 95, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .progress-indicator svg circle {
   fill: none;
 }
-/* line 97, ../sass/_fancybox.scss */
+/* line 98, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .progress-indicator svg circle.progress {
   stroke: #ffffff;
   stroke-width: 6;
 }
-/* line 101, ../sass/_fancybox.scss */
+/* line 102, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .progress-indicator svg circle.bg {
   stroke: #000000;
   stroke-width: 2;

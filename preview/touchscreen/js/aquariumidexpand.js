@@ -24,6 +24,7 @@ var AquariumIDExpand = function (container, src, dims) {
 			slideIndex: $(e.target).closest('li').data('slide-index'),
 			src: src,
 			opts: {
+				animationEffect: 'zoom-in-out',
 				afterShow: _onAfterShow
 			}
 		});
