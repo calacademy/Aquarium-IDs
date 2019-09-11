@@ -1,4 +1,11 @@
 nav {
+    display: none;
+
+    .translation-ready & {
+        display: block;
+    }
+
+
     $topPadding: 12px;
 
     z-index: 999;
@@ -21,22 +28,9 @@ nav {
         opacity .4s $easing
     );
 
-    li {
-        float: right;
-    }
-
-    span {
-        display: block;
-        text-align: center;
-        padding-top: $topPadding;
-    }
-
-    #languages li span {
-        @include buttony;
-    }
-
     #languages {
         li {
+            float: right;
             width: 209px;
             border-left: 1px solid #ffffff;
 
@@ -44,9 +38,13 @@ nav {
             color: $translateTextColor;
 
             span {
+                @include buttony;
                 font-size: 23px;
                 font-family: 'Whitney Condensed';
                 font-weight: $medium;
+                display: block;
+                text-align: center;
+                padding-top: $topPadding;
             }
 
             &#cn {
@@ -64,18 +62,6 @@ nav {
                     font-weight: $semibold;
                 }
             }
-        }
-    }
-
-    .no-credits & {
-        #languages {
-            li:first-child {
-                border-right: 0;
-            }
-        }
-
-        #btn-credits {
-            display: none;
         }
     }
 }

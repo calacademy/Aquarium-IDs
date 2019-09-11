@@ -43,7 +43,7 @@ body {
 	}
 
 	&.fancybox-active {
-		#container {
+		#container > div {
 			&, * {
 				pointer-events: none !important;
 			}
@@ -56,6 +56,12 @@ body {
 
 	.flexslider.active {
 		@include animation(fadein .6s);
+	}
+
+	.cap {
+		@include smallprint;
+		width: 100%;
+		position: absolute;
 	}
 
 	.slides > li,
@@ -244,7 +250,7 @@ body {
 								margin-left: $padding / 4;
 
 								.column-bottom {
-									margin-bottom: -5px;
+									margin-bottom: -8px;
 								}
 							}
 						}
@@ -328,10 +334,6 @@ body {
 
 						.cap {
 							color: rgba($white, .6);
-							@include smallprint;
-
-							width: 100%;
-							position: absolute;
 							left: 0;
 							top: $imgHeight + 3px;
 						}
@@ -610,6 +612,12 @@ body {
 			left: $stageWidth - 12;
 			color: $ebuCaption;
 			font-weight: $book;
+
+			@include calacademy-transform-origin(0, 0, 0);
+			@include rotate(90deg);
+
+			font-size: 12px;
+			line-height: 14px;
 		}
 
 		li {
@@ -630,7 +638,7 @@ body {
 			&:nth-child(odd) {
 				h2 {
 					bottom: 85px - $vOffset;
-					left: 222px;
+					right: 80px;
 				}
 			}
 			&:nth-child(even) {

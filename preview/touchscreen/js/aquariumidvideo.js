@@ -62,7 +62,7 @@ var AquariumIDVideo = function (container, src) {
 					tpl: '<video class="fancybox-video" muted src="{{src}}"></video>',
 					autoStart: true
 				},
-				ratio: $('#main').outerWidth() / $('#main').outerHeight(),
+				ratio: $('#main').outerWidth() / ($('#main').outerHeight() - $('nav').outerHeight()),
 				afterShow: _onAfterShow,
 				afterLoad: _onAfterLoad
 			}

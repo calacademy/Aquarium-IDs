@@ -10,7 +10,7 @@ fancybox customizations
 }
 .fancybox-fx-zoom-in-out.fancybox-slide--previous,
 .fancybox-fx-zoom-in-out.fancybox-slide--next {
-	transform: scale3d(.5, .5, .5) translate3d(200px, -200px, 0);
+	transform: scale3d(.5, .5, .5) translate3d(200px, -150px, 0);
 }
 .fancybox-fx-zoom-in-out.fancybox-slide--current {
 	transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
@@ -18,7 +18,8 @@ fancybox customizations
 
 .fancybox-container {
 	width: $stageWidth;
-	height: $stageHeight;
+	height: $stageHeight - $translationUIHeight;
+	top: $translationUIHeight;
 	left: 50%;
 	margin-left: -($stageWidth / 2);
 

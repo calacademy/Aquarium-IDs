@@ -463,6 +463,8 @@ var AquariumID = function () {
 		if (typeof(initialSlide) == 'undefined') initialSlide = 0;
 		_initialSlide = initialSlide;
 
+		$('html').addClass('translation-ready');
+
 		if ($('#main').data('flexslider')) {
 			$('#main').flexslider('destroy');
 		}
