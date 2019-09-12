@@ -66,7 +66,7 @@ body {
 
 	.slides > li,
 	.title-slide img,
-	.img-container img {
+	.img-container {
 		@include backface-visibility(hidden);
 	}
 
@@ -271,10 +271,6 @@ body {
 							@include background-size(cover);
 							background-repeat: no-repeat;
 							background-position: center center;
-							
-							img {
-								@include opacity(0);
-							}
 
 							&.with-video:before,
 							&.with-expand:before {
@@ -374,7 +370,7 @@ body {
 						}
 					}
 
-					.body_1 {
+					.body {
 						clear: both;
 
 						p {
@@ -938,8 +934,8 @@ body {
 				h2 {
 					width: 50%;
 					line-height: 1 !important;
-					padding-top: 80px;
-					padding-left: 480px;
+					padding-top: 250px;
+					padding-left: 650px;
 				}
 			}
 		}

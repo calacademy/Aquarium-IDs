@@ -9,7 +9,7 @@ nav {
     $topPadding: 12px;
 
     z-index: 999;
-    position: relative;
+    position: absolute;
 
     background-color: #000000;
     width: 100%;
@@ -55,7 +55,7 @@ nav {
             }
 
             &.active {
-                color: $hidden-reef-subhead;
+                @include highlight-color;
                 pointer-events: none;
 
                 span {

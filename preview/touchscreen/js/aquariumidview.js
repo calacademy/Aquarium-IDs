@@ -9,7 +9,7 @@ var AquariumIDView = function () {
 		'field_exhibit_or_theme',
 		'title',
 		'field_scientific_name',
-		'body_1',
+		'body',
 		'field_diet',
 		'field_distribution',
 		'field_tagline',
@@ -68,15 +68,6 @@ var AquariumIDView = function () {
 		var img = $('<div />');
 		img.addClass('img');
 
-		var mediaElement = $('<img />');
-		
-		if (!isNaN(imgData.width) && !isNaN(imgData.height)) {
-			mediaElement.attr({
-				'raw-width': imgData.width,
-				'raw-height': imgData.height
-			});
-		}
-
 		var imgSrc = false;
 
 		if (typeof(imgData) == 'string') {
@@ -87,9 +78,6 @@ var AquariumIDView = function () {
 		}
 
 		if (!imgSrc) return container;
-		mediaElement.attr('src', imgSrc);
-
-		img.append(mediaElement);
 		img.css('background-image', 'url("' + imgSrc + '")');
 		
 		container.append(img);
@@ -254,39 +242,6 @@ var AquariumIDView = function () {
 		return ul;
 	}
 
-	var _center = function (img, width, height) {
-		var parentWidth = img.parent().width();
-		var parentHeight = img.parent().height();
-
-		var diff = width / parentWidth;
-
-		if ((height / diff) < parentHeight) {
-			img.css({
-				'width': 'auto',
-				'height': Math.round(parentHeight)
-			});
-
-			width = width / (height / parentHeight);
-			height = parentHeight;
-		} else {
-			img.css({
-				'height': 'auto',
-				'width': Math.round(parentWidth)
-			});
-
-	        width = parentWidth;
-	        height = height / diff;
-		}
-
-		var leftOffset = (width - parentWidth) / -2;
-      	var topOffset = (height - parentHeight) / -2;
-
-		img.css({
-			'margin-left': Math.round(leftOffset),
-			'margin-top': Math.round(topOffset)
-		});
-	}
-
 	var _getTitleImgSrc = function () {
 		switch (parseInt($('html').data('theme-id'))) {
 			case 162:
@@ -301,15 +256,6 @@ var AquariumIDView = function () {
 	}
 
 	this.onSlideshowAdded = function () {
-		// $('.img img').each(function () {
-		// 	var width = parseInt($(this).attr('raw-width'));
-		// 	var height = parseInt($(this).attr('raw-height'));
-
-		// 	if (!isNaN(width) && !isNaN(height)) {
-		// 		_center($(this), width, height);
-		// 	}
-		// });
-
 		var titleImgSrc = _getTitleImgSrc();
 
 		if (titleImgSrc !== false) {
@@ -415,7 +361,7 @@ var AquariumIDView = function () {
 			colBottom2.addClass('column-bottom');
 			container.find('.field_diet, .field_distribution').appendTo(colBottom2);
 			
-			container.find('.body_1').appendTo(col2);
+			container.find('.body').appendTo(col2);
 			col2.append(colBottom2);
 
 			// add slide to slideshow

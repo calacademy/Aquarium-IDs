@@ -1,17 +1,4 @@
 #container {
-	nav {
-		position: absolute;
-		z-index: 2;
-		width: 100%;
-		background-color: #000000;
-
-		ul {
-			li {
-				float: right;
-			}
-		}	
-	}
-
 	.en, .cn, .tl, .es {
 		display: none !important;
 		@include animation(fadein 1s $easing);

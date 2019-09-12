@@ -549,11 +549,11 @@ var AquariumID = function () {
 		clearTimeout(_dotTimeout);
 
 		_dotTimeout = setTimeout(function () {
-			$('#main .body_1').dotdotdot({
+			$('#main .body').dotdotdot({
 				height: 210
 			});
 
-			$('#main .body_1').each(function () {
+			$('#main .body').each(function () {
 				var h = $(this).outerHeight(true);
 
 				if (h > 200) {
