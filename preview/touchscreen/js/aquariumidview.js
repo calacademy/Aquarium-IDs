@@ -16,6 +16,15 @@ var AquariumIDView = function () {
 		'field_source'
 	];
 
+	var _fieldsTranslate = [
+		'title',
+		'body',
+		'field_diet',
+		'field_distribution',
+		'field_tagline',
+		'field_source'
+	];
+
 	var _getImgSrc = function (src) {
 		return _inst.getImgSrc(src);
 	}
@@ -314,14 +323,20 @@ var AquariumIDView = function () {
 						// if a string and not empty, append a div
 						var div = $('<div />');
 						div.addClass(field);
-						div.html($.trim(val));
+
+						if ($.inArray(field, _fieldsTranslate) !== -1) {
+							div.addClass('translatable');
+							div.html(_getLangs(field, obj));	
+						} else {
+							div.html($.trim(val));
+						}
 
 						switch (field) {
 							case 'field_diet':
-								div.prepend('<em>Diet: </em>');
+								div.find('.en').prepend('<em>Diet: </em>');
 								break;
 							case 'field_distribution':
-								div.prepend('<em>Distribution: </em>');
+								div.find('.en').prepend('<em>Distribution: </em>');
 								break;
 						}
 
@@ -464,6 +479,33 @@ var AquariumIDView = function () {
 			parent: myParent,
 			child: myChild
 		};
+	}
+
+	var _getLangElement = function (lg, val) {
+		if (!val) return false;
+		if ($.trim(val) == '') return false;
+
+		var container = $('<div />');
+		container.addClass(lg);
+		container.html($.trim(val));
+
+		return container;
+	}
+
+	var _getLangs = function (field, obj) {
+		var langs = ['tl', 'es', 'cn'];
+
+		var container = $('<div />');
+
+		// presume we have English
+		container.append(_getLangElement('en', obj[field]));
+
+		$.each(langs, function (i, lang) {
+			var el = _getLangElement(lang, obj[field + '_' + lang]);
+			if (el !== false) container.append(el);
+		});
+
+		return container.html();
 	}
 
 	var _onAfterClose = function () {

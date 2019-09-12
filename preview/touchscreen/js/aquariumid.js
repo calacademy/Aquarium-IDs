@@ -22,6 +22,7 @@ var AquariumID = function () {
 	var _activeSlideshow;
 	var _timeoutDisableLinks;
 	var _frameAnimation;
+	var _translate = new AquariumIdTranslate();
 
 	var _setIdleTimer = function () {
 		if ($('html').hasClass('no-idle')) return;
@@ -40,6 +41,8 @@ var AquariumID = function () {
 
 		$(document).on('idle.idleTimer', function (event, elem, obj) {
 			calacademy.Utils.log('idle / ' + Math.random());
+
+			_translate.reset();
 
 			if ($('body').hasClass('fancybox-active')) {
 				$.fancybox.close();
