@@ -1,8 +1,9 @@
-var AquariumIDView = function () {
+var AquariumIDView = function (translate) {
 	var _displayMode = '';
 	var _thumbsPerPage = 8;
 	var _tankTitles = false;
 	var _fileUri = false;
+	var _translate = translate;
 	var _inst = this;
 
 	var _fields = [
@@ -326,7 +327,7 @@ var AquariumIDView = function () {
 
 						if ($.inArray(field, _fieldsTranslate) !== -1) {
 							div.addClass('translatable');
-							div.html(_getLangs(field, obj));	
+							div.html(_translate.getMarkup(field, obj));	
 						} else {
 							div.html($.trim(val));
 						}
@@ -479,33 +480,8 @@ var AquariumIDView = function () {
 			parent: myParent,
 			child: myChild
 		};
-	}
 
-	var _getLangElement = function (lg, val) {
-		if (!val) return false;
-		if ($.trim(val) == '') return false;
-
-		var container = $('<div />');
-		container.addClass(lg);
-		container.html($.trim(val));
-
-		return container;
-	}
-
-	var _getLangs = function (field, obj) {
-		var langs = ['tl', 'es', 'cn'];
-
-		var container = $('<div />');
-
-		// presume we have English
-		container.append(_getLangElement('en', obj[field]));
-
-		$.each(langs, function (i, lang) {
-			var el = _getLangElement(lang, obj[field + '_' + lang]);
-			if (el !== false) container.append(el);
-		});
-
-		return container.html();
+		$('#title').html(myParent);
 	}
 
 	var _onAfterClose = function () {

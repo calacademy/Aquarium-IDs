@@ -28,6 +28,16 @@ nav {
         opacity .4s $easing
     );
 
+    #title {
+        @include small-caps;
+        font-size: 26px;
+        line-height: 1;
+        font-weight: $medium;
+        position: absolute;
+        left: $padding;
+        top: 8px;
+    }
+
     #languages {
         li {
             float: right;

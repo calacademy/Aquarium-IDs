@@ -466,13 +466,14 @@ var AquariumID = function () {
 		if (typeof(initialSlide) == 'undefined') initialSlide = 0;
 		_initialSlide = initialSlide;
 
-		$('html').addClass('translation-ready');
-
 		if ($('#main').data('flexslider')) {
 			$('#main').flexslider('destroy');
 		}
 
 		$('#main').html(slideshow);
+
+		_translate.prune();
+		$('html').addClass('translation-ready');
 
 		// add UI to go back to thumbnails
 		if (_isBig) {
@@ -711,7 +712,7 @@ var AquariumID = function () {
 		$(document).on('durationdata', _onDurationData);
 
 		// setup
-		_view = new AquariumIDView();
+		_view = new AquariumIDView(_translate);
 		_data = new AquariumIDModel();
 
 		// start by querying for vocab

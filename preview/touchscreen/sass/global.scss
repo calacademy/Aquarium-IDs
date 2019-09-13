@@ -219,7 +219,6 @@ body {
 		.slides {
 			li {
 				&.specimen {
-					$padding: 80px;
 					padding-left: $padding;
 					padding-right: $padding;
 					padding-top: $padding + $translationUIHeight - 20px;
@@ -405,12 +404,12 @@ body {
 					}
 				}
 
+				$titlePadding: 90px;
+
 				&.updated,
 				&.title-slide {
-					$padding: 90px;
-
-					padding-left: $padding;
-					padding-right: $padding;
+					padding-left: $titlePadding;
+					padding-right: $titlePadding;
 
 					.container {
 						display: table-cell;
@@ -420,15 +419,13 @@ body {
 				}
 
 				&.photosensitive {
-					$padding: 90px;
-
-					padding-left: $padding * 2;
-					padding-right: $padding * 2;
+					padding-left: $titlePadding * 2;
+					padding-right: $titlePadding * 2;
 
 					.container {
-						margin-top: $padding;
+						margin-top: $titlePadding;
 						$graphicSize: 225px;
-						padding-top: $graphicSize + ($padding / 2);
+						padding-top: $graphicSize + ($titlePadding / 2);
 						@include background-image-retina('photosensitive', 'png', $graphicSize, $graphicSize);
 						background-repeat: no-repeat;
 					}
@@ -744,14 +741,14 @@ body {
 
 		.slides, .slides li {
 			$thumbnailSize: 205px;
-			$padding: 21px;
+			$thumbPadding: 21px;
 
-			height: ($thumbnailSize * 2) + $padding;
+			height: ($thumbnailSize * 2) + $thumbPadding;
 
 			.thumbnail {
 				float: left;
-				margin-bottom: $padding;
-				margin-right: $padding;
+				margin-bottom: $thumbPadding;
+				margin-right: $thumbPadding;
 
 				&:nth-child(4n) {
 					margin-right: 0;
