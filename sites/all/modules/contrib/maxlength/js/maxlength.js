@@ -265,7 +265,8 @@
       return 'removed';
     }
 
-    var counterElement = $('<' + options.counterElement + ' id="' + $(this).attr('id') + '-' + options.css + '" class="' + options.css + '"></' + options.counterElement + '>');
+    var sanitizedId = ($(this).attr('id') + '-' + options.css).replace(/[^0-9a-z-_]/gi, '');
+    var counterElement = $('<' + options.counterElement + ' id="' + sanitizedId + '" class="' + options.css + '"></' + options.counterElement + '>');
     if ($(this).next('div.grippie').length) {
       $(this).next('div.grippie').after(counterElement);
     } else {
@@ -323,11 +324,30 @@
   ml.tinymceChange = function(ed) {
     // CLone to avoid changing defaults
     var options = $.extend({}, ml.options[ed.editorId]);
+    /* The following lines take the text from the wysiwyg and
+      strip out some html and special characters so an accurate character
+      count can be taken. */
+    var bodyContent = ml.tinymceGetData(ed);
+    bodyContent = bodyContent.replace(/&gt;/g, ' ');
+    bodyContent = bodyContent.replace(/&lt;/g, ' ');
+    bodyContent = bodyContent.replace(/&amp;/g, ' ');
+    bodyContent = bodyContent.replace(/<\/?[^>]+(>|$)/g, "");
+    bodyContent = bodyContent.replace(/\<p>/g, "");
+    bodyContent = bodyContent.replace(/\<\/p>/g, "");
+    bodyContent = bodyContent.replace(/[\n\r]/g, '');
+    bodyContent = bodyContent.replace(/&amp;/g, '&');
+    bodyContent = bodyContent.replace(/&nbsp;/g, ' ');
+    bodyContent = bodyContent.replace(/\<span>/g, ' ');
+    bodyContent = bodyContent.replace(/\<\/span>/g, ' ');
+    bodyContent = bodyContent.replace(/\<br>/g, ' ');
+    bodyContent = bodyContent.replace(/\<BR>/g, ' ');
+    bodyLength = bodyContent.length;
+
     if (options.truncateHtml){
-      ml.calculate($(ed.getElement()), options, ml.strip_tags(ml.tinymceGetData(ed)).length, ed, 'tinymceGetData', 'tinymceSetData');
+      ml.calculate($(ed.getElement()), options, bodyLength, 'tinymceGetData', 'tinymceSetData');
     }
     else {
-      ml.calculate($(ed.getElement()), options, ml.twochar_lineending(ml.tinymceGetData(ed)).length, ed, 'tinymceGetData', 'tinymceSetData');
+      ml.calculate($(ed.getElement()), options, bodyLength, ed, 'tinymceGetData', 'tinymceSetData');
     }
   };
 
@@ -382,7 +402,6 @@
   ml.ckeditorChange = function(e) {
     // Clone to avoid changing defaults
     var options = $.extend({}, ml.options[e.editor.element.getId()]);
-    $('#' + e.editor.element.getId()).val(ml['ckeditorGetData'](e));
     if (options.truncateHtml){
       ml.calculate($('#' + e.editor.element.getId()), options, ml.strip_tags(ml.ckeditorGetData(e)).length, e, 'ckeditorGetData', 'ckeditorSetData');
     }

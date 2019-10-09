@@ -161,13 +161,13 @@ function maxlength_field_attach_form($entity_type, $entity, &$form, &$form_state
  */
 function _maxlength_children(&$element, $ms_elements) {
   $bypass = &drupal_static(__FUNCTION__);
-  // Add "$conf['maxlength_force_for_dev'] = TRUE;" to settings.php to activate
-  // for all, including user #1, during devlopment.
-  if (isset($bypass) && $bypass && !variable_get('maxlength_force_for_dev', FALSE)) {
+  // Add "$conf['maxlength_always_for_uid1'] = TRUE;" to settings.php to activate
+  // for user #1.
+  if (isset($bypass) && $bypass) {
     return;
   }
   elseif (!isset($bypass)) {
-    $bypass = user_access('bypass maxlength');
+    $bypass = $GLOBALS['user']->uid == 1 ? !variable_get('maxlength_always_for_uid1', FALSE) : user_access('bypass maxlength');
   }
 
   $children = element_get_visible_children($element);
@@ -236,6 +236,8 @@ function maxlength_validate_input(&$element, &$form_state) {
     // Compute the length of the text, without counting the tags, and consider
     // the "enter" characters as only one character.
     $value = filter_xss(str_replace(array("\r\n", '&nbsp;'), array(' ', ' '), $element['#value']), array());
+    $value = strip_tags($value);
+    $value = preg_replace("/&#?[a-z0-9]+;/i","1",$value);
     if (drupal_strlen($value) > $element['#attributes']['maxlength']) {
       form_error($element, t('!name cannot be longer than %max characters but is currently %length characters long.', array('!name' => empty($element['#title']) ? $element['#parents'][0] : $element['#title'], '%max' => $element['#attributes']['maxlength'], '%length' => drupal_strlen($value))));
     }
