@@ -90,8 +90,8 @@ body {
 		// slider arrows
 		&.flexslider {
 			.flex-direction-nav {
-				$w: 15px;
-				$h: 42px;
+				$w: 18px;
+				$h: 44px;
 				$arrowSpacing: 28px;
 
 				width: 100%;
@@ -143,7 +143,7 @@ body {
 
 						.on-specimen-slide & {
 							img {
-								@include opacity(.6);
+								@include opacity(1);
 							}
 						}
 					}
@@ -155,10 +155,12 @@ body {
 						right: $arrowSpacing;
 						width: 50px;
 
+						$triArrowMargin: 45px;
+
 						img, div {
 							pointer-events: none;
 							position: absolute;
-							right: 50px;
+							right: $triArrowMargin;
 							top: 350px;
 						}
 
@@ -172,20 +174,20 @@ body {
 						}
 
 						img:nth-child(2) {
-							right: $w + 50px;
+							right: $w + $triArrowMargin;
 							@include animation-delay(.25s);
 						}
 
 						img:nth-child(3) {
-							right: ($w * 2) + 50px;
+							right: ($w * 2) + $triArrowMargin;
 							@include animation-delay(.05s);
 						}
 
 						div {
 							color: $white;
 							display: block;
-							right: ($w * 3) + 55px;
-							top: 346px;
+							right: ($w * 3) + $triArrowMargin + 5px;
+							top: 350px;
 						}
 
 						// fade out the extra arrows and "swipe" on specimen slides
@@ -274,7 +276,6 @@ body {
 							&.with-video:before,
 							&.with-expand:before {
 								@include backface-visibility(hidden);
-								@include svg-shadow;
 
 								pointer-events: auto;
 								content: '';
@@ -291,6 +292,7 @@ body {
 									width: $vidIconWithPadding;
 									height: $vidIconWithPadding;
 									
+									@include svg-shadow;
 									top: 50%;
 									left: 50%;
 									margin-top: -($vidIconWithPadding / 2);
@@ -315,14 +317,40 @@ body {
 
 							&.with-expand {
 								&:before {
-									bottom: 0;
-									right: 0;
-									width: 100px;
-									height: 100px;
+									$iconDim: 45px;
+									$padding: 15px;
 
-									@include background-size(60px 60px);
-									background-image: url('../images/expand.svg');
-									background-position: right 10px bottom 10px;
+									// fix a rendering bug
+									@include transform(translateY(0px));
+
+									top: 0;
+									right: 0;
+									font-size: 20px;
+									line-height: 1;
+
+									@include box-sizing(border-box);
+									height: $iconDim + ($padding * 2);
+									padding-top: 28px;
+									padding-left: $padding;
+									padding-right: $padding + 20px + $iconDim;
+
+									@include background-size($iconDim $iconDim);
+									background-repeat: no-repeat;
+									background-image: url('../images/plus.svg');
+									background-position: right $padding center;
+									background-color: rgba(#000000, 0.6);
+
+									content: 'Expand';
+
+									html[lang="cn"] & {
+										content: 'Expand (cn)';
+									}
+									html[lang="tl"] & {
+										content: 'Expand (tl)';
+									}
+									html[lang="es"] & {
+										content: 'Expand (es)';
+									}
 								}
 							}
 						}
@@ -461,6 +489,8 @@ body {
 				}
 
 				&.title-slide {
+					padding-right: 200px;
+
 					.container,
 					.title-img {
 						position: relative;

@@ -215,7 +215,7 @@ var AquariumID = function () {
 	var _hackSliderArrows = function () {
 		$('.flex-prev').each(function () {
 			var img = $('<img />');
-			img.attr('src', 'images/arrow-left@2x.png');
+			img.attr('src', 'images/arrow-left.svg');
 			$(this).html(img);
 		});
 
@@ -228,7 +228,7 @@ var AquariumID = function () {
 
 			var _addArrowImg = function () {
 				var img = $('<img />');
-				img.attr('src', 'images/arrow-right@2x.png');
+				img.attr('src', 'images/arrow-right.svg');
 				inst.prepend(img);
 			}
 
