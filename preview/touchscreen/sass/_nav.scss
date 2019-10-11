@@ -5,7 +5,6 @@ nav {
         display: block;
     }
 
-
     $topPadding: 12px;
 
     z-index: 999;
@@ -29,19 +28,24 @@ nav {
     );
 
     #title {
-        @include small-caps;
-        font-size: 26px;
-        line-height: 1;
+        font-size: 23px;
+        letter-spacing: normal;
         font-weight: $medium;
         position: absolute;
         left: $padding;
-        top: 8px;
+        top: $topPadding;
+
+        color: $white;
+
+        .theme-169 & {
+            color: $venom-title;
+        }
     }
 
     #languages {
         li {
             float: right;
-            width: 209px;
+            width: 170px;
             border-left: 1px solid #ffffff;
 
             // text-transform: uppercase;
@@ -49,23 +53,28 @@ nav {
 
             span {
                 @include buttony;
-                font-size: 23px;
+                font-size: 20px;
                 font-family: 'Whitney Condensed';
                 font-weight: $medium;
                 display: block;
                 text-align: center;
-                padding-top: $topPadding;
+                padding-top: $topPadding + 1;
             }
 
             &#cn {
                 span {
-                    padding-top: $topPadding - 3px;
+                    padding-top: $topPadding;
                     font-family: 'HanSans';
                 }
             }
 
             &.active {
                 @include highlight-color;
+
+                .theme-169 & {
+                    color: $venom-highlight;
+                }
+
                 pointer-events: none;
 
                 span {

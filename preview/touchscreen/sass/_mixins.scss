@@ -1,6 +1,14 @@
 @import "compass/css3";
 @import "compass/utilities";
 
+@mixin arrow-opacity {
+	@include opacity($uiOpacity);
+
+	.theme-169 & {
+		@include opacity(1);
+	}
+}
+
 @mixin smallprint {
 	font-size: 16px;
 	line-height: 20px;
@@ -81,6 +89,9 @@
 	}
 	.theme-167 & {
 		color: $hidden-reef-highlight;
+	}
+	.theme-169 & {
+		color: $venom-text;
 	}
 }
 

@@ -33,6 +33,10 @@ body {
 		font-family: 'HanSans', Helvetica, Arial, sans-serif;
 	}
 	
+	.theme-169 & {
+		color: $venom-text;
+	}
+
 	font-size: 34px;
 	line-height: 43px;
 
@@ -122,7 +126,7 @@ body {
 
 					div,
 					img {
-						@include opacity(.6);
+						@include arrow-opacity;
 
 						@include transition(
 							opacity .3s ease
@@ -142,6 +146,11 @@ body {
 						}
 
 						.on-specimen-slide & {
+							img {
+								@include opacity($uiOpacity);
+							}
+						}
+						.theme-169.on-specimen-slide & {
 							img {
 								@include opacity(1);
 							}
@@ -165,7 +174,7 @@ body {
 						}
 
 						img {
-							@include opacity(1);
+							@include arrow-opacity;
 							@include animation(fade 1s infinite alternate);
 						}
 
@@ -212,9 +221,13 @@ body {
 				-webkit-transform: translateZ(0px);
 
 				position: absolute;
-				color: rgba($white, .6);
 				font-size: 28px;
 				line-height: 34px;
+				color: rgba($white, $uiOpacity);
+
+				.theme-169 & {
+					color: $venom-text-secondary;
+				}
 			}
 		}
 
@@ -277,7 +290,6 @@ body {
 							&.with-expand:before {
 								@include backface-visibility(hidden);
 
-								pointer-events: auto;
 								content: '';
 								position: absolute;
 								background-repeat: no-repeat;
@@ -286,12 +298,15 @@ body {
 
 							&.with-video {
 								&:before {
+									// only icon is clickable
+									pointer-events: auto;
+
 									$vidIconDim: 145px;
 									$vidIconWithPadding: $vidIconDim + 30px;
 
 									width: $vidIconWithPadding;
 									height: $vidIconWithPadding;
-									
+
 									@include svg-shadow;
 									top: 50%;
 									left: 50%;
@@ -316,6 +331,9 @@ body {
 							}
 
 							&.with-expand {
+								// entire image is clickable
+								pointer-events: auto;
+
 								&:before {
 									$iconDim: 45px;
 									$padding: 15px;
@@ -338,8 +356,9 @@ body {
 									background-repeat: no-repeat;
 									background-image: url('../images/plus.svg');
 									background-position: right $padding center;
-									background-color: rgba(#000000, 0.6);
+									background-color: rgba(#000000, $uiOpacity);
 
+									color: $white;
 									content: 'Expand';
 
 									html[lang="cn"] & {
@@ -356,9 +375,13 @@ body {
 						}
 
 						.cap {
-							color: rgba($white, .6);
 							left: 0;
 							top: $imgHeight + 3px;
+							color: rgba($white, $uiOpacity);
+
+							.theme-169 & {
+								color: $venom-text-secondary;
+							}
 						}
 					}
 
@@ -557,6 +580,9 @@ body {
 		.theme-167 & {
 			background-color: $hidden-reef-background;
 		}
+		.theme-169 & {
+			background-color: $venom-background;
+		}
 	}
 
 	#main {
@@ -609,7 +635,7 @@ body {
 			.on-specimen-slide & {
 				cursor: pointer;
 				pointer-events: auto;
-				@include opacity(.6);
+				@include opacity($uiOpacity);
 			}
 
 			.no-touch.on-specimen-slide &:hover,
@@ -746,7 +772,7 @@ body {
 				a.flex-next {
 					img {
 						@include animation(none);
-						@include opacity(.6);
+						@include arrow-opacity;
 					}
 				}
 
@@ -874,6 +900,10 @@ body {
 					.no-touch.theme-167 &:hover,
 					.touch.theme-167 &:active {
 						color: $hidden-reef-highlight;
+					}
+					.no-touch.theme-169 &:hover,
+					.touch.theme-169 &:active {
+						color: $venom-highlight;
 					}
 				}
 
