@@ -166,6 +166,7 @@ body {
 						.on-specimen-slide & {
 							// stop animation
 							img {
+								@include opacity(.6);
 								@include animation(none);
 							}
 
