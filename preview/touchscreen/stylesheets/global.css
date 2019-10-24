@@ -274,7 +274,7 @@ body #thumbnails.flexslider .flex-direction-nav,
 body #updated.flexslider .flex-direction-nav {
   width: 100%;
   position: absolute;
-  top: 364px;
+  top: 360px;
   left: 0;
 }
 /* line 106, ../sass/global.scss */
@@ -403,7 +403,7 @@ body #updated.flexslider .flex-direction-nav a.flex-next div {
   pointer-events: none;
   position: absolute;
   right: 45px;
-  top: 350px;
+  top: 352px;
 }
 /* line 176, ../sass/global.scss */
 body #container.flexslider .flex-direction-nav a.flex-next img,
@@ -467,9 +467,8 @@ body #updated.flexslider .flex-direction-nav a.flex-next div {
   color: #ffffff;
   display: block;
   right: 104px;
-  top: 350px;
 }
-/* line 205, ../sass/global.scss */
+/* line 204, ../sass/global.scss */
 .on-specimen-slide body #container.flexslider .flex-direction-nav a.flex-next img, .on-specimen-slide
 body #main.flexslider .flex-direction-nav a.flex-next img, .on-specimen-slide
 body #splash.flexslider .flex-direction-nav a.flex-next img, .on-specimen-slide
@@ -479,7 +478,7 @@ body #updated.flexslider .flex-direction-nav a.flex-next img {
   -webkit-animation: none;
   animation: none;
 }
-/* line 209, ../sass/global.scss */
+/* line 208, ../sass/global.scss */
 .on-specimen-slide body #container.flexslider .flex-direction-nav a.flex-next div,
 .on-specimen-slide body #container.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
 .on-specimen-slide body #container.flexslider .flex-direction-nav a.flex-next img:nth-child(3), .on-specimen-slide
@@ -506,7 +505,7 @@ body #updated.flexslider .flex-direction-nav a.flex-next img:nth-child(3) {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 219, ../sass/global.scss */
+/* line 218, ../sass/global.scss */
 body #container.flexslider .page,
 body #main.flexslider .page,
 body #splash.flexslider .page,
@@ -518,7 +517,7 @@ body #updated.flexslider .page {
   line-height: 34px;
   color: rgba(255, 255, 255, 0.6);
 }
-/* line 228, ../sass/global.scss */
+/* line 227, ../sass/global.scss */
 .theme-169 body #container.flexslider .page, .theme-169
 body #main.flexslider .page, .theme-169
 body #splash.flexslider .page, .theme-169
@@ -526,7 +525,7 @@ body #thumbnails.flexslider .page, .theme-169
 body #updated.flexslider .page {
   color: #3F7178;
 }
-/* line 236, ../sass/global.scss */
+/* line 235, ../sass/global.scss */
 body #container .slides li.specimen,
 body #main .slides li.specimen,
 body #splash .slides li.specimen,
@@ -536,7 +535,7 @@ body #updated .slides li.specimen {
   padding-right: 80px;
   padding-top: 105px;
 }
-/* line 243, ../sass/global.scss */
+/* line 242, ../sass/global.scss */
 body #container .slides li.specimen .container,
 body #main .slides li.specimen .container,
 body #splash .slides li.specimen .container,
@@ -544,7 +543,7 @@ body #thumbnails .slides li.specimen .container,
 body #updated .slides li.specimen .container {
   position: relative;
 }
-/* line 246, ../sass/global.scss */
+/* line 245, ../sass/global.scss */
 body #container .slides li.specimen .container, body #container .slides li.specimen .container .column,
 body #main .slides li.specimen .container,
 body #main .slides li.specimen .container .column,
@@ -556,7 +555,7 @@ body #updated .slides li.specimen .container,
 body #updated .slides li.specimen .container .column {
   height: 100%;
 }
-/* line 250, ../sass/global.scss */
+/* line 249, ../sass/global.scss */
 body #container .slides li.specimen .container .column,
 body #main .slides li.specimen .container .column,
 body #splash .slides li.specimen .container .column,
@@ -567,7 +566,7 @@ body #updated .slides li.specimen .container .column {
   width: calc(50% - 20px);
   margin-right: 20px;
 }
-/* line 256, ../sass/global.scss */
+/* line 255, ../sass/global.scss */
 body #container .slides li.specimen .container .column .column-bottom,
 body #main .slides li.specimen .container .column .column-bottom,
 body #splash .slides li.specimen .container .column .column-bottom,
@@ -577,7 +576,7 @@ body #updated .slides li.specimen .container .column .column-bottom {
   width: 100%;
   bottom: 80px;
 }
-/* line 262, ../sass/global.scss */
+/* line 261, ../sass/global.scss */
 body #container .slides li.specimen .container .column:last-child,
 body #main .slides li.specimen .container .column:last-child,
 body #splash .slides li.specimen .container .column:last-child,
@@ -586,7 +585,7 @@ body #updated .slides li.specimen .container .column:last-child {
   margin-right: 0;
   margin-left: 20px;
 }
-/* line 266, ../sass/global.scss */
+/* line 265, ../sass/global.scss */
 body #container .slides li.specimen .container .column:last-child .column-bottom,
 body #main .slides li.specimen .container .column:last-child .column-bottom,
 body #splash .slides li.specimen .container .column:last-child .column-bottom,
@@ -594,7 +593,7 @@ body #thumbnails .slides li.specimen .container .column:last-child .column-botto
 body #updated .slides li.specimen .container .column:last-child .column-bottom {
   margin-bottom: -8px;
 }
-/* line 273, ../sass/global.scss */
+/* line 272, ../sass/global.scss */
 body #container .slides li.specimen .img-container,
 body #main .slides li.specimen .img-container,
 body #splash .slides li.specimen .img-container,
@@ -602,7 +601,7 @@ body #thumbnails .slides li.specimen .img-container,
 body #updated .slides li.specimen .img-container {
   position: relative;
 }
-/* line 276, ../sass/global.scss */
+/* line 275, ../sass/global.scss */
 body #container .slides li.specimen .img-container .img,
 body #main .slides li.specimen .img-container .img,
 body #splash .slides li.specimen .img-container .img,
@@ -648,7 +647,7 @@ body #updated .slides li.specimen .img-container .img:hover:before {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 289, ../sass/global.scss */
+/* line 288, ../sass/global.scss */
 body #container .slides li.specimen .img-container .img.with-video:before, body #container .slides li.specimen .img-container .img.with-expand:before,
 body #main .slides li.specimen .img-container .img.with-video:before,
 body #main .slides li.specimen .img-container .img.with-expand:before,
@@ -666,7 +665,7 @@ body #updated .slides li.specimen .img-container .img.with-expand:before {
   background-repeat: no-repeat;
   z-index: 2;
 }
-/* line 300, ../sass/global.scss */
+/* line 299, ../sass/global.scss */
 body #container .slides li.specimen .img-container .img.with-video:before,
 body #main .slides li.specimen .img-container .img.with-video:before,
 body #splash .slides li.specimen .img-container .img.with-video:before,
@@ -688,7 +687,7 @@ body #updated .slides li.specimen .img-container .img.with-video:before {
   background-image: url("../images/play.svg");
   background-position: center center;
 }
-/* line 321, ../sass/global.scss */
+/* line 320, ../sass/global.scss */
 body #container .slides li.specimen .img-container .img.with-video .duration,
 body #main .slides li.specimen .img-container .img.with-video .duration,
 body #splash .slides li.specimen .img-container .img.with-video .duration,
@@ -703,6 +702,7 @@ body #updated .slides li.specimen .img-container .img.with-video .duration {
   position: absolute;
   bottom: 5px;
   right: 10px;
+  color: #ffffff;
 }
 /* line 333, ../sass/global.scss */
 body #container .slides li.specimen .img-container .img.with-expand,

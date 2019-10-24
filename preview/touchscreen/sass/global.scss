@@ -100,7 +100,7 @@ body {
 
 				width: 100%;
 				position: absolute;
-				top: ($stageHeight / 2) - ($h / 2) - 14px;
+				top: ($stageHeight / 2) - ($h / 2) - 18px;
 				left: 0;
 
 				a {
@@ -170,7 +170,7 @@ body {
 							pointer-events: none;
 							position: absolute;
 							right: $triArrowMargin;
-							top: 350px;
+							top: 352px;
 						}
 
 						img {
@@ -196,7 +196,6 @@ body {
 							color: $white;
 							display: block;
 							right: ($w * 3) + $triArrowMargin + 5px;
-							top: 350px;
 						}
 
 						// fade out the extra arrows and "swipe" on specimen slides
@@ -327,6 +326,7 @@ body {
 									position: absolute;
 									bottom: 5px;
 									right: 10px;
+									color: $white;
 								}
 							}
 
