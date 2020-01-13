@@ -30,15 +30,19 @@ nav {
     #title {
         font-size: 23px;
         letter-spacing: normal;
-        font-weight: $medium;
+        font-weight: $semibold;
         position: absolute;
         left: $padding;
         top: $topPadding;
 
         color: $white;
 
-        .theme-169 & {
+        .theme-169 &,
+        .theme-172 & {
             color: $venom-title;
+        }
+        .theme-172.alt & {
+            color: $venom-title-alt;
         }
     }
 
@@ -46,7 +50,7 @@ nav {
         li {
             float: right;
             width: 170px;
-            border-left: 1px solid #ffffff;
+            border-left: 1px solid rgba(#ffffff, .25);
 
             // text-transform: uppercase;
             color: $translateTextColor;
@@ -71,8 +75,12 @@ nav {
             &.active {
                 @include highlight-color;
 
-                .theme-169 & {
+                .theme-169 &,
+                .theme-172 & {
                     color: $venom-highlight;
+                }
+                .theme-172.alt & {
+                    color: $venom-highlight-alt;
                 }
 
                 pointer-events: none;

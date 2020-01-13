@@ -33,8 +33,12 @@ body {
 		font-family: 'HanSans', Helvetica, Arial, sans-serif;
 	}
 	
-	.theme-169 & {
+	.theme-169 &,
+	.theme-172 & {
 		color: $venom-text;
+	}
+	.theme-172.alt & {
+		color: $venom-text-alt;
 	}
 
 	font-size: 34px;
@@ -150,7 +154,8 @@ body {
 								@include opacity($uiOpacity);
 							}
 						}
-						.theme-169.on-specimen-slide & {
+						.theme-169.on-specimen-slide &,
+						.theme-172.on-specimen-slide & {
 							img {
 								@include opacity(1);
 							}
@@ -224,8 +229,12 @@ body {
 				line-height: 34px;
 				color: rgba($white, $uiOpacity);
 
-				.theme-169 & {
+				.theme-169 &,
+				.theme-172 & {
 					color: $venom-text-secondary;
+				}
+				.theme-172.alt & {
+					color: $venom-text-secondary-alt;
 				}
 			}
 		}
@@ -379,8 +388,12 @@ body {
 							top: $imgHeight + 3px;
 							color: rgba($white, $uiOpacity);
 
-							.theme-169 & {
+							.theme-169 &,
+							.theme-172 & {
 								color: $venom-text-secondary;
+							}
+							.theme-172.alt & {
+								color: $venom-text-secondary-alt;
 							}
 						}
 					}
@@ -580,8 +593,12 @@ body {
 		.theme-167 & {
 			background-color: $hidden-reef-background;
 		}
-		.theme-169 & {
+		.theme-169 &,
+		.theme-172 & {
 			background-color: $venom-background;
+		}
+		.theme-172.alt & {
+			background-color: $venom-background-alt;
 		}
 	}
 
@@ -902,8 +919,14 @@ body {
 						color: $hidden-reef-highlight;
 					}
 					.no-touch.theme-169 &:hover,
-					.touch.theme-169 &:active {
+					.touch.theme-169 &:active,
+					.no-touch.theme-172 &:hover,
+					.touch.theme-172 &:active {
 						color: $venom-highlight;
+					}
+					.no-touch.theme-172.alt &:hover,
+					.touch.theme-172.alt &:active {
+						color: $venom-highlight-alt;
 					}
 				}
 
@@ -1010,6 +1033,19 @@ body {
 
 		.field_exhibit_or_theme {
 			color: $hidden-reef-subhead;
+		}
+	}
+
+	.theme-172 & {
+		.title-slide {
+			background-repeat: no-repeat;
+			background-image: url($assetPath + '/venom.png');
+		}
+	}
+
+	.theme-172.alt & {
+		.title-slide {
+			background-image: url($assetPath + '/venom-alt.png');
 		}
 	}
 }

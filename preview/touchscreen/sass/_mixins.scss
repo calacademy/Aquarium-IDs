@@ -4,7 +4,8 @@
 @mixin arrow-opacity {
 	@include opacity($uiOpacity);
 
-	.theme-169 & {
+	.theme-169 &,
+	.theme-172 & {
 		@include opacity(1);
 	}
 }
@@ -90,8 +91,12 @@
 	.theme-167 & {
 		color: $hidden-reef-highlight;
 	}
-	.theme-169 & {
+	.theme-169 &,
+	.theme-172 & {
 		color: $venom-text;
+	}
+	.theme-172.alt & {
+		color: $venom-text-alt;
 	}
 }
 
