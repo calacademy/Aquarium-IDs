@@ -1,3 +1,12 @@
+.page-taxonomy-term-edit .form-item-path-alias,
+.page-taxonomy-term-edit .text-format-wrapper {
+	display: none;
+}
+
+.page-taxonomy-term-edit .image-widget-data .text-format-wrapper {
+	display: block;
+}
+
 /* hacking Taxonomy Term Reference Tree Widget */
 
 .term-reference-tree-button,
