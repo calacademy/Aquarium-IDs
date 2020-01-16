@@ -33,11 +33,10 @@ body {
 		font-family: 'HanSans', Helvetica, Arial, sans-serif;
 	}
 	
-	.theme-169 &,
-	.theme-172 & {
+	.theme-169 & {
 		color: $venom-text;
 	}
-	.theme-172.alt & {
+	.theme-172 & {
 		color: $venom-text-alt;
 	}
 
@@ -229,11 +228,10 @@ body {
 				line-height: 34px;
 				color: rgba($white, $uiOpacity);
 
-				.theme-169 &,
-				.theme-172 & {
+				.theme-169 & {
 					color: $venom-text-secondary;
 				}
-				.theme-172.alt & {
+				.theme-172 & {
 					color: $venom-text-secondary-alt;
 				}
 			}
@@ -388,11 +386,10 @@ body {
 							top: $imgHeight + 3px;
 							color: rgba($white, $uiOpacity);
 
-							.theme-169 &,
-							.theme-172 & {
+							.theme-169 & {
 								color: $venom-text-secondary;
 							}
-							.theme-172.alt & {
+							.theme-172 & {
 								color: $venom-text-secondary-alt;
 							}
 						}
@@ -548,6 +545,7 @@ body {
 						font-size: 166px;
 						line-height: 172px;
 						letter-spacing: -4px;
+						padding-bottom: 50px;
 					}
 
 					h2 {
@@ -593,11 +591,10 @@ body {
 		.theme-167 & {
 			background-color: $hidden-reef-background;
 		}
-		.theme-169 &,
-		.theme-172 & {
+		.theme-169 & {
 			background-color: $venom-background;
 		}
-		.theme-172.alt & {
+		.theme-172 & {
 			background-color: $venom-background-alt;
 		}
 	}
@@ -746,7 +743,7 @@ body {
 				margin-top: 150px;
 
 				overflow: hidden;
-				font-weight: $bold;
+				font-weight: $semibold;
 				font-size: 70px;
 				letter-spacing: 1px;
 				
@@ -919,13 +916,11 @@ body {
 						color: $hidden-reef-highlight;
 					}
 					.no-touch.theme-169 &:hover,
-					.touch.theme-169 &:active,
-					.no-touch.theme-172 &:hover,
-					.touch.theme-172 &:active {
+					.touch.theme-169 &:active {
 						color: $venom-highlight;
 					}
-					.no-touch.theme-172.alt &:hover,
-					.touch.theme-172.alt &:active {
+					.no-touch.theme-172 &:hover,
+					.touch.theme-172 &:active {
 						color: $venom-highlight-alt;
 					}
 				}
@@ -1040,12 +1035,6 @@ body {
 		.title-slide {
 			background-repeat: no-repeat;
 			background-image: url($assetPath + '/venom.png');
-		}
-	}
-
-	.theme-172.alt & {
-		.title-slide {
-			background-image: url($assetPath + '/venom-alt.png');
 		}
 	}
 }

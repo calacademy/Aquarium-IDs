@@ -14,7 +14,6 @@ $padding: 80px;
 $book: 400;
 $medium: 500;
 $semibold: 600;
-$bold: 700;
 
 $uiOpacity: .6;
 
@@ -31,26 +30,6 @@ $uiOpacity: .6;
 @font-face {
 	font-family: 'Whitney';
 	src: url('../fonts/WhitneySemibold.otf') format('opentype');
-	font-weight: $semibold;
-}
-@font-face {
-	font-family: 'Whitney Narrow';
-	src: url('../fonts/WhitneyNarrowBook.otf') format('opentype');
-	font-weight: $book;
-}
-@font-face {
-	font-family: 'Whitney Narrow';
-	src: url('../fonts/WhitneyNarrowSemibold.otf') format('opentype');
-	font-weight: $semibold;
-}
-@font-face {
-	font-family: 'Whitney Condensed';
-	src: url('../fonts/WhitneyCondensedMedium.otf') format('opentype');
-	font-weight: $medium;
-}
-@font-face {
-	font-family: 'Whitney Condensed';
-	src: url('../fonts/WhitneyCondensedSemibold.otf') format('opentype');
 	font-weight: $semibold;
 }
 @font-face {

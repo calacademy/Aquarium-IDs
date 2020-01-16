@@ -16,7 +16,6 @@ nav {
     clear: both;
     
     line-height: 1;
-    letter-spacing: 1.25px;
 
     &, li, div, span {
         @include box-sizing(border-box);
@@ -29,7 +28,6 @@ nav {
 
     #title {
         font-size: 23px;
-        letter-spacing: normal;
         font-weight: $semibold;
         position: absolute;
         left: $padding;
@@ -37,12 +35,11 @@ nav {
 
         color: $white;
 
-        .theme-169 &,
-        .theme-172 & {
+        .theme-169 & {
             color: $venom-title;
         }
-        .theme-172.alt & {
-            color: $venom-title-alt;
+        .theme-172 & {
+            color: $venom-text-alt;
         }
     }
 
@@ -58,7 +55,7 @@ nav {
             span {
                 @include buttony;
                 font-size: 20px;
-                font-family: 'Whitney Condensed';
+                font-family: 'Whitney';
                 font-weight: $medium;
                 display: block;
                 text-align: center;
@@ -75,11 +72,10 @@ nav {
             &.active {
                 @include highlight-color;
 
-                .theme-169 &,
-                .theme-172 & {
+                .theme-169 & {
                     color: $venom-highlight;
                 }
-                .theme-172.alt & {
+                .theme-172 & {
                     color: $venom-highlight-alt;
                 }
 
