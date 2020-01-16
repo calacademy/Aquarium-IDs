@@ -522,22 +522,15 @@ body {
 				}
 
 				&.title-slide {
+					@include background-size(cover);
+					background-repeat: no-repeat;
 					padding-right: 200px;
 
-					.container,
-					.title-img {
+					.container {
 						position: relative;
 						z-index: 2;
-					}
-
-					.title-img {
-						z-index: 1;
-						display: none;
-
-						width: $stageWidth;
-						// height: $stageHeight;
-
-						margin-top: -$stageHeight;
+						@include box-sizing(border-box);
+						padding-bottom: 50px;
 					}
 
 					h1 {
@@ -545,7 +538,6 @@ body {
 						font-size: 166px;
 						line-height: 172px;
 						letter-spacing: -4px;
-						padding-bottom: 50px;
 					}
 
 					h2 {
@@ -985,15 +977,13 @@ body {
 		.title-slide {
 			padding-left: 0 !important;
 			padding-right: 0 !important;
-
-			.title-img {
-				display: block !important;
-			}
 		}
 	}
 
 	.theme-162 & {
 		.title-slide {
+			background-image: url($assetPath + '/spotlight.png');
+
 			.container {
 				margin-top: -$stageHeight;
 				
@@ -1021,6 +1011,8 @@ body {
 	}
 	.theme-167 & {
 		.title-slide {
+			background-image: url($assetPath + '/hidden-reef.png');
+
 			h1, h2 {
 				display: none;
 			}
@@ -1033,8 +1025,13 @@ body {
 
 	.theme-172 & {
 		.title-slide {
-			background-repeat: no-repeat;
 			background-image: url($assetPath + '/venom.png');
+
+			h1 {
+				.tl {
+					font-size: 136px;
+				}
+			}
 		}
 	}
 }

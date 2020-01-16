@@ -137,10 +137,15 @@ var AquariumIDView = function (translate) {
 		titleSlide.addClass('title-slide');
 		titleSlide.html(container);
 
-		container.append('<h1>' + _tankTitles.parent + '</h1>');
+		var obj = $('html').data('theme');
+		container.append('<h1 class="translatable">' + _translate.getMarkup('name', obj) + '</h1>');
 
 		if (_tankTitles.child != '') {
-			container.append('<h2>' + _tankTitles.child + '</h2>');
+			var childObj = $('html').data('child-theme');
+
+			if (childObj.name != obj.name) {
+				container.append('<h2 class="translatable">' + _translate.getMarkup('name', childObj) + '</h2>');
+			}
 		}
 
 		ul.prepend(titleSlide);
@@ -250,33 +255,6 @@ var AquariumIDView = function (translate) {
 
 		ul.data('total-thumb-slides', $('li', ul).length);
 		return ul;
-	}
-
-	var _getTitleImgSrc = function () {
-		switch (parseInt($('html').data('theme-id'))) {
-			case 162:
-				return 'images/spotlight.png';
-				break;
-			case 167:
-				return 'images/hidden-reef.png';
-				break;
-			default:
-				return false;
-		}
-	}
-
-	this.onSlideshowAdded = function () {
-		var titleImgSrc = _getTitleImgSrc();
-
-		if (titleImgSrc !== false) {
-			$('.title-slide').each(function () {
-				var img = $('<img />');
-				img.addClass('title-img');
-				img.attr('src', titleImgSrc);
-
-				$(this).append(img);
-			});
-		}
 	}
 
 	this.getThumbPageForSpecimen = function (index) {
@@ -421,7 +399,7 @@ var AquariumIDView = function (translate) {
 		if (typeof(data) != 'object') data = calacademy.Constants.fallbackEbuImages;
 		if (typeof(tid) != 'number') tid = calacademy.Constants.fallbackTheme;
 
-		this.setTankTheme(tid);
+		this.setTankTheme(tid, false);
 
 		var slides = $('<ul />');
 		slides.addClass('slides');
@@ -460,7 +438,7 @@ var AquariumIDView = function (translate) {
 		$('html').removeClass(_displayMode);
 	}
 
-	this.setTankTheme = function (tid) {
+	this.setTankTheme = function (theme, parentTheme) {
 		// remove other theme classes
 		var classList = $('html').attr('class').split(/\s+/);
 
@@ -471,8 +449,14 @@ var AquariumIDView = function (translate) {
 		});
 
 		// add new one
-		$('html').data('theme-id', tid);
-		$('html').addClass('theme-' + tid);
+		if (parentTheme !== false) {
+			$('html').data('theme', parentTheme);
+			$('html').data('child-theme', theme);
+			$('html').addClass('theme-' + parentTheme.tid);
+		} else {
+			$('html').data('theme', theme);
+			$('html').addClass('theme-' + theme.tid);
+		}
 	}
 
 	this.setTankTitles = function (myParent, myChild) {
@@ -481,7 +465,9 @@ var AquariumIDView = function (translate) {
 			child: myChild
 		};
 
-		$('#title').html(myParent);
+		var obj = $('html').data('theme');
+		$('#title').addClass('translatable');
+		$('#title').html(_translate.getMarkup('name', obj));
 	}
 
 	var _onAfterClose = function () {

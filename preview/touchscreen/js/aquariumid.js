@@ -151,6 +151,8 @@ var AquariumID = function () {
 		var derivedTid = tid;
 		var derivedParent = tank.field_exhibit_or_theme;
 		var derivedChild = '';
+		var themeObject = false;
+		var parentThemeObject = false;
 
 		// find parent if one exists
 		var i = _vocab.length;
@@ -160,6 +162,8 @@ var AquariumID = function () {
 			var parentId = false;
 
 			if (obj.tid == tid) {
+				themeObject = obj;
+
 				if (typeof(obj.parent_tid) == 'string') {
 					if (obj.parent_tid == '0') {
 						// no parent term
@@ -181,6 +185,8 @@ var AquariumID = function () {
 				if (parentId) {
 					$.each(_vocab, function (j, val) {
 						if (val.tid == parentId) {
+							parentThemeObject = val;
+
 							if (calacademy.Utils.isArray(val.field_taxa_images)) {
 								if (_taxaImages) {
 									// append
@@ -203,7 +209,7 @@ var AquariumID = function () {
 		calacademy.Utils.log(_taxaImages);
 
 		_tankTitle = derivedParent;
-		_view.setTankTheme(derivedTid);
+		_view.setTankTheme(themeObject, parentThemeObject);
 		_view.setTankTitles(derivedParent, derivedChild);
 
 		if (typeof(tank.display_mode) == 'string') {
@@ -536,7 +542,6 @@ var AquariumID = function () {
 		});
 
 		_hackSliderArrows();
-		_view.onSlideshowAdded();
 
 		// add page indicator
 		$('#main').append(_view.getPageIndicator());
