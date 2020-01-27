@@ -525,7 +525,7 @@ var AquariumID = function () {
 			animation: 'slide',
 			controlNav: false,
 			directionNav: ($('#main .slides > li').length > 1),
-			nextText: 'Swipe',
+			nextText: '<div class="en">Swipe</div><div class="tl">I-swipe</div><div class="es">Deslizar</div><div class="cn">滑動</div>',
 			slideshowSpeed: _slideshowSpeed,
 			start: _updatePageIndicator,
 			before: function (slider) {

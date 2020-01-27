@@ -170,10 +170,11 @@ body {
 
 						$triArrowMargin: 45px;
 
-						img, div {
+						img, & > div {
 							pointer-events: none;
 							position: absolute;
 							right: $triArrowMargin;
+							white-space: nowrap;
 							top: 352px;
 						}
 
@@ -196,7 +197,7 @@ body {
 							@include animation-delay(.05s);
 						}
 
-						div {
+						& > div {
 							color: $white;
 							display: block;
 							right: ($w * 3) + $triArrowMargin + 5px;
@@ -209,7 +210,7 @@ body {
 								@include animation(none);
 							}
 
-							div,
+							& > div,
 							img:nth-child(2),
 							img:nth-child(3) {
 								@include opacity(0);
@@ -369,13 +370,13 @@ body {
 									content: 'Expand';
 
 									html[lang="cn"] & {
-										content: 'Expand (cn)';
+										content: '展開';
 									}
 									html[lang="tl"] & {
-										content: 'Expand (tl)';
+										content: 'Palawakin';
 									}
 									html[lang="es"] & {
-										content: 'Expand (es)';
+										content: 'Ampliar';
 									}
 								}
 							}
@@ -484,6 +485,8 @@ body {
 					padding-right: $titlePadding * 2;
 
 					.container {
+						@include box-sizing(border-box);
+						padding-right: 60px;
 						margin-top: $titlePadding;
 						$graphicSize: 225px;
 						padding-top: $graphicSize + ($titlePadding / 2);
@@ -495,6 +498,11 @@ body {
 						font-weight: $semibold;
 						font-size: 94px;
 						line-height: 1;
+						margin-bottom: 20px;
+
+						html[lang="es"] & {
+							font-size: 88px;
+						}
 					}
 
 					p {

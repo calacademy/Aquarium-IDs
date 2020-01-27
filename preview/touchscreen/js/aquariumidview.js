@@ -313,9 +313,15 @@ var AquariumIDView = function (translate) {
 						switch (field) {
 							case 'field_diet':
 								div.find('.en').prepend('<em>Diet: </em>');
+								div.find('.cn').prepend('<em>食物: </em>');
+								div.find('.tl').prepend('<em>Diyeta: </em>');
+								div.find('.es').prepend('<em>Alimentación: </em>');
 								break;
 							case 'field_distribution':
 								div.find('.en').prepend('<em>Distribution: </em>');
+								div.find('.cn').prepend('<em>分佈: </em>');
+								div.find('.tl').prepend('<em>Distribusyon: </em>');
+								div.find('.es').prepend('<em>Distribución: </em>');
 								break;
 						}
 
