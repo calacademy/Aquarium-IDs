@@ -322,7 +322,7 @@ body {
 				&.photosensitive {
 					$padding: 90px;
 
-					padding-left: $padding * 2;
+					padding-left: $padding;
 					padding-right: $padding * 2;
 
 					.container {
@@ -335,7 +335,7 @@ body {
 
 					h2 {
 						font-weight: $semibold;
-						font-size: 94px;
+						font-size: 88px;
 						line-height: 1;
 					}
 

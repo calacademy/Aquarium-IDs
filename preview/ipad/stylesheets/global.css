@@ -639,7 +639,7 @@ body #main .slides li.photosensitive,
 body #splash .slides li.photosensitive,
 body #thumbnails .slides li.photosensitive,
 body #updated .slides li.photosensitive {
-  padding-left: 180px;
+  padding-left: 90px;
   padding-right: 180px;
 }
 /* line 328, ../sass/global.scss */
@@ -674,7 +674,7 @@ body #splash .slides li.photosensitive h2,
 body #thumbnails .slides li.photosensitive h2,
 body #updated .slides li.photosensitive h2 {
   font-weight: 600;
-  font-size: 94px;
+  font-size: 88px;
   line-height: 1;
 }
 /* line 342, ../sass/global.scss */
