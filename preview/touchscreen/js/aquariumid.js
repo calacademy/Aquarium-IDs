@@ -212,10 +212,12 @@ var AquariumID = function () {
 		_view.setTankTheme(themeObject, parentThemeObject);
 		_view.setTankTitles(derivedParent, derivedChild);
 
+		/*
 		if (typeof(tank.display_mode) == 'string') {
 			_view.setDisplayMode(tank.display_mode);
 			_isBig = (tank.display_mode == 'aquarium-ipad-large');	
 		}
+		*/
 	}
 
 	var _hackSliderArrows = function () {
