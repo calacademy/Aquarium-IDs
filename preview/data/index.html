@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CalAcademy Aquarium ID | Preview</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />  
+
+		<link rel="icon" href="" />
+		<link rel="stylesheet" href="stylesheets/flexslider.css" />
+		<link rel="stylesheet" href="stylesheets/jquery.fancybox.min.css" />
+		<link rel="stylesheet" href="stylesheets/global.css" />
+
+		<script src="js/modernizr.calacademy.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/idle-timer.min.js"></script>
+		<script src="js/jquery.jsonp.js"></script>
+		<script src="js/jquery.dotdotdot.min.js"></script>
+		<script src="js/jquery.flexslider.calacademy.js"></script>
+		<script src="js/jquery.fancybox.min.js"></script>
+
+		<script src="js/static.js"></script>
+		<script src="js/progressindicator.js"></script>
+		<script src="js/aquariumidmodel.js"></script>
+		<script src="js/aquariumidexpand.js"></script>
+		<script src="js/aquariumidvideo.js"></script>
+		<script src="js/aquariumidtranslate.js"></script>
+		<script src="js/aquariumidview.js"></script>
+		<script src="js/aquariumid.js"></script>
+
+		<script>
+
+			$(window).load(function () {
+				var foo = new AquariumID();
+			});
+
+		</script>
+	</head>
+	
+	<body>
+		<div id="container">
+			<nav>
+				<div id="title"></div>
+				<ul id="languages">  
+					<li id="tl">Filipino</li>
+					<li id="cn">繁体中文</li>
+					<li id="es">Español</li>
+					<li id="en" class="active">English</li>
+				</ul>
+			</nav>
+			<div id="main" class="flexslider hide"></div>
+			<div id="updated" class="flexslider hide"></div>
+			<div id="splash" class="flexslider hide"></div>
+			<div id="thumbnails" class="flexslider hide"></div>
+			<div id="photosensitive" class="hide">
+				<h2>
+					<div class="en">No photos, please</div>
+					<div class="tl">Huwag po tayong kumuha ng litrato</div>
+					<div class="es">No tomes fotografías, por favor</div>
+					<div class="cn">請勿拍照</div>
+				</h2>
+				<p>
+					<div class="en">Photography disturbs these animals&mdash;even with the flash off! Please help protect these sensitive creatures.</div>
+					<div class="tl">Nabubulabog ng pagkuha ng litrato ang mga hayop&mdash;kahit na walang flash!  Tumulong po sana tayo sa pangangalaga sa mga sensitibong hayop na ito.</div>
+					<div class="es">Las fotografías perturban a estos animales, incluso sin usar flash. Por favor ayuda a proteger a estas criaturas sensibles.</div>
+					<div class="cn">拍照會打擾這些動物，即使關閉閃光燈也是如此！請幫助我們保護這些敏感的生物。</div>
+				</p>
+			</div>
+		</div>
+		<!--
+		<div id="msg">
+			<p>
+				<strong>This is a non-touch device.</strong>
+			</p>
+			<p>
+				There will be minor discrepencies with the tablet view, especially with type &amp; animation.
+			</p>
+		</div>
+		//-->
+	</body>
+</html>

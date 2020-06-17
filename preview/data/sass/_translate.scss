@@ -1,0 +1,19 @@
+#container {
+	.en, .cn, .tl, .es {
+		display: none !important;
+		@include animation(fadein 1s $easing);
+	}
+
+	@mixin lg($lg) {
+		html[lang="#{$lg}"] & {
+			.#{$lg} {
+				display: block !important;
+			}
+		}
+	}
+
+	@include lg('en');
+	@include lg('cn');
+	@include lg('tl');
+	@include lg('es');
+}

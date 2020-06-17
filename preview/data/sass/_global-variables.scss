@@ -1,0 +1,53 @@
+$assetPath : "../images";
+$stageWidth: 1280px;
+$stageHeight: 800px;
+
+$easing: cubic-bezier(.215, .61, .355, 1);
+$easeOut: cubic-bezier(0, 0, 0.58, 1);
+
+$translateTextColor: #e6e6e6;
+$translationUIHeight: 45px;
+$imgHeight: 336px;
+$padding: 80px;
+
+// font weights
+$book: 400;
+$medium: 500;
+$semibold: 600;
+
+$uiOpacity: .6;
+
+@font-face {
+	font-family: 'Whitney';
+	src: url('../fonts/WhitneyBook.otf') format('opentype');
+	font-weight: $book;
+}
+@font-face {
+	font-family: 'Whitney';
+	src: url('../fonts/WhitneyMedium.otf') format('opentype');
+	font-weight: $medium;
+}
+@font-face {
+	font-family: 'Whitney';
+	src: url('../fonts/WhitneySemibold.otf') format('opentype');
+	font-weight: $semibold;
+}
+@font-face {
+	font-family: 'HanSans';
+	src: url('../fonts/HanSansNormal.otf') format('opentype');
+	font-weight: $book;
+}
+@font-face {
+	font-family: 'HanSans';
+	src: url('../fonts/HanSansMedium.otf') format('opentype');
+	font-weight: $medium;
+}
+@font-face {
+	font-family: 'HanSans';
+	src: url('../fonts/HanSansBold.otf') format('opentype');
+	font-weight: $semibold;
+}
+
+@import "_colors";
+@import "_mixins";
+@import "_animations";
