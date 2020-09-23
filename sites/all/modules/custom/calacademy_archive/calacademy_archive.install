@@ -1,0 +1,9 @@
+<?php
+
+function calacademy_archive_disable() {
+  calacademy_archive_uninstall();
+}
+
+function calacademy_archive_uninstall() {
+  variable_del('calacademy_archive_progress');
+}
