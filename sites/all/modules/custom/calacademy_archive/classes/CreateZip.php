@@ -11,12 +11,14 @@
 
 		private $_content = array();
 		private $_json = array();
+		private $_debug = false;
 
-		public function __construct ($sourceDirectory, $author = '', $server = '') {
+		public function __construct ($sourceDirectory, $author = '', $server = '', $debug = false) {
 			$this->_tmpDirectory = realpath('tmp');
 			$this->_sourceDirectory = $sourceDirectory;
 			$this->_author = $author;
 			$this->_server = $server;
+			$this->_debug = $debug;
 		}
 
 		private function _exec ($cmd) {
@@ -68,6 +70,7 @@
 				$this->_exec('cp ' . $file . ' s3://' . $this->_bucket . '/' . $this->_index . ' --acl public-read --cache-control max-age=0');
 				unlink($file);
 			} else {
+				if ($this->_debug) print "Failed write JSON index\n";
 				return false;
 			}
 		}
@@ -110,9 +113,11 @@
 					unlink($this->_zipFile);
 				}
 
+				if ($this->_debug) print "_createZip failed\n";
 				return false;
 			} else {
 				if (!file_exists($this->_zipFile)) {
+					if ($this->_debug) print $this->_zipFile . " not found\n";
 					return false;
 				}
 

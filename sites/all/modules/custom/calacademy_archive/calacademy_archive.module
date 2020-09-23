@@ -1,84 +1,5 @@
 <?php
 
-define('CALACADEMY_ARCHIVE_DEBUG', false);
-
-function calacademy_archive_submit_callback(&$form, $form_state) {
-  variable_set('calacademy_archive_progress', 0);
-
-  // iterate vocab
-  $vocab = taxonomy_vocabulary_machine_name_load('tanks_and_displays');
-  $tree = taxonomy_get_tree($vocab->vid, 0, NULL, true);
-
-  $selectedTanks = [];
-
-  foreach ($tree as $term) {
-    if ($term->depth === 0) continue;
-
-    $val = $form_state['values']['calacademy_archive_' . $term->tid];
-
-    if ($val === 1) {
-      // tank selected
-      $selectedTanks[] = $term;
-    }
-  }
-
-  // start archiving
-  $i = 0;
-  $total = count($selectedTanks);
-
-  foreach ($selectedTanks as $tank) {
-    _calacademy_archive_create($tank->tid, trim(strtolower($tank->name)));
-    $i++;
-
-    // increment progress
-    $per = floor(($i / $total) * 100);
-    variable_set('calacademy_archive_progress', $per);
-  }
-  
-  // done
-  $msg = 'Done archiving ' . $total . ' tank';
-  if ($total > 1) $msg .= 's';
-  
-  return '<div><strong>' . $msg . '</strong></div>';
-}
-
-function calacademy_archive_progress() {
-    $progress = array(
-        'message' => t('Start archiving…'),
-        'percentage' => 0,
-    );
-
-    $per = variable_get('calacademy_archive_progress');
-
-    if ($per){
-      $progress = array(
-        'message' => t('Archiving…'),
-        'percentage' => $per,
-      );
-    }
-
-    drupal_json_output($progress);
-}
-
-function calacademy_archive_menu() {
-  $items['archive/progress'] = array(
-    'title' => t('Archive progress'),
-    'page callback' => 'calacademy_archive_progress',
-    'access callback' => 'user_is_logged_in',
-    'type' => MENU_CALLBACK,
-  );
-
-  $items['admin/config/calacademy_archive'] = array(
-    'title' => 'CalAcademy Archive',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('calacademy_archive_admin_settings'),
-    'access arguments' => array('administer users'),
-    'file' => 'calacademy_archive.admin.inc',
-  );
-
-  return $items;
-}
-
 function calacademy_archive_entity_postsave($entity, $entity_type) {
   if ($entity_type != 'taxonomy_term') return;
 
@@ -210,7 +131,7 @@ function _calacademy_archive_get_assets($nodes, $themes) {
   return $content;
 }
 
-function _calacademy_archive_create($tid, $tankName) {
+function _calacademy_archive_create($tid, $tankName, $debug = false) {
   // create tmp dir if it doesn't already exist
   $filesPath = drupal_realpath(file_default_scheme() . '://');
   $tmp = $filesPath . '/touchscreen-archives';
@@ -240,12 +161,20 @@ function _calacademy_archive_create($tid, $tankName) {
 
   // validate json
   foreach ($json as $val) {
-    if ($val === false) return false;  
+    if ($val === false) {
+      if ($debug) print "JSON validation failed\n";
+      return false; 
+    } 
   }
 
   // parse content
   $content = json_decode($json['content']);
-  if ($content === NULL || !is_array($content->nodes)) return false;
+  
+  if ($content === NULL || !is_array($content->nodes)) {
+    if ($debug) print "No JSON content\n";
+    return false;
+  }
+
   $content = _calacademy_archive_get_assets($content->nodes, $themes->nodes);
 
   // create archive
@@ -255,17 +184,15 @@ function _calacademy_archive_create($tid, $tankName) {
   $target = drupal_realpath(DRUPAL_ROOT . '/preview/touchscreen');
   $author = empty($user->mail) ? 'anonymous' : $user->mail;
   
-  $foo = new CreateZip($target, $author, $base_url);
+  $foo = new CreateZip($target, $author, $base_url, $debug);
 
-  if (!CALACADEMY_ARCHIVE_DEBUG) $foo->delete($tankName);
+  if (!$debug) $foo->delete($tankName);
   $foo->setTempDirectory(realpath($tmp));
   $foo->setJSON($json);
   $foo->addContent($content);
 
   $path = $foo->getPath(date('Ymd') . '_' . $tankName . '.zip');
   if ($path === false) return false;
-
-  if (CALACADEMY_ARCHIVE_DEBUG) return true;
 
   // upload
   if ($foo->upload($path)) {
@@ -276,5 +203,6 @@ function _calacademy_archive_create($tid, $tankName) {
     return $foo->setIndex();
   }
 
+  if ($debug) print "Upload failed\n";
   return false;
 }
