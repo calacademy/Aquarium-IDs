@@ -39,23 +39,17 @@ function drush_calacademy_archive($tanks) {
   $vocab = taxonomy_vocabulary_machine_name_load('tanks_and_displays');
   $tree = taxonomy_get_tree($vocab->vid, 0, NULL, true);
 
-  $selectedTanks = [];
+  foreach ($tree as $tank) {
+    if ($tank->depth === 0) continue;
 
-  foreach ($tree as $term) {
-    if ($term->depth === 0) continue;
-
-    if ($all || in_array(strtolower($term->name), $args)) {
-    	$selectedTanks[] = $term;
+    if ($all || in_array(strtolower($tank->name), $args)) {
+      // start archiving
+      if (_calacademy_archive_create($tank->tid, trim(strtolower($tank->name)), true)) {
+        print 'Successfully archived ' . $tank->name . "\n";
+      } else {
+        print 'Archive failed for ' . $tank->name . "!\n";
+      }
     }    
-  }
-
-  // start archiving
-  foreach ($selectedTanks as $tank) {
-    if (_calacademy_archive_create($tank->tid, trim(strtolower($tank->name)), true)) {
-    	print 'Successfully archived ' . $tank->name . "\n";
-    } else {
-    	print 'Archive failed for ' . $tank->name . "!\n";
-    }
   }
 
   print "\nDone archiving.\n\n";
