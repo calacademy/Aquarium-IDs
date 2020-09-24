@@ -17,6 +17,8 @@ function calacademy_archive_drush_command() {
 }
 
 function drush_calacademy_archive($tanks) {
+  print "\n";
+
   $tanks = trim(strtolower($tanks));
   
   $args = [];
@@ -29,7 +31,7 @@ function drush_calacademy_archive($tanks) {
   }
 
   if (!$all && count($args) == 0) {
-    print "Invalid arguments\n";
+    print "Invalid arguments\n\n";
     return;
   }
 
@@ -56,5 +58,5 @@ function drush_calacademy_archive($tanks) {
     }
   }
 
-  print "Done archiving!\n";
+  print "\nDone archiving.\n\n";
 }

@@ -68,9 +68,11 @@
 
 			if (file_put_contents($file, json_encode($objects))) {
 				$this->_exec('cp ' . $file . ' s3://' . $this->_bucket . '/' . $this->_index . ' --acl public-read --cache-control max-age=0');
+				
 				unlink($file);
+				return true;
 			} else {
-				if ($this->_debug) print "Failed write JSON index\n";
+				if ($this->_debug) print "Failed to write JSON index.\n";
 				return false;
 			}
 		}
@@ -113,11 +115,11 @@
 					unlink($this->_zipFile);
 				}
 
-				if ($this->_debug) print "_createZip failed\n";
+				if ($this->_debug) print "_createZip failed.\n";
 				return false;
 			} else {
 				if (!file_exists($this->_zipFile)) {
-					if ($this->_debug) print $this->_zipFile . " not found\n";
+					if ($this->_debug) print $this->_zipFile . " not found.\n";
 					return false;
 				}
 
@@ -158,10 +160,12 @@
 		private function _createZip ($zipName) {
 			// validate source and target
 			if (!is_dir($this->_sourceDirectory)) {
+				if ($this->_debug) print $this->_sourceDirectory . " is not a directory.\n";
 				return false;
 			}
 
 			if (!is_writable($this->_tmpDirectory)) {
+				if ($this->_debug) print $this->_tmpDirectory . " is not writable.\n";
 				return false;
 			}
 
@@ -177,6 +181,7 @@
 			$zip = new ZipArchive();
 
 			if (!$zip->open($this->_zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE)) {
+				if ($this->_debug) print $this->_zipFile . " cannot be opened for writing.\n";
 				return false;
 			}
 
@@ -235,6 +240,7 @@
 				$decoded = json_decode($val);
 				
 				if ($decoded === NULL || empty($decoded)) {
+					if ($this->_debug) print "JSON not validated, quit archiving.\n";
 					return false;
 				}
 
@@ -246,6 +252,7 @@
 			$status = $zip->getStatusString();
 			
 			if (!$zip->close()) {
+				if ($this->_debug) print "Zip close failed.\n";
 				return false;
 			}
 
