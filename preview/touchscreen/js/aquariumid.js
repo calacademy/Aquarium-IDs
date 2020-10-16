@@ -24,6 +24,9 @@ var AquariumID = function () {
 	var _frameAnimation;
 	var _translate = new AquariumIdTranslate();
 
+	// if true, in idle mode, non-specimen slides will hold for half the normal duration
+	var _isHalftime = false;
+
 	var _setIdleTimer = function () {
 		if ($('html').hasClass('no-idle')) return;
 
@@ -40,8 +43,8 @@ var AquariumID = function () {
 		});
 
 		$(document).on('idle.idleTimer', function (event, elem, obj) {
-			calacademy.Utils.log('idle / ' + Math.random());
-
+			calacademy.Utils.log('*** start idling');
+			
 			_translate.reset();
 
 			if ($('body').hasClass('fancybox-active')) {
@@ -61,6 +64,8 @@ var AquariumID = function () {
     	});
 
 	    $(document).on('active.idleTimer', function (event, elem, obj, triggerevent) {
+	    	calacademy.Utils.log('*** stop idling');
+	    	
 	    	if (_activeSlideshow) {
 	    		var id = _activeSlideshow.attr('id');
 	    		
@@ -520,6 +525,22 @@ var AquariumID = function () {
 			$('#main .page').html(currentPage + ' of ' + $('#main ul').data('total-specimens'));
 		}
 
+		var _alterSpeed = function (slider) {
+			if (!_isHalftime) return;
+			if (!$(document).idleTimer('isIdle')) return;
+
+			var li = slider.slides.eq(slider.animatingTo);
+			slider.stop();
+
+			if (li.hasClass('specimen')) {
+				slider.vars.slideshowSpeed = _slideshowSpeed;
+			} else {
+				slider.vars.slideshowSpeed = Math.round(_slideshowSpeed / 2);
+			}
+
+			slider.play();
+		}
+
 		$('#main').flexslider({
 			startAt: _initialSlide,
 			slideshow: false,
@@ -529,8 +550,13 @@ var AquariumID = function () {
 			directionNav: ($('#main .slides > li').length > 1),
 			nextText: '<div class="en">Swipe</div><div class="tl">I-swipe</div><div class="es">Deslizar</div><div class="cn">滑動</div>',
 			slideshowSpeed: _slideshowSpeed,
-			start: _updatePageIndicator,
+			start: function (slider) {
+				_alterSpeed(slider);
+				_updatePageIndicator(slider);
+			},
 			before: function (slider) {
+				_alterSpeed(slider);
+
 				// add a class so we can alter the presentation
 				var nextSlide = slider.slides.eq(slider.animatingTo);
 
@@ -549,7 +575,6 @@ var AquariumID = function () {
 		$('#main').append(_view.getPageIndicator());
 
 		_transition('#main');
-		// _truncate();
 		_activeSlideshow = $('#main');
 		_setIdleTimer();
 	}
@@ -707,8 +732,30 @@ var AquariumID = function () {
 		}
 	}
 
+	var _tweakTimes = function () {
+		var speed = parseInt($.getQueryString('speed'));
+		
+		if (speed) {
+			_isHalftime = true;
+			_slideshowSpeed = speed * 1000;
+		}
+
+		calacademy.Utils.log('_slideshowSpeed: ' + _slideshowSpeed);
+
+		var idle = parseInt($.getQueryString('idle'));
+		
+		if (idle) {
+			_idleTime = idle * 1000;
+			_idleTime += _slideshowSpeed;
+		}
+
+		calacademy.Utils.log('_idleTime: ' + _idleTime);
+	}
+
 	this.initialize = function () {
 		calacademy.Utils.log('AquariumID.initialize');
+		
+		_tweakTimes();		
 		_addExtraClasses();
 
 		$('#msg').on('click', function () {
