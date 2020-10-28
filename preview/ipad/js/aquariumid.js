@@ -8,7 +8,8 @@ var AquariumID = function () {
 	var _tank = false;
 
 	var _idleTime = 30000;
-	var _slideshowSpeed = 5000;
+	var _slideshowSpeed = 8000;
+	var _slideshowSpeedNonSpecimen = 3000;
 	var _ebuSlideshowSpeed = 7000;
 
 	var _isTankPhotoSensitive = false;
@@ -472,6 +473,21 @@ var AquariumID = function () {
 			$('#main .page').html(currentPage + ' of ' + $('#main ul').data('total-specimens'));
 		}
 
+		var _alterSpeed = function (slider) {
+			if (!$(document).idleTimer('isIdle')) return;
+
+			var li = slider.slides.eq(slider.animatingTo);
+			slider.stop();
+
+			if (li.hasClass('specimen')) {
+				slider.vars.slideshowSpeed = _slideshowSpeed;
+			} else {
+				slider.vars.slideshowSpeed = _slideshowSpeedNonSpecimen;
+			}
+
+			slider.play();
+		}
+
 		$('#main').flexslider({
 			startAt: initialSlide,
 			slideshow: false,
@@ -481,8 +497,13 @@ var AquariumID = function () {
 			directionNav: ($('#main .slides > li').length > 1),
 			nextText: 'Swipe',
 			slideshowSpeed: _slideshowSpeed,
-			start: _updatePageIndicator,
+			start: function (slider) {
+				_alterSpeed(slider);
+				_updatePageIndicator(slider);
+			},
 			before: function (slider) {
+				_alterSpeed(slider);
+				
 				// add a class so we can alter the presentation
 				var nextSlide = slider.slides.eq(slider.animatingTo);
 

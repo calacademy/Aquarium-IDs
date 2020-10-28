@@ -10,7 +10,8 @@ var AquariumID = function () {
 	var _numVideos = 0;
 
 	var _idleTime = 30000;
-	var _slideshowSpeed = 5000;
+	var _slideshowSpeed = 8000;
+	var _slideshowSpeedNonSpecimen = 3000;
 	var _ebuSlideshowSpeed = 7000;
 
 	var _isTankPhotoSensitive = false;
@@ -23,9 +24,6 @@ var AquariumID = function () {
 	var _timeoutDisableLinks;
 	var _frameAnimation;
 	var _translate = new AquariumIdTranslate();
-
-	// if true, in idle mode, non-specimen slides will hold for half the normal duration
-	var _isHalftime = false;
 
 	var _setIdleTimer = function () {
 		if ($('html').hasClass('no-idle')) return;
@@ -526,7 +524,6 @@ var AquariumID = function () {
 		}
 
 		var _alterSpeed = function (slider) {
-			if (!_isHalftime) return;
 			if (!$(document).idleTimer('isIdle')) return;
 
 			var li = slider.slides.eq(slider.animatingTo);
@@ -535,7 +532,7 @@ var AquariumID = function () {
 			if (li.hasClass('specimen')) {
 				slider.vars.slideshowSpeed = _slideshowSpeed;
 			} else {
-				slider.vars.slideshowSpeed = Math.round(_slideshowSpeed / 2);
+				slider.vars.slideshowSpeed = _slideshowSpeedNonSpecimen;
 			}
 
 			slider.play();
@@ -736,11 +733,18 @@ var AquariumID = function () {
 		var speed = parseInt($.getQueryString('speed'));
 		
 		if (speed) {
-			_isHalftime = true;
 			_slideshowSpeed = speed * 1000;
 		}
 
 		calacademy.Utils.log('_slideshowSpeed: ' + _slideshowSpeed);
+
+		var speednonspecimen = parseInt($.getQueryString('speednonspecimen'));
+		
+		if (speednonspecimen) {
+			_slideshowSpeedNonSpecimen = speednonspecimen * 1000;
+		}
+
+		calacademy.Utils.log('_slideshowSpeedNonSpecimen: ' + _slideshowSpeedNonSpecimen);
 
 		var idle = parseInt($.getQueryString('idle'));
 		
