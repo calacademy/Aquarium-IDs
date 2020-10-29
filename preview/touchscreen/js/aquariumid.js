@@ -43,6 +43,7 @@ var AquariumID = function () {
 		$(document).on('idle.idleTimer', function (event, elem, obj) {
 			calacademy.Utils.log('*** start idling');
 			
+			$('#main').data('flexslider').animating = false;
 			_translate.reset();
 
 			if ($('body').hasClass('fancybox-active')) {

@@ -6,6 +6,15 @@
 ;
 (function ($) {
 
+  // grotter
+  // @see https://stackoverflow.com/questions/26478267/touch-move-getting-stuck-ignored-attempt-to-cancel-a-touchmove              
+  var _preventDefault = function (e) {
+    if (e.cancelable) {
+      e.preventDefault();
+      e.stopPropagation();
+    }  
+  }
+
   //FlexSlider: Object Instance
   $.flexslider = function(el, options, instanceId) {
     var slider = $(el);
@@ -109,7 +118,7 @@
         // MOUSEWHEEL:
         if (slider.vars.mousewheel) {
           slider.bind('mousewheel' + slider.vars.eventNamespace, function(event, delta, deltaX, deltaY) {
-            event.preventDefault();
+            _preventDefault(event);
             var target = (delta < 0) ? slider.getTarget('next') : slider.getTarget('prev');
             slider.flexAnimate(target, slider.vars.pauseOnAction);
           });
@@ -162,7 +171,7 @@
           slider.slides.removeClass(namespace + "active-slide").eq(slider.currentItem).addClass(namespace + "active-slide");
           if(!msGesture){
               slider.slides.on(eventType, function(e){
-                e.preventDefault();
+                _preventDefault(e);
                 var $slide = $(this),
                     target = $slide.index();
                 var posFromLeft = $slide.offset().left - $(slider).scrollLeft(); // Find position of slide relative to left of slider container
@@ -180,12 +189,12 @@
                   that._gesture = new MSGesture();
                   that._gesture.target = that;
                   that.addEventListener("MSPointerDown", function (e){
-                      e.preventDefault();
+                      _preventDefault(e);
                       if(e.currentTarget._gesture)
                           e.currentTarget._gesture.addPointer(e.pointerId);
                   }, false);
                   that.addEventListener("MSGestureTap", function (e){
-                      e.preventDefault();
+                      _preventDefault(e);
                       var $slide = $(this),
                           target = $slide.index();
                       if (!$(slider.vars.asNavFor).data('flexslider').animating && !$slide.hasClass('active')) {
@@ -233,7 +242,7 @@
           methods.controlNav.active();
 
           slider.controlNavScaffold.delegate('a, img', eventType, function(event) {
-            event.preventDefault();
+            _preventDefault(event);
 
             if (watchedEvent === "" || watchedEvent === event.type) {
               var $this = $(this),
@@ -258,7 +267,7 @@
           methods.controlNav.active();
 
           slider.controlNav.bind(eventType, function(event) {
-            event.preventDefault();
+            _preventDefault(event);
 
             if (watchedEvent === "" || watchedEvent === event.type) {
               var $this = $(this),
@@ -312,7 +321,7 @@
           methods.directionNav.update();
 
           slider.directionNav.bind(eventType, function(event) {
-            event.preventDefault();
+            _preventDefault(event);
             var target;
 
             if (watchedEvent === "" || watchedEvent === event.type) {
@@ -360,7 +369,7 @@
           methods.pausePlay.update((slider.vars.slideshow) ? namespace + 'pause' : namespace + 'play');
 
           slider.pausePlay.bind(eventType, function(event) {
-            event.preventDefault();
+            _preventDefault(event);
 
             if (watchedEvent === "" || watchedEvent === event.type) {
               if ($(this).hasClass(namespace + 'pause')) {
@@ -398,11 +407,25 @@
           accDx = 0;
 
         if(!msGesture){
+            // grotter
+            if (el.timeout) clearTimeout(el.timeout);
+
             el.addEventListener('touchstart', onTouchStart, false);
 
             function onTouchStart(e) {
+              // grotter
+              if (el.timeout) clearTimeout(el.timeout);
+
               if (slider.animating) {
-                e.preventDefault();
+                // grotter
+                var timeoutDur = slider.vars.animationSpeed + 300;
+                
+                el.timeout = setTimeout(function () {
+                  console.log('Reset slider.animating as false');
+                  slider.animating = false;
+                }, timeoutDur);
+
+                _preventDefault(e);
               } else if ( ( window.navigator.msPointerEnabled ) || e.touches.length === 1 ) {
                 slider.pause();
                 // CAROUSEL:
@@ -428,6 +451,9 @@
             }
 
             function onTouchMove(e) {
+              // grotter
+              if (el.timeout) clearTimeout(el.timeout);
+
               // Local vars for X and Y points.
 
               localX = e.touches[0].pageX;
@@ -439,7 +465,8 @@
               var fxms = 500;
 
               if ( ! scrolling || Number( new Date() ) - startT > fxms ) {
-                e.preventDefault();
+                _preventDefault(e);
+
                 if (!fade && slider.transitions) {
                   if (!slider.vars.animationLoop) {
                     dx = dx/((slider.currentSlide === 0 && dx < 0 || slider.currentSlide === slider.last && dx > 0) ? (Math.abs(dx)/cwidth+2) : 1);
@@ -450,6 +477,9 @@
             }
 
             function onTouchEnd(e) {
+              // grotter
+              if (el.timeout) clearTimeout(el.timeout);
+
               // finish the touch by undoing the touch session
               el.removeEventListener('touchmove', onTouchMove, false);
 
@@ -482,7 +512,7 @@
             function onMSPointerDown(e){
                 e.stopPropagation();
                 if (slider.animating) {
-                    e.preventDefault();
+                    _preventDefault(e);
                 }else{
                     slider.pause();
                     el._gesture.addPointer(e.pointerId);
@@ -522,7 +552,7 @@
                 }
 
                 if (!scrolling || Number(new Date()) - startT > 500) {
-                    e.preventDefault();
+                    _preventDefault(e);
                     if (!fade && slider.transitions) {
                         if (!slider.vars.animationLoop) {
                             dx = accDx / ((slider.currentSlide === 0 && accDx < 0 || slider.currentSlide === slider.last && accDx > 0) ? (Math.abs(accDx) / cwidth + 2) : 1);
