@@ -28,3 +28,6 @@ ln -s /efs/$CALACADEMY_DIR/tmp /tmp-drupal
 ln -s /efs/$CALACADEMY_DIR/robots.txt /var/www/html/robots.txt
 ln -s /efs/$CALACADEMY_DIR/settings.php /var/www/html/sites/default/settings.php
 ln -s /efs/$CALACADEMY_DIR/files /var/www/html/sites/default/files
+
+sudo chown -R webapp:webapp /efs/$CALACADEMY_DIR/files
+sudo chown -R webapp:webapp /efs/$CALACADEMY_DIR/tmp
