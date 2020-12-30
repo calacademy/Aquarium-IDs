@@ -30,7 +30,7 @@
 				$bin = '/usr/local/bin/aws';
 			}
 
-			return shell_exec('sudo ' . $bin . ' s3 ' . $cmd);
+			return shell_exec($bin . ' s3 ' . $cmd);
 		}
 
 		public function getBucketObjects () {
