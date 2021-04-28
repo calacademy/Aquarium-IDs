@@ -131,6 +131,27 @@ function _calacademy_archive_get_assets($nodes, $themes) {
   return $content;
 }
 
+function _calacademy_archive_get_remote($url) {
+  $ch = curl_init();
+      
+  curl_setopt($ch, CURLOPT_HEADER, false);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  
+  $result = curl_exec($ch);
+
+  if ($result === false) {
+    error_log(curl_error($ch));
+  }
+
+  curl_close($ch);
+
+  if ($result === false) return false;
+  return $result;
+}
+
 function _calacademy_archive_create($tid, $tankName, $debug = false) {
   // create tmp dir if it doesn't already exist
   $filesPath = drupal_realpath(file_default_scheme() . '://');
@@ -146,12 +167,12 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
   global $base_url;
   
   // load and append json
-  $tanks = json_decode(file_get_contents($base_url . '/display-list'));
+  $tanks = json_decode(_calacademy_archive_get_remote($base_url . '/display-list'));
   $tanks->selected_tank = $tankName;
 
-  $tankContents = json_decode(file_get_contents($base_url . '/displays/' . $tid . '/json'));
+  $tankContents = json_decode(_calacademy_archive_get_remote($base_url . '/displays/' . $tid . '/json'));
   
-  $themes = json_decode(file_get_contents($base_url . '/exhibit-theme-list'));
+  $themes = json_decode(_calacademy_archive_get_remote($base_url . '/exhibit-theme-list'));
   $themes->fileUri = _calacademy_archive_get_file_uri();
 
   $json = array(
