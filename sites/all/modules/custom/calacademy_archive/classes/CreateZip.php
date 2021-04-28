@@ -157,6 +157,27 @@
 			return $skip;
 		}
 
+		private function _getRemote ($url) {
+		  $ch = curl_init();
+		      
+		  curl_setopt($ch, CURLOPT_HEADER, false);
+		  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		  curl_setopt($ch, CURLOPT_URL, $url);
+		  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+		  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		  
+		  $result = curl_exec($ch);
+
+		  if ($result === false) {
+		  	watchdog('calacademy_archive', curl_error($ch), NULL, WATCHDOG_ERROR);
+		  }
+
+		  curl_close($ch);
+
+		  if ($result === false) return false;
+		  return $result;
+		}
+
 		private function _createZip ($zipName) {
 			// validate source and target
 			if (!is_dir($this->_sourceDirectory)) {
@@ -214,7 +235,7 @@
 					$zip->addFile($file['src'], $target);
 				} else {
 					// do a fake request to generate image derivative
-					$str = file_get_contents($file['url']);
+					$str = $this->_getRemote($file['url']);
 
 					if (is_string($str)) {
 						// add as string

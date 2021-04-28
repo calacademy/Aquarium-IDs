@@ -143,13 +143,17 @@ function _calacademy_archive_get_remote($url) {
   $result = curl_exec($ch);
 
   if ($result === false) {
-    error_log(curl_error($ch));
+    _calacademy_archive_log_error(curl_error($ch));
   }
 
   curl_close($ch);
 
   if ($result === false) return false;
   return $result;
+}
+
+function _calacademy_archive_log_error($msg) {
+  watchdog('calacademy_archive', $msg, NULL, WATCHDOG_ERROR);
 }
 
 function _calacademy_archive_create($tid, $tankName, $debug = false) {
@@ -159,7 +163,7 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
 
   if (!file_exists($tmp)) {
     if (drupal_mkdir($tmp) === false) {
-      if ($debug) print $tmp . " does not exist and cannot be created.\n";
+      _calacademy_archive_log_error($tmp . ' does not exist and cannot be created.');
       return false;
     }
   }
@@ -184,7 +188,7 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
   // validate json
   foreach ($json as $val) {
     if ($val === false) {
-      if ($debug) print "JSON validation failed\n";
+      _calacademy_archive_log_error('JSON validation failed');
       return false; 
     } 
   }
@@ -193,7 +197,7 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
   $content = json_decode($json['content']);
   
   if ($content === NULL || !is_array($content->nodes)) {
-    if ($debug) print "No JSON content\n";
+    _calacademy_archive_log_error('No JSON content');
     return false;
   }
 
@@ -216,12 +220,14 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
   $path = $foo->getPath(date('Ymd') . '_' . $tankName . '.zip');
   
   if ($path === false) {
-    if ($debug) print "CreateZip::getPath failed.\n";
+    _calacademy_archive_log_error('CreateZip::getPath failed.');
     return false;
   }
 
   // upload
   if ($foo->upload($path)) {
+    _calacademy_archive_log_error('Upload success!');
+
     // delete local
     unlink($path);
 
@@ -229,6 +235,6 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
     return $foo->setIndex();
   }
 
-  if ($debug) print "Upload failed\n";
+  _calacademy_archive_log_error('Upload failed');
   return false;
 }
