@@ -1,5 +1,8 @@
 <?php
 	
+	require __DIR__ . '/../aws/aws-autoloader.php';
+	use Aws\S3\S3Client;
+
 	class CreateZip {
 		private $_sourceDirectory;
 		private $_tmpDirectory;
@@ -12,52 +15,67 @@
 		private $_content = array();
 		private $_json = array();
 		private $_debug = false;
+		private $_s3 = false;
 
-		public function __construct ($sourceDirectory, $author = '', $server = '', $debug = false) {
+		public function __construct ($sourceDirectory, $author = '', $server = '', $debug = false, $credentials = array()) {
 			$this->_tmpDirectory = realpath('tmp');
 			$this->_sourceDirectory = $sourceDirectory;
 			$this->_author = $author;
 			$this->_server = $server;
 			$this->_debug = $debug;
-		}
 
-		private function _exec ($cmd) {
-			global $base_url;
-			$bin = '/usr/bin/aws';
-
-			if (strpos($base_url, '-local') !== false) {
-				// local
-				$bin = '/usr/local/bin/aws';
-			}
-
-			return shell_exec($bin . ' s3 ' . $cmd);
+			$this->_s3 = new S3Client([
+			    'version' => 'latest',
+			    'region'  => 'us-west-2',
+			    'credentials' => $credentials
+			]);
 		}
 
 		public function getBucketObjects () {
 			$objects = array();
 
-			$output = $this->_exec('ls s3://' . $this->_bucket);
-			$lines = explode(PHP_EOL, trim($output));
+			try {
+				$result = $this->_s3->listObjects([
+					'Bucket' => $this->_bucket
+				]);
 
-			foreach ($lines as $line) {
-				$arr = explode(' ', trim($line));
-				$file = array_pop($arr);
+				if (is_array($result['Contents'])) {
+					foreach ($result['Contents'] as $object) {
+						$file = $object['Key'];
 
-				// skip non .zip files
-				$ext = pathinfo($file, PATHINFO_EXTENSION);
-				if (strtolower($ext) != 'zip') continue;
+						// skip non .zip files
+						$ext = pathinfo($file, PATHINFO_EXTENSION);
+						if (strtolower($ext) != 'zip') continue;
 
-				$objects[] = $file;
+						$objects[] = $file;
+					}
+				}
+
+			} catch (Aws\S3\Exception\S3Exception $e) {
+				watchdog('calacademy_archive', $e->getMessage(), NULL, WATCHDOG_ERROR);
 			}
 
 			return $objects;
 		}
 
 		public function upload ($path) {
-			$output = $this->_exec('cp ' . $path . ' s3://' . $this->_bucket . '/' . basename($path) . ' --acl public-read --cache-control max-age=0');
+			watchdog('calacademy_archive', 'Attempting upload for ' . $path);
 
-			if (is_null($output)) return false;
-			return trim($output);
+			try {
+				$result = $this->_s3->putObject([
+					'Bucket' => $this->_bucket,
+					'Key' => basename($path),
+					'Body' => fopen($path, 'r'),
+					'ACL' => 'public-read',
+				]);
+
+				watchdog('calacademy_archive', 'Successful upload: ' . $result->get('ObjectURL'));
+			} catch (Aws\S3\Exception\S3Exception $e) {
+				watchdog('calacademy_archive', $e->getMessage(), NULL, WATCHDOG_ERROR);
+				return false;
+			}
+
+			return true;
 		}
 
 		public function setIndex () {
@@ -66,9 +84,9 @@
 			$file = $this->_tmpDirectory . '/' . $this->_index;
 
 			if (file_put_contents($file, json_encode($objects))) {
-				$this->_exec('cp ' . $file . ' s3://' . $this->_bucket . '/' . $this->_index . ' --acl public-read --cache-control max-age=0');
-				
+				$this->upload($file);
 				unlink($file);
+
 				return true;
 			} else {
 				if ($this->_debug) print "Failed to write JSON index.\n";
@@ -91,7 +109,17 @@
 
 				if ($tank === $tankName) {
 					// match, delete
-					$this->_exec('rm s3://' . $this->_bucket . '/' . $object);
+					try {
+						$result = $this->_s3->deleteObject([
+							'Bucket' => $this->_bucket,
+							'Key' => $object,
+						]);
+
+						watchdog('calacademy_archive', 'Deleted outdated ' . $object);
+					} catch (Aws\S3\Exception\S3Exception $e) {
+						watchdog('calacademy_archive', $e->getMessage(), NULL, WATCHDOG_ERROR);
+						return false;
+					}
 				}
 			}
 		}
