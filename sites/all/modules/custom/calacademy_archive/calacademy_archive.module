@@ -143,7 +143,7 @@ function _calacademy_archive_get_remote($url) {
   $result = curl_exec($ch);
 
   if ($result === false) {
-    _calacademy_archive_log_error(curl_error($ch));
+    _calacademy_archive_log_error($url . '(' . curl_error($ch) . ')');
   }
 
   curl_close($ch);
@@ -152,11 +152,13 @@ function _calacademy_archive_get_remote($url) {
   return $result;
 }
 
-function _calacademy_archive_log_error($msg) {
-  watchdog('calacademy_archive', $msg, NULL, WATCHDOG_ERROR);
+function _calacademy_archive_log_error($msg, $level = WATCHDOG_ERROR) {
+  watchdog('calacademy_archive', $msg, NULL, $level);
 }
 
 function _calacademy_archive_create($tid, $tankName, $debug = false) {
+  _calacademy_archive_log_error('Archiving ' . $tankName . '…', WATCHDOG_INFO);
+
   // create tmp dir if it doesn't already exist
   $filesPath = drupal_realpath(file_default_scheme() . '://');
   $tmp = $filesPath . '/touchscreen-archives';
@@ -188,7 +190,7 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
   // validate json
   foreach ($json as $val) {
     if ($val === false) {
-      _calacademy_archive_log_error('JSON validation failed');
+      _calacademy_archive_log_error('JSON validation failed for ' . $tankName);
       return false; 
     } 
   }
@@ -197,7 +199,7 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
   $content = json_decode($json['content']);
   
   if ($content === NULL || !is_array($content->nodes)) {
-    _calacademy_archive_log_error('No JSON content');
+    _calacademy_archive_log_error('No JSON content for ' . $tankName);
     return false;
   }
 
@@ -220,13 +222,13 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
   $path = $foo->getPath(date('Ymd') . '_' . $tankName . '.zip');
   
   if ($path === false) {
-    _calacademy_archive_log_error('CreateZip::getPath failed.');
+    _calacademy_archive_log_error('CreateZip::getPath failed (' . $tankName . ')!');
     return false;
   }
 
   // upload
   if ($foo->upload($path)) {
-    _calacademy_archive_log_error('Upload success!');
+    _calacademy_archive_log_error('Upload success (' . $path . ')!', WATCHDOG_INFO);
 
     // delete local
     unlink($path);
@@ -235,6 +237,6 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
     return $foo->setIndex();
   }
 
-  _calacademy_archive_log_error('Upload failed');
+  _calacademy_archive_log_error('Upload failed (' . $tankName . ')!');
   return false;
 }
