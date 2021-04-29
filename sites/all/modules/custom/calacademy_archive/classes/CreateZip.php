@@ -56,9 +56,8 @@
 		public function upload ($path) {
 			$output = $this->_exec('cp ' . $path . ' s3://' . $this->_bucket . '/' . basename($path) . ' --acl public-read --cache-control max-age=0');
 
-			// @todo
-			// error handling
-			return true;
+			if (is_null($output)) return false;
+			return trim($output);
 		}
 
 		public function setIndex () {

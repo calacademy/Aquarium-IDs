@@ -227,8 +227,10 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
   }
 
   // upload
-  if ($foo->upload($path)) {
-    _calacademy_archive_log_error('Upload success (' . $path . ')!', WATCHDOG_INFO);
+  $uploadResult = $foo->upload($path);
+
+  if (stripos($uploadResult, 'upload:') === 0) {
+    _calacademy_archive_log_error($uploadResult, WATCHDOG_INFO);
 
     // delete local
     unlink($path);
@@ -237,6 +239,6 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
     return $foo->setIndex();
   }
 
-  _calacademy_archive_log_error('Upload failed (' . $tankName . ')!');
+  _calacademy_archive_log_error($uploadResult);
   return false;
 }
