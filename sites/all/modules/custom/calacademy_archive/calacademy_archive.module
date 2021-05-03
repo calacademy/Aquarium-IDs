@@ -46,18 +46,30 @@ function calacademy_archive_entity_postsave($entity, $entity_type) {
   }
 }
 
+function calacademy_archive_get_tank_tids($content) {
+  $tids = array();
+  if (!is_object($content)) return $tids;
+  if (!is_array($content->field_tank_or_display['und'])) return $tids;
+
+  foreach ($content->field_tank_or_display['und'] as $tid) {
+    $tids[] = $tid['tid'];
+  }
+
+  return $tids;
+}
+
 function calacademy_archive_node_postsave($node) {
-  // skip if wrong type or not published
-  if ($node->type != 'organism' || $node->status != NODE_PUBLISHED) return;
+  // skip if wrong type
+  if ($node->type != 'organism') return;
 
-  // no values
-  if (_calacademy_archive_is_empty($node->field_tank_or_display)) return;
+  $tids = array_merge(calacademy_archive_get_tank_tids($node->original), calacademy_archive_get_tank_tids($node));
+  $tids = array_unique($tids);
 
-  $tids = $node->field_tank_or_display['und'];
+  if (empty($tids)) return;
   
   foreach ($tids as $tid) {
       // get info for each tank specified
-      $term = taxonomy_term_load($tid['tid']);
+      $term = taxonomy_term_load($tid);
 
       if ($term === FALSE) continue;
 
