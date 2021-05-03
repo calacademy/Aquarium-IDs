@@ -104,8 +104,8 @@
 
 				// remove extension
 				$trimmed = basename($object, '.zip');
-				
-				$tank = array_pop(explode('_', $trimmed));
+				$fileArr = explode('_', $trimmed);
+				$tank = array_pop($fileArr);
 
 				if ($tank === $tankName) {
 					// match, delete
