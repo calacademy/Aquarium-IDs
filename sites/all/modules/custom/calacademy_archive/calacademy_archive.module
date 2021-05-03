@@ -13,6 +13,12 @@ function calacademy_archive_admin_settings() {
     '#default_value' => variable_get('calacademy_archive_aws_cli_secret'),
   );
 
+  $form['calacademy_archive_debug'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Debug'),
+    '#default_value' => variable_get('calacademy_archive_debug'),
+  );
+
   return system_settings_form($form);
 }
 
@@ -186,7 +192,9 @@ function _calacademy_archive_log_error($msg, $level = WATCHDOG_ERROR) {
   watchdog('calacademy_archive', $msg, NULL, $level);
 }
 
-function _calacademy_archive_create($tid, $tankName, $debug = false) {
+function _calacademy_archive_create($tid, $tankName) {
+  $isDebug = !empty(variable_get('calacademy_archive_debug'));
+
   _calacademy_archive_log_error('Archiving ' . $tankName . '…', WATCHDOG_INFO);
 
   // create tmp dir if it doesn't already exist
@@ -242,12 +250,12 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
   $target = drupal_realpath(DRUPAL_ROOT . '/preview/touchscreen');
   $author = empty($user->mail) ? 'anonymous' : $user->mail;
   
-  $foo = new CreateZip($target, $author, $base_url, $debug, array(
+  $foo = new CreateZip($target, $author, $base_url, $isDebug, array(
     'key' => variable_get('calacademy_archive_aws_cli_key'),
     'secret' => variable_get('calacademy_archive_aws_cli_secret')
   ));
 
-  $foo->delete($tankName);
+  if (!$isDebug) $foo->delete($tankName);
   $foo->setTempDirectory(realpath($tmp));
   $foo->setJSON($json);
   $foo->addContent($content);
@@ -257,6 +265,11 @@ function _calacademy_archive_create($tid, $tankName, $debug = false) {
   if ($path === false) {
     _calacademy_archive_log_error('CreateZip::getPath failed (' . $tankName . ')!');
     return false;
+  }
+
+  if ($isDebug) {
+    _calacademy_archive_log_error('Debugging. Skipping upload for ' . $path, WATCHDOG_INFO);
+    return;
   }
 
   // upload

@@ -3,4 +3,5 @@
 function calacademy_archive_uninstall() {
 	variable_del('calacademy_archive_aws_cli_key');
 	variable_del('calacademy_archive_aws_cli_secret');
+	variable_del('calacademy_archive_debug');
 }
