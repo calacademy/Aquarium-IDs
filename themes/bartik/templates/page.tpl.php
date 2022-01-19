@@ -165,7 +165,7 @@
     </div></div> <!-- /.section, /#messages -->
   <?php endif; ?>
 
-  <?php if (isset($page['featured'])): ?>
+  <?php if ($page['featured']): ?>
     <div id="featured"><div class="section clearfix">
       <?php print render($page['featured']); ?>
     </div></div> <!-- /.section, /#featured -->
@@ -217,22 +217,22 @@
 
   </div></div> <!-- /#main, /#main-wrapper -->
 
-  <?php if (isset($page['triptych_first']) || isset($page['triptych_middle']) || isset($page['triptych_last'])): ?>
+  <?php if ($page['triptych_first'] || $page['triptych_middle'] || $page['triptych_last']): ?>
     <div id="triptych-wrapper"><div id="triptych" class="clearfix">
-      <?php if (isset($page['triptych_first'])) print render($page['triptych_first']); ?>
-      <?php if (isset($page['triptych_middle'])) print render($page['triptych_middle']); ?>
-      <?php if (isset($page['triptych_last'])) print render($page['triptych_last']); ?>
+      <?php print render($page['triptych_first']); ?>
+      <?php print render($page['triptych_middle']); ?>
+      <?php print render($page['triptych_last']); ?>
     </div></div> <!-- /#triptych, /#triptych-wrapper -->
   <?php endif; ?>
 
   <div id="footer-wrapper"><div class="section">
 
-    <?php if (isset($page['footer_firstcolumn']) || isset($page['footer_secondcolumn']) || isset($page['footer_thirdcolumn']) || isset($page['footer_fourthcolumn'])): ?>
+    <?php if ($page['footer_firstcolumn'] || $page['footer_secondcolumn'] || $page['footer_thirdcolumn'] || $page['footer_fourthcolumn']): ?>
       <div id="footer-columns" class="clearfix">
-        <?php if (isset($page['footer_firstcolumn'])) print render($page['footer_firstcolumn']); ?>
-        <?php if (isset($page['footer_secondcolumn'])) print render($page['footer_secondcolumn']); ?>
-        <?php if (isset($page['footer_thirdcolumn'])) print render($page['footer_thirdcolumn']); ?>
-        <?php if (isset($page['footer_fourthcolumn'])) print render($page['footer_fourthcolumn']); ?>
+        <?php print render($page['footer_firstcolumn']); ?>
+        <?php print render($page['footer_secondcolumn']); ?>
+        <?php print render($page['footer_thirdcolumn']); ?>
+        <?php print render($page['footer_fourthcolumn']); ?>
       </div> <!-- /#footer-columns -->
     <?php endif; ?>
 
