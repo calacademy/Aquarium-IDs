@@ -18,6 +18,6 @@ stylesheets[all][] = system.base.css
 settings[theme_test_setting] = default value
 
 ; Information added by Drupal.org packaging script on 2022-01-19
-version = "7.86"
+version = "7.87"
 project = "drupal"
-datestamp = "1642608712"
+datestamp = "1642633901"

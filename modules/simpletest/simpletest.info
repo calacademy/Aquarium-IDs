@@ -59,6 +59,6 @@ files[] = tests/upgrade/update.field.test
 files[] = tests/upgrade/update.user.test
 
 ; Information added by Drupal.org packaging script on 2022-01-19
-version = "7.86"
+version = "7.87"
 project = "drupal"
-datestamp = "1642608712"
+datestamp = "1642633901"
