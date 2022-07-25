@@ -85,9 +85,6 @@ var calacademy = {
 				console.log(obj);
 			}
 		},
-		randomRange: function (low, high) {
-			return (Math.random() * high) + low;
-		},
 		isArray: function (myVar) {
 			if (typeof(myVar) == 'undefined') return false;
 			return (Object.prototype.toString.call(myVar) === '[object Array]');
