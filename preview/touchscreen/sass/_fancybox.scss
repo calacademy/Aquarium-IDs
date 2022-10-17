@@ -5,6 +5,10 @@ fancybox customizations
 
 */
 
+.fancybox-is-open .fancybox-bg {
+	@include opacity(.75);
+}
+
 .fancybox-fx-zoom-in-out {
 	transform-origin: bottom left;
 }
@@ -22,6 +26,10 @@ fancybox customizations
 	top: $translationUIHeight;
 	left: 50%;
 	margin-left: -($stageWidth / 2);
+
+	.fancybox-button {
+		display: none;
+	}
 
 	.close {
 		@include animation(fadein 0.6s $easing);
@@ -69,6 +77,28 @@ fancybox customizations
 	.fancybox-slide {
 		padding: 0 !important;
 		overflow: hidden;
+
+		&.fancybox-slide--html {
+			.fancybox-content {
+				@include highlight-border(20px, 1);
+				@include box-shadow(rgba(#000000, .6) 0 0 40px);
+
+				.theme-167 & {
+					border-color: $hidden-reef-background;
+				}
+
+				canvas, img, svg, p {
+					width: 250px;
+				}
+
+				p {
+					margin-top: $padding / 4;
+					font-size: 28px;
+					line-height: 34px;
+					color: #000000;
+				}
+			}
+		}
 
 		.fancybox-video {
 			@include animation(fadein 1.2s $easing);

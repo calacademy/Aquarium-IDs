@@ -1,6 +1,36 @@
 @import "compass/css3";
 @import "compass/utilities";
 
+@mixin extraButton($icon, $offset:20px) {
+	&:before {
+		$iconDim: 45px;
+		$padding: 15px;
+		background-image: url($icon);
+
+		// fix a rendering bug
+		@include transform(translateY(0px));
+
+		top: 0;
+		right: 0;
+		font-size: 20px;
+		line-height: 1;
+
+		@include box-sizing(border-box);
+		height: $iconDim + ($padding * 2);
+		padding: 0;
+		padding-top: 28px;
+		padding-left: $padding;
+		padding-right: $padding + $offset + $iconDim;
+
+		@include background-size($iconDim $iconDim);
+		background-repeat: no-repeat;
+		background-position: right $padding center;
+		background-color: rgba(#000000, $uiOpacity);
+
+		color: $white;
+	}
+}
+
 @mixin arrow-opacity {
 	@include opacity($uiOpacity);
 

@@ -9,7 +9,7 @@ var AquariumID = function () {
 	var _initialSlide = 0;
 	var _numVideos = 0;
 
-	var _idleTime = 30000;
+	var _idleTime = 45000;
 	var _slideshowSpeed = 8000;
 	var _slideshowSpeedNonSpecimen = 3000;
 	var _ebuSlideshowSpeed = 7000;

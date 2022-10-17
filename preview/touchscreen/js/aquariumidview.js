@@ -105,6 +105,11 @@ var AquariumIDView = function (translate) {
 
 		var extra = null;
 
+		if (true) {
+			extra = new AquariumIDScan(img, _getImgSrc(obj.video));
+			return container;
+		}
+
 		if (obj.video) {
 			extra = new AquariumIDVideo(img, _getImgSrc(obj.video));
 		} else {
@@ -360,7 +365,6 @@ var AquariumIDView = function (translate) {
 			var colBottom2 = $('<div />');
 			colBottom2.addClass('column-bottom');
 			container.find('.field_diet, .field_distribution').appendTo(colBottom2);
-			
 			container.find('.body').appendTo(col2);
 			col2.append(colBottom2);
 

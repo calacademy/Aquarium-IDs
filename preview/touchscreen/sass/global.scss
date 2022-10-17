@@ -286,18 +286,16 @@ body {
 							width: 100%;
 							height: $imgHeight;
 
-							pointer-events: none;
 							@include buttony(true);
-
 							@include background-size(cover);
 							background-repeat: no-repeat;
 							background-position: center center;
 
-							&.with-video:before,
-							&.with-expand:before {
+							&:before {
 								@include backface-visibility(hidden);
 
 								content: '';
+								pointer-events: none;
 								position: absolute;
 								background-repeat: no-repeat;
 								z-index: 2;
@@ -305,9 +303,6 @@ body {
 
 							&.with-video {
 								&:before {
-									// only icon is clickable
-									pointer-events: auto;
-
 									$vidIconDim: 145px;
 									$vidIconWithPadding: $vidIconDim + 30px;
 
@@ -339,34 +334,9 @@ body {
 							}
 
 							&.with-expand {
-								// entire image is clickable
-								pointer-events: auto;
-
+								@include extraButton('../images/plus.svg');
+								
 								&:before {
-									$iconDim: 45px;
-									$padding: 15px;
-
-									// fix a rendering bug
-									@include transform(translateY(0px));
-
-									top: 0;
-									right: 0;
-									font-size: 20px;
-									line-height: 1;
-
-									@include box-sizing(border-box);
-									height: $iconDim + ($padding * 2);
-									padding-top: 28px;
-									padding-left: $padding;
-									padding-right: $padding + 20px + $iconDim;
-
-									@include background-size($iconDim $iconDim);
-									background-repeat: no-repeat;
-									background-image: url('../images/plus.svg');
-									background-position: right $padding center;
-									background-color: rgba(#000000, $uiOpacity);
-
-									color: $white;
 									content: 'Expand';
 
 									html[lang="cn"] & {
@@ -379,6 +349,24 @@ body {
 										content: 'Ampliar';
 									}
 								}
+							}
+
+							&.with-scan {
+								@include extraButton('../images/scan-round.svg', 12px);
+
+								&:before {
+									content: 'Scan';
+
+									html[lang="cn"] & {
+										content: '展開';
+									}
+									html[lang="tl"] & {
+										content: 'Palawakin';
+									}
+									html[lang="es"] & {
+										content: 'Ampliar';
+									}
+								}	
 							}
 						}
 
