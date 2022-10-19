@@ -1,4 +1,5 @@
-#container {
+#container,
+.fancybox-container {
 	.en, .cn, .tl, .es {
 		display: none !important;
 		@include animation(fadein 1s $easing);

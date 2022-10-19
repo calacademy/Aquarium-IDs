@@ -105,14 +105,21 @@ var AquariumIDView = function (translate) {
 
 		var extra = null;
 
-		if (true) {
-			extra = new AquariumIDScan(img, _getImgSrc(obj.video));
-			return container;
+		if (parseInt($.getQueryString('qr'))) {
+			// QR code
+			if (typeof(obj.scan_url) == 'string') {
+				if (obj.scan_url.isValidHttpUrl()) {
+					extra = new AquariumIDScan(img, obj);
+					return container;
+				}
+			}
 		}
 
 		if (obj.video) {
+			// video
 			extra = new AquariumIDVideo(img, _getImgSrc(obj.video));
 		} else {
+			// pinch / zoom
 			if (typeof(obj.image_raw[0].src) == 'string') {
 				extra = new AquariumIDExpand(img, _getImgSrc(obj.image_raw[0].src), {
 					width: parseInt(obj.imgwidth),

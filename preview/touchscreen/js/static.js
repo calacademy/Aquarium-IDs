@@ -25,6 +25,18 @@ if (typeof(jQuery) != 'undefined') {
 	})(jQuery);
 }
 
+String.prototype.isValidHttpUrl = function () {
+	var url;
+
+	try {
+		url = new URL(this);
+	} catch (e) {
+		return false;
+	}
+
+	return url.protocol === 'http:' || url.protocol === 'https:';
+}
+
 Number.prototype.toHHMMSS = function () {
 	var sec_num = Math.round(this);
 	var hours = Math.floor(sec_num / 3600);

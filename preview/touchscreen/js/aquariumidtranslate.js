@@ -1,4 +1,4 @@
-var AquariumIdTranslate = function () {
+var AquariumIDTranslate = function () {
 	var _langs = ['tl', 'es', 'cn'];
 
 	var _setLanguage = function (lg) {
@@ -64,6 +64,7 @@ var AquariumIdTranslate = function () {
 	}
 
 	this.initialize = function () {
+		$('#languages li').off();
 		calacademy.addHighlight($('#languages li'));
 		$('#languages li').on(calacademy.selectEvent, _onLgSelect);
 	}

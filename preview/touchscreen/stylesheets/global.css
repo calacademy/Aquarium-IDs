@@ -2094,27 +2094,35 @@ body #msg p:last-child {
   font-size: 136px;
 }
 
-/* line 2, ../sass/_translate.scss */
-#container .en, #container .cn, #container .tl, #container .es {
+/* line 3, ../sass/_translate.scss */
+#container .en, #container .cn, #container .tl, #container .es,
+.fancybox-container .en,
+.fancybox-container .cn,
+.fancybox-container .tl,
+.fancybox-container .es {
   display: none !important;
   -moz-animation: fadein 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-animation: fadein 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   animation: fadein 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-/* line 9, ../sass/_translate.scss */
-html[lang="en"] #container .en {
+/* line 10, ../sass/_translate.scss */
+html[lang="en"] #container .en, html[lang="en"]
+.fancybox-container .en {
   display: block !important;
 }
-/* line 9, ../sass/_translate.scss */
-html[lang="cn"] #container .cn {
+/* line 10, ../sass/_translate.scss */
+html[lang="cn"] #container .cn, html[lang="cn"]
+.fancybox-container .cn {
   display: block !important;
 }
-/* line 9, ../sass/_translate.scss */
-html[lang="tl"] #container .tl {
+/* line 10, ../sass/_translate.scss */
+html[lang="tl"] #container .tl, html[lang="tl"]
+.fancybox-container .tl {
   display: block !important;
 }
-/* line 9, ../sass/_translate.scss */
-html[lang="es"] #container .es {
+/* line 10, ../sass/_translate.scss */
+html[lang="es"] #container .es, html[lang="es"]
+.fancybox-container .es {
   display: block !important;
 }
 
