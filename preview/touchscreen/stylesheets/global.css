@@ -2358,9 +2358,9 @@ fancybox customizations
 /* line 82, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide.fancybox-slide--html .fancybox-content {
   border: 20px solid #00e3ff;
-  -moz-box-shadow: rgba(0, 0, 0, 0.6) 0 0 40px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.6) 0 0 40px;
-  box-shadow: rgba(0, 0, 0, 0.6) 0 0 40px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.33) 0 0 30px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.33) 0 0 30px;
+  box-shadow: rgba(0, 0, 0, 0.33) 0 0 30px;
 }
 /* line 135, ../sass/_mixins.scss */
 .theme-1 .fancybox-container .fancybox-slide.fancybox-slide--html .fancybox-content {
@@ -2405,7 +2405,15 @@ fancybox customizations
   line-height: 34px;
   color: #000000;
 }
-/* line 103, ../sass/_fancybox.scss */
+/* line 100, ../sass/_fancybox.scss */
+.fancybox-container .fancybox-slide.fancybox-slide--html .fancybox-content p em {
+  font-style: italic;
+}
+/* line 104, ../sass/_fancybox.scss */
+.fancybox-container .fancybox-slide.fancybox-slide--html .fancybox-content p strong {
+  font-weight: 600;
+}
+/* line 111, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .fancybox-video {
   -moz-animation: fadein 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-animation: fadein 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -2414,7 +2422,7 @@ fancybox customizations
   height: auto;
   position: absolute;
 }
-/* line 110, ../sass/_fancybox.scss */
+/* line 118, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .progress-indicator {
   -moz-animation: fadein 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-animation: fadein 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -2426,7 +2434,7 @@ fancybox customizations
   top: 22px;
   right: 20px;
 }
-/* line 119, ../sass/_fancybox.scss */
+/* line 127, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .progress-indicator svg {
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -2435,16 +2443,16 @@ fancybox customizations
   width: 60px;
   height: 60px;
 }
-/* line 125, ../sass/_fancybox.scss */
+/* line 133, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .progress-indicator svg circle {
   fill: none;
 }
-/* line 128, ../sass/_fancybox.scss */
+/* line 136, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .progress-indicator svg circle.progress {
   stroke: #ffffff;
   stroke-width: 6;
 }
-/* line 132, ../sass/_fancybox.scss */
+/* line 140, ../sass/_fancybox.scss */
 .fancybox-container .fancybox-slide .progress-indicator svg circle.bg {
   stroke: #000000;
   stroke-width: 2;

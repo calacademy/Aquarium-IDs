@@ -81,7 +81,7 @@ fancybox customizations
 		&.fancybox-slide--html {
 			.fancybox-content {
 				@include highlight-border(20px, 1);
-				@include box-shadow(rgba(#000000, .6) 0 0 40px);
+				@include box-shadow(rgba(#000000, .33) 0 0 30px);
 
 				.theme-167 & {
 					border-color: $hidden-reef-background;
@@ -96,6 +96,14 @@ fancybox customizations
 					font-size: 28px;
 					line-height: 34px;
 					color: #000000;
+
+					em {
+						font-style: italic;
+					}
+
+					strong {
+						font-weight: $semibold;
+					}
 				}
 			}
 		}
