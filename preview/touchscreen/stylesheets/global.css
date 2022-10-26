@@ -957,20 +957,25 @@ body #updated .slides li.specimen .body strong {
   font-weight: 600;
 }
 /* line 438, ../sass/global.scss */
+body #container .slides li.specimen .qrcode-inline,
 body #container .slides li.specimen .field_diet,
 body #container .slides li.specimen .field_distribution,
+body #main .slides li.specimen .qrcode-inline,
 body #main .slides li.specimen .field_diet,
 body #main .slides li.specimen .field_distribution,
+body #splash .slides li.specimen .qrcode-inline,
 body #splash .slides li.specimen .field_diet,
 body #splash .slides li.specimen .field_distribution,
+body #thumbnails .slides li.specimen .qrcode-inline,
 body #thumbnails .slides li.specimen .field_diet,
 body #thumbnails .slides li.specimen .field_distribution,
+body #updated .slides li.specimen .qrcode-inline,
 body #updated .slides li.specimen .field_diet,
 body #updated .slides li.specimen .field_distribution {
   font-size: 28px;
   line-height: 34px;
 }
-/* line 443, ../sass/global.scss */
+/* line 447, ../sass/global.scss */
 body #container .slides li.specimen .field_diet em,
 body #container .slides li.specimen .field_distribution em,
 body #main .slides li.specimen .field_diet em,
@@ -983,7 +988,7 @@ body #updated .slides li.specimen .field_diet em,
 body #updated .slides li.specimen .field_distribution em {
   font-weight: 600;
 }
-/* line 448, ../sass/global.scss */
+/* line 452, ../sass/global.scss */
 body #container .slides li.specimen .field_tagline,
 body #container .slides li.specimen .field_source,
 body #main .slides li.specimen .field_tagline,
@@ -999,7 +1004,67 @@ body #updated .slides li.specimen .field_source {
   font-weight: 600;
   margin-bottom: 10px;
 }
-/* line 459, ../sass/global.scss */
+/* line 460, ../sass/global.scss */
+body #container .slides li.specimen .qrcode-inline,
+body #main .slides li.specimen .qrcode-inline,
+body #splash .slides li.specimen .qrcode-inline,
+body #thumbnails .slides li.specimen .qrcode-inline,
+body #updated .slides li.specimen .qrcode-inline {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 10px;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+/* line 471, ../sass/global.scss */
+body #container .slides li.specimen .qrcode-inline img,
+body #main .slides li.specimen .qrcode-inline img,
+body #splash .slides li.specimen .qrcode-inline img,
+body #thumbnails .slides li.specimen .qrcode-inline img,
+body #updated .slides li.specimen .qrcode-inline img {
+  float: left;
+  width: 120px;
+  margin-right: 20px;
+}
+/* line 477, ../sass/global.scss */
+body #container .slides li.specimen .qrcode-inline .translatable,
+body #main .slides li.specimen .qrcode-inline .translatable,
+body #splash .slides li.specimen .qrcode-inline .translatable,
+body #thumbnails .slides li.specimen .qrcode-inline .translatable,
+body #updated .slides li.specimen .qrcode-inline .translatable {
+  position: absolute;
+  top: 49%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 140px;
+  padding-right: 10px;
+}
+/* line 486, ../sass/global.scss */
+body #container .slides li.specimen .qrcode-inline .translatable p em,
+body #main .slides li.specimen .qrcode-inline .translatable p em,
+body #splash .slides li.specimen .qrcode-inline .translatable p em,
+body #thumbnails .slides li.specimen .qrcode-inline .translatable p em,
+body #updated .slides li.specimen .qrcode-inline .translatable p em {
+  font-style: italic;
+}
+/* line 490, ../sass/global.scss */
+body #container .slides li.specimen .qrcode-inline .translatable p strong,
+body #main .slides li.specimen .qrcode-inline .translatable p strong,
+body #splash .slides li.specimen .qrcode-inline .translatable p strong,
+body #thumbnails .slides li.specimen .qrcode-inline .translatable p strong,
+body #updated .slides li.specimen .qrcode-inline .translatable p strong {
+  font-weight: 600;
+}
+/* line 500, ../sass/global.scss */
 body #container .slides li.updated, body #container .slides li.title-slide,
 body #main .slides li.updated,
 body #main .slides li.title-slide,
@@ -1012,7 +1077,7 @@ body #updated .slides li.title-slide {
   padding-left: 90px;
   padding-right: 90px;
 }
-/* line 464, ../sass/global.scss */
+/* line 505, ../sass/global.scss */
 body #container .slides li.updated .container, body #container .slides li.title-slide .container,
 body #main .slides li.updated .container,
 body #main .slides li.title-slide .container,
@@ -1026,7 +1091,7 @@ body #updated .slides li.title-slide .container {
   vertical-align: middle;
   height: 800px;
 }
-/* line 471, ../sass/global.scss */
+/* line 512, ../sass/global.scss */
 body #container .slides li.photosensitive,
 body #main .slides li.photosensitive,
 body #splash .slides li.photosensitive,
@@ -1035,7 +1100,7 @@ body #updated .slides li.photosensitive {
   padding-left: 180px;
   padding-right: 180px;
 }
-/* line 475, ../sass/global.scss */
+/* line 516, ../sass/global.scss */
 body #container .slides li.photosensitive .container,
 body #main .slides li.photosensitive .container,
 body #splash .slides li.photosensitive .container,
@@ -1064,7 +1129,7 @@ body #updated .slides li.photosensitive .container {
     background-image: url("../images/photosensitive@2x.png");
   }
 }
-/* line 485, ../sass/global.scss */
+/* line 526, ../sass/global.scss */
 body #container .slides li.photosensitive h2,
 body #main .slides li.photosensitive h2,
 body #splash .slides li.photosensitive h2,
@@ -1075,7 +1140,7 @@ body #updated .slides li.photosensitive h2 {
   line-height: 1;
   margin-bottom: 20px;
 }
-/* line 491, ../sass/global.scss */
+/* line 532, ../sass/global.scss */
 html[lang="es"] body #container .slides li.photosensitive h2, html[lang="es"]
 body #main .slides li.photosensitive h2, html[lang="es"]
 body #splash .slides li.photosensitive h2, html[lang="es"]
@@ -1083,7 +1148,7 @@ body #thumbnails .slides li.photosensitive h2, html[lang="es"]
 body #updated .slides li.photosensitive h2 {
   font-size: 88px;
 }
-/* line 496, ../sass/global.scss */
+/* line 537, ../sass/global.scss */
 body #container .slides li.photosensitive p,
 body #main .slides li.photosensitive p,
 body #splash .slides li.photosensitive p,
@@ -1093,7 +1158,7 @@ body #updated .slides li.photosensitive p {
   font-size: 29px;
   line-height: 40px;
 }
-/* line 501, ../sass/global.scss */
+/* line 542, ../sass/global.scss */
 body #container .slides li.photosensitive p em,
 body #main .slides li.photosensitive p em,
 body #splash .slides li.photosensitive p em,
@@ -1101,7 +1166,7 @@ body #thumbnails .slides li.photosensitive p em,
 body #updated .slides li.photosensitive p em {
   font-weight: 600;
 }
-/* line 508, ../sass/global.scss */
+/* line 549, ../sass/global.scss */
 body #container .slides li.updated .container,
 body #main .slides li.updated .container,
 body #splash .slides li.updated .container,
@@ -1110,7 +1175,7 @@ body #updated .slides li.updated .container {
   width: 1280px;
   text-align: center;
 }
-/* line 513, ../sass/global.scss */
+/* line 554, ../sass/global.scss */
 body #container .slides li.updated h2,
 body #main .slides li.updated h2,
 body #splash .slides li.updated h2,
@@ -1120,7 +1185,7 @@ body #updated .slides li.updated h2 {
   line-height: 1;
   padding-bottom: 50px;
 }
-/* line 520, ../sass/global.scss */
+/* line 561, ../sass/global.scss */
 body #container .slides li.title-slide,
 body #main .slides li.title-slide,
 body #splash .slides li.title-slide,
@@ -1133,7 +1198,7 @@ body #updated .slides li.title-slide {
   background-repeat: no-repeat;
   padding-right: 200px;
 }
-/* line 525, ../sass/global.scss */
+/* line 566, ../sass/global.scss */
 body #container .slides li.title-slide .container,
 body #main .slides li.title-slide .container,
 body #splash .slides li.title-slide .container,
@@ -1146,7 +1211,7 @@ body #updated .slides li.title-slide .container {
   box-sizing: border-box;
   padding-bottom: 50px;
 }
-/* line 532, ../sass/global.scss */
+/* line 573, ../sass/global.scss */
 body #container .slides li.title-slide h1,
 body #main .slides li.title-slide h1,
 body #splash .slides li.title-slide h1,
@@ -1157,7 +1222,7 @@ body #updated .slides li.title-slide h1 {
   line-height: 172px;
   letter-spacing: -4px;
 }
-/* line 539, ../sass/global.scss */
+/* line 580, ../sass/global.scss */
 body #container .slides li.title-slide h2,
 body #main .slides li.title-slide h2,
 body #splash .slides li.title-slide h2,
@@ -1168,7 +1233,7 @@ body #updated .slides li.title-slide h2 {
   line-height: 140px;
   letter-spacing: -1px;
 }
-/* line 548, ../sass/global.scss */
+/* line 589, ../sass/global.scss */
 body #container .slides li > h2 em, body #container .slides li.title-slide h1, body #container .slides li.specimen .title, body #container .slides li.specimen .field_scientific_name, body #container .slides li.specimen .field_tagline,
 body #main .slides li > h2 em,
 body #main .slides li.title-slide h1,
@@ -1408,7 +1473,7 @@ body #updated .slides li.specimen .field_scientific_name, .theme-172
 body #updated .slides li.specimen .field_tagline {
   color: #c2d954;
 }
-/* line 561, ../sass/global.scss */
+/* line 602, ../sass/global.scss */
 .theme-1 body #container, .theme-1
 body #main, .theme-1
 body #splash, .theme-1
@@ -1416,7 +1481,7 @@ body #thumbnails, .theme-1
 body #updated {
   background-color: #00344d;
 }
-/* line 564, ../sass/global.scss */
+/* line 605, ../sass/global.scss */
 .theme-3 body #container, .theme-3
 body #main, .theme-3
 body #splash, .theme-3
@@ -1424,7 +1489,7 @@ body #thumbnails, .theme-3
 body #updated {
   background-color: #008cae;
 }
-/* line 567, ../sass/global.scss */
+/* line 608, ../sass/global.scss */
 .theme-13 body #container, .theme-13
 body #main, .theme-13
 body #splash, .theme-13
@@ -1432,7 +1497,7 @@ body #thumbnails, .theme-13
 body #updated {
   background-color: #640000;
 }
-/* line 570, ../sass/global.scss */
+/* line 611, ../sass/global.scss */
 .theme-145 body #container, .theme-145
 body #main, .theme-145
 body #splash, .theme-145
@@ -1440,7 +1505,7 @@ body #thumbnails, .theme-145
 body #updated {
   background-color: #008cae;
 }
-/* line 573, ../sass/global.scss */
+/* line 614, ../sass/global.scss */
 .theme-153 body #container, .theme-153
 body #main, .theme-153
 body #splash, .theme-153
@@ -1448,7 +1513,7 @@ body #thumbnails, .theme-153
 body #updated {
   background-color: #006225;
 }
-/* line 576, ../sass/global.scss */
+/* line 617, ../sass/global.scss */
 .theme-162 body #container, .theme-162
 body #main, .theme-162
 body #splash, .theme-162
@@ -1456,7 +1521,7 @@ body #thumbnails, .theme-162
 body #updated {
   background-color: #002855;
 }
-/* line 579, ../sass/global.scss */
+/* line 620, ../sass/global.scss */
 .theme-167 body #container, .theme-167
 body #main, .theme-167
 body #splash, .theme-167
@@ -1464,7 +1529,7 @@ body #thumbnails, .theme-167
 body #updated {
   background-color: #005396;
 }
-/* line 582, ../sass/global.scss */
+/* line 623, ../sass/global.scss */
 .theme-169 body #container, .theme-169
 body #main, .theme-169
 body #splash, .theme-169
@@ -1472,7 +1537,7 @@ body #thumbnails, .theme-169
 body #updated {
   background-color: #34A3AD;
 }
-/* line 585, ../sass/global.scss */
+/* line 626, ../sass/global.scss */
 .theme-172 body #container, .theme-172
 body #main, .theme-172
 body #splash, .theme-172
@@ -1480,12 +1545,12 @@ body #thumbnails, .theme-172
 body #updated {
   background-color: #00716f;
 }
-/* line 591, ../sass/global.scss */
+/* line 632, ../sass/global.scss */
 body #main .cap {
   top: 0;
   left: 525px;
 }
-/* line 597, ../sass/global.scss */
+/* line 638, ../sass/global.scss */
 body #main .page,
 body #main .grid {
   pointer-events: none;
@@ -1497,23 +1562,23 @@ body #main .grid {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 608, ../sass/global.scss */
+/* line 649, ../sass/global.scss */
 .on-specimen-slide body #main .page, .on-specimen-slide
 body #main .grid {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 613, ../sass/global.scss */
+/* line 654, ../sass/global.scss */
 body #main .page {
   bottom: 20px;
   right: 80px;
 }
-/* line 620, ../sass/global.scss */
+/* line 661, ../sass/global.scss */
 .aquarium-ipad-large body #main .page {
   right: auto;
   left: 80px;
 }
-/* line 626, ../sass/global.scss */
+/* line 667, ../sass/global.scss */
 body #main .grid {
   position: absolute;
   bottom: 27px;
@@ -1529,14 +1594,14 @@ body #main .grid {
   display: block;
   line-height: 0;
 }
-/* line 637, ../sass/global.scss */
+/* line 678, ../sass/global.scss */
 .on-specimen-slide body #main .grid {
   cursor: pointer;
   pointer-events: auto;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 643, ../sass/global.scss */
+/* line 684, ../sass/global.scss */
 .no-touch.on-specimen-slide body #main .grid:hover, .touch.on-specimen-slide body #main .grid:active {
   -moz-transition: none;
   -o-transition: none;
@@ -1545,14 +1610,14 @@ body #main .grid {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 653, ../sass/global.scss */
+/* line 694, ../sass/global.scss */
 body #updated li,
 body #splash li {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-/* line 661, ../sass/global.scss */
+/* line 702, ../sass/global.scss */
 body #updated .cap {
   top: 21px;
   left: 1268px;
@@ -1575,7 +1640,7 @@ body #updated .cap {
   -ms-transform-origin: 0 0;
   transform-origin: 0 0;
 }
-/* line 675, ../sass/global.scss */
+/* line 716, ../sass/global.scss */
 body #updated li h2 {
   font-size: 57px;
   line-height: 68px;
@@ -1583,36 +1648,36 @@ body #updated li h2 {
   position: absolute;
   letter-spacing: -1px;
 }
-/* line 682, ../sass/global.scss */
+/* line 723, ../sass/global.scss */
 body #updated li h2 em {
   font-weight: 500;
 }
-/* line 690, ../sass/global.scss */
+/* line 731, ../sass/global.scss */
 body #updated li:nth-child(odd) h2 {
   bottom: 73px;
   right: 80px;
 }
-/* line 696, ../sass/global.scss */
+/* line 737, ../sass/global.scss */
 body #updated li:nth-child(even) h2 {
   top: 56px;
   left: 68px;
 }
-/* line 705, ../sass/global.scss */
+/* line 746, ../sass/global.scss */
 body #splash .slides li {
   text-align: center;
   pointer-events: none;
 }
-/* line 711, ../sass/global.scss */
+/* line 752, ../sass/global.scss */
 body #splash .slides li.flex-active-slide {
   pointer-events: auto;
 }
-/* line 715, ../sass/global.scss */
+/* line 756, ../sass/global.scss */
 body #splash .slides li h1, body #splash .slides li h2 {
   text-transform: uppercase;
   text-transform: lowercase;
   font-variant: small-caps;
 }
-/* line 720, ../sass/global.scss */
+/* line 761, ../sass/global.scss */
 body #splash .slides li h2 {
   color: #00e3ff;
   margin-top: 57px;
@@ -1656,7 +1721,7 @@ body #splash .slides li h2 {
 .theme-172 body #splash .slides li h2 {
   color: #c2d954;
 }
-/* line 729, ../sass/global.scss */
+/* line 770, ../sass/global.scss */
 body #splash .slides li h1 {
   display: inline-block;
   margin-top: 150px;
@@ -1700,12 +1765,12 @@ body #splash .slides li h1 {
 .theme-167 body #splash .slides li h1 {
   border: 23px solid rgba(255, 255, 255, 0.6);
 }
-/* line 748, ../sass/global.scss */
+/* line 789, ../sass/global.scss */
 body #thumbnails {
   padding: 70px;
   padding-top: 55px;
 }
-/* line 752, ../sass/global.scss */
+/* line 793, ../sass/global.scss */
 body #thumbnails h1 {
   text-transform: uppercase;
   text-transform: lowercase;
@@ -1716,16 +1781,16 @@ body #thumbnails h1 {
   margin-bottom: 55px;
   margin-left: -2px;
 }
-/* line 765, ../sass/global.scss */
+/* line 806, ../sass/global.scss */
 body #thumbnails.flexslider .flex-direction-nav a.flex-prev {
   padding-right: 25px;
 }
-/* line 768, ../sass/global.scss */
+/* line 809, ../sass/global.scss */
 body #thumbnails.flexslider .flex-direction-nav a.flex-next {
   width: inherit;
   padding-left: 45px;
 }
-/* line 775, ../sass/global.scss */
+/* line 816, ../sass/global.scss */
 body #thumbnails.flexslider .flex-direction-nav a.flex-prev img,
 body #thumbnails.flexslider .flex-direction-nav a.flex-next img {
   -moz-animation: none;
@@ -1741,27 +1806,27 @@ body #thumbnails.flexslider .flex-direction-nav a.flex-next img {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 782, ../sass/global.scss */
+/* line 823, ../sass/global.scss */
 body #thumbnails.flexslider .flex-direction-nav a.flex-next div,
 body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(2),
 body #thumbnails.flexslider .flex-direction-nav a.flex-next img:nth-child(3) {
   display: none;
 }
-/* line 791, ../sass/global.scss */
+/* line 832, ../sass/global.scss */
 body #thumbnails.flexslider .flex-viewport {
   -moz-animation: fadein 0.6s;
   -webkit-animation: fadein 0.6s;
   animation: fadein 0.6s;
 }
-/* line 796, ../sass/global.scss */
+/* line 837, ../sass/global.scss */
 body #thumbnails .slides {
   z-index: 100;
 }
-/* line 800, ../sass/global.scss */
+/* line 841, ../sass/global.scss */
 body #thumbnails .slides, body #thumbnails .slides li {
   height: 431px;
 }
-/* line 806, ../sass/global.scss */
+/* line 847, ../sass/global.scss */
 body #thumbnails .slides .thumbnail, body #thumbnails .slides li .thumbnail {
   float: left;
   margin-bottom: 21px;
@@ -1772,11 +1837,11 @@ body #thumbnails .slides .thumbnail, body #thumbnails .slides li .thumbnail {
   background-position: center;
   background-color: rgba(0, 0, 0, 0.15);
 }
-/* line 811, ../sass/global.scss */
+/* line 852, ../sass/global.scss */
 body #thumbnails .slides .thumbnail:nth-child(4n), body #thumbnails .slides li .thumbnail:nth-child(4n) {
   margin-right: 0;
 }
-/* line 821, ../sass/global.scss */
+/* line 862, ../sass/global.scss */
 body #thumbnails .slides .thumbnail, body #thumbnails .slides .thumbnail .inner, body #thumbnails .slides li .thumbnail, body #thumbnails .slides li .thumbnail .inner {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1784,7 +1849,7 @@ body #thumbnails .slides .thumbnail, body #thumbnails .slides .thumbnail .inner,
   width: 205px;
   height: 205px;
 }
-/* line 827, ../sass/global.scss */
+/* line 868, ../sass/global.scss */
 body #thumbnails .slides .thumbnail .inner, body #thumbnails .slides li .thumbnail .inner {
   border: 0px solid #00e3ff;
   -moz-transition: border-width 0.1s ease-out;
@@ -1820,18 +1885,18 @@ body #thumbnails .slides .thumbnail .inner, body #thumbnails .slides li .thumbna
 .theme-167 body #thumbnails .slides .thumbnail .inner, .theme-167 body #thumbnails .slides li .thumbnail .inner {
   border: 0px solid white;
 }
-/* line 837, ../sass/global.scss */
+/* line 878, ../sass/global.scss */
 .no-touch body #thumbnails .slides .thumbnail:hover .inner, .touch body #thumbnails .slides .thumbnail:active .inner, .no-touch body #thumbnails .slides li .thumbnail:hover .inner, .touch body #thumbnails .slides li .thumbnail:active .inner {
   border-width: 8px;
 }
-/* line 844, ../sass/global.scss */
+/* line 885, ../sass/global.scss */
 body #thumbnails .taxa-menu {
   position: absolute;
   z-index: 200;
   margin-left: -20px;
   margin-top: 40px;
 }
-/* line 850, ../sass/global.scss */
+/* line 891, ../sass/global.scss */
 body #thumbnails .taxa-menu li {
   display: inline-block;
   margin-right: 16px;
@@ -1843,11 +1908,11 @@ body #thumbnails .taxa-menu li {
   font-size: 36px;
   letter-spacing: 3px;
 }
-/* line 855, ../sass/global.scss */
+/* line 896, ../sass/global.scss */
 body #thumbnails .taxa-menu li:last-child {
   margin-right: 0;
 }
-/* line 866, ../sass/global.scss */
+/* line 907, ../sass/global.scss */
 body #thumbnails .taxa-menu li a {
   padding: 12px;
   padding-top: 0;
@@ -1884,47 +1949,47 @@ body #thumbnails .taxa-menu li a {
 .theme-167 body #thumbnails .taxa-menu li a {
   border: 8px solid rgba(255, 255, 255, 0);
 }
-/* line 874, ../sass/global.scss */
+/* line 915, ../sass/global.scss */
 .no-touch body #thumbnails .taxa-menu li a:hover, .touch body #thumbnails .taxa-menu li a:active {
   color: #00e3ff;
 }
-/* line 878, ../sass/global.scss */
+/* line 919, ../sass/global.scss */
 .no-touch.theme-1 body #thumbnails .taxa-menu li a:hover, .touch.theme-1 body #thumbnails .taxa-menu li a:active {
   color: #f1562f;
 }
-/* line 882, ../sass/global.scss */
+/* line 923, ../sass/global.scss */
 .no-touch.theme-3 body #thumbnails .taxa-menu li a:hover, .touch.theme-3 body #thumbnails .taxa-menu li a:active {
   color: #f3c11a;
 }
-/* line 886, ../sass/global.scss */
+/* line 927, ../sass/global.scss */
 .no-touch.theme-13 body #thumbnails .taxa-menu li a:hover, .touch.theme-13 body #thumbnails .taxa-menu li a:active {
   color: #96c488;
 }
-/* line 890, ../sass/global.scss */
+/* line 931, ../sass/global.scss */
 .no-touch.theme-145 body #thumbnails .taxa-menu li a:hover, .touch.theme-145 body #thumbnails .taxa-menu li a:active {
   color: #f3c11a;
 }
-/* line 894, ../sass/global.scss */
+/* line 935, ../sass/global.scss */
 .no-touch.theme-153 body #thumbnails .taxa-menu li a:hover, .touch.theme-153 body #thumbnails .taxa-menu li a:active {
   color: #00ffff;
 }
-/* line 898, ../sass/global.scss */
+/* line 939, ../sass/global.scss */
 .no-touch.theme-162 body #thumbnails .taxa-menu li a:hover, .touch.theme-162 body #thumbnails .taxa-menu li a:active {
   color: #ffd100;
 }
-/* line 902, ../sass/global.scss */
+/* line 943, ../sass/global.scss */
 .no-touch.theme-167 body #thumbnails .taxa-menu li a:hover, .touch.theme-167 body #thumbnails .taxa-menu li a:active {
   color: #ffffff;
 }
-/* line 906, ../sass/global.scss */
+/* line 947, ../sass/global.scss */
 .no-touch.theme-169 body #thumbnails .taxa-menu li a:hover, .touch.theme-169 body #thumbnails .taxa-menu li a:active {
   color: #c2d954;
 }
-/* line 910, ../sass/global.scss */
+/* line 951, ../sass/global.scss */
 .no-touch.theme-172 body #thumbnails .taxa-menu li a:hover, .touch.theme-172 body #thumbnails .taxa-menu li a:active {
   color: #34A3AD;
 }
-/* line 917, ../sass/global.scss */
+/* line 958, ../sass/global.scss */
 body #thumbnails .taxa-menu li.selected a {
   color: #00e3ff;
   border: 8px solid #00e3ff;
@@ -1995,7 +2060,7 @@ body #thumbnails .taxa-menu li.selected a {
 .theme-167 body #thumbnails .taxa-menu li.selected a {
   border: 8px solid white;
 }
-/* line 926, ../sass/global.scss */
+/* line 967, ../sass/global.scss */
 body #thumbnails .page {
   right: 70px;
   bottom: 24px;
@@ -2003,7 +2068,7 @@ body #thumbnails .page {
   -webkit-animation: fadein 0.6s;
   animation: fadein 0.6s;
 }
-/* line 933, ../sass/global.scss */
+/* line 974, ../sass/global.scss */
 body #msg {
   display: none;
   position: absolute;
@@ -2023,32 +2088,32 @@ body #msg {
   line-height: 1;
   max-width: 250px;
 }
-/* line 936, ../sass/global.scss */
+/* line 977, ../sass/global.scss */
 .no-touch body #msg {
   display: block;
 }
-/* line 951, ../sass/global.scss */
+/* line 992, ../sass/global.scss */
 body #msg strong {
   font-weight: 600;
 }
-/* line 955, ../sass/global.scss */
+/* line 996, ../sass/global.scss */
 body #msg p {
   margin-bottom: 10px;
 }
-/* line 958, ../sass/global.scss */
+/* line 999, ../sass/global.scss */
 body #msg p:last-child {
   margin-bottom: 0;
 }
-/* line 973, ../sass/global.scss */
+/* line 1014, ../sass/global.scss */
 .theme-162 body .title-slide, .theme-167 body .title-slide {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-/* line 980, ../sass/global.scss */
+/* line 1021, ../sass/global.scss */
 .theme-162 body .title-slide {
   background-image: url("../images/spotlight.png");
 }
-/* line 983, ../sass/global.scss */
+/* line 1024, ../sass/global.scss */
 .theme-162 body .title-slide .container {
   margin-top: -800px;
   -moz-box-sizing: border-box;
@@ -2058,38 +2123,38 @@ body #msg p:last-child {
   padding-left: 90px;
   padding-right: 90px;
 }
-/* line 991, ../sass/global.scss */
+/* line 1032, ../sass/global.scss */
 .theme-162 body .title-slide .container h1 {
   visibility: hidden;
 }
-/* line 995, ../sass/global.scss */
+/* line 1036, ../sass/global.scss */
 .theme-162 body .title-slide .container h2 {
   width: 50%;
   line-height: 1 !important;
   padding-top: 250px;
   padding-left: 585px;
 }
-/* line 1004, ../sass/global.scss */
+/* line 1045, ../sass/global.scss */
 .theme-162 body .field_exhibit_or_theme {
   color: #00b5e2;
 }
-/* line 1009, ../sass/global.scss */
+/* line 1050, ../sass/global.scss */
 .theme-167 body .title-slide {
   background-image: url("../images/hidden-reef.png");
 }
-/* line 1012, ../sass/global.scss */
+/* line 1053, ../sass/global.scss */
 .theme-167 body .title-slide h1, .theme-167 body .title-slide h2 {
   display: none;
 }
-/* line 1017, ../sass/global.scss */
+/* line 1058, ../sass/global.scss */
 .theme-167 body .field_exhibit_or_theme {
   color: #f36f2f;
 }
-/* line 1023, ../sass/global.scss */
+/* line 1064, ../sass/global.scss */
 .theme-172 body .title-slide {
   background-image: url("../images/venom.png");
 }
-/* line 1027, ../sass/global.scss */
+/* line 1068, ../sass/global.scss */
 .theme-172 body .title-slide h1 .tl {
   font-size: 136px;
 }

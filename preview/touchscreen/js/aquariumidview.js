@@ -103,17 +103,17 @@ var AquariumIDView = function (translate) {
 			}
 		}
 
-		var extra = null;
-
-		if (parseInt($.getQueryString('qr'))) {
-			// QR code
-			if (typeof(obj.scan_url) == 'string') {
-				if (obj.scan_url.isValidHttpUrl()) {
-					extra = new AquariumIDScan(img, obj);
-					return container;
-				}
+		// QR code
+		if (parseInt($.getQueryString('qr')) == 1) {
+			var qr = new AquariumIDScan(img, obj);
+			
+			if (qr.isValid()) {
+				qr.insert();
+				return container;
 			}
 		}
+
+		var extra = null;
 
 		if (obj.video) {
 			// video
@@ -374,6 +374,12 @@ var AquariumIDView = function (translate) {
 			container.find('.field_diet, .field_distribution').appendTo(colBottom2);
 			container.find('.body').appendTo(col2);
 			col2.append(colBottom2);
+
+			if (parseInt($.getQueryString('qr')) == 2) {
+				// QR code
+				var qr = new AquariumIDScan(li, obj);
+				qr.insert();
+			}
 
 			// add slide to slideshow
 			ul.append(li);
