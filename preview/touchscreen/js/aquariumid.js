@@ -642,12 +642,56 @@ var AquariumID = function () {
 		});
 	}
 
+	var _initCsvDownload = function () {
+		if (Modernizr.touch) return;
+
+		var btn = $('<button>Download CSV</button>');
+		btn.addClass('download-csv');
+		btn.on('click', _downloadCsv);
+
+		$('body').append(btn);
+	}
+
+	var _downloadCsv = function () {
+		var data = _tankContents;
+
+		// remove trimmed field
+		$.each(data, function (i, obj) {
+			if (obj.body_1) {
+				delete obj.body_1;	
+			}
+		});
+
+		var csv = Papa.unparse(data);
+		var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+		var filename = $.trim($.getQueryString('tank')) + '.csv';
+				
+		if (navigator.msSaveBlob) {
+			navigator.msSaveBlob(blob, filename);
+		} else {
+			var link = document.createElement('a');
+			
+			if (link.download !== undefined) {
+				link.setAttribute('href', URL.createObjectURL(blob));
+				link.setAttribute('download', filename);
+				link.style.visibility = 'hidden';
+				document.body.appendChild(link);
+				link.click();
+				
+				document.body.removeChild(link);
+			}
+		}
+
+		return false;
+	}
+
 	var _onTankContentsData = function (data, raw) {
 		calacademy.Utils.log('_onTankContentsData');
 		calacademy.Utils.log('total specimens: ' + data.length);
 		calacademy.Utils.log(data);
 
 		_tankContents = data;
+		_initCsvDownload();
 		_iterateTankContents();
 
 		var doMainSlideshow = function () {

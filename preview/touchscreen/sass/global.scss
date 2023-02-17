@@ -25,6 +25,7 @@ body {
 	margin: 0;
 	padding: 0;
 	min-height: 100%;
+	overflow: hidden;
 	font-weight: $book;
 	color: $white;
 	font-family: 'Whitney', Helvetica, Arial, sans-serif;
@@ -59,6 +60,26 @@ body {
 
 	.hide {
 		display: none;
+	}
+
+	.download-csv {
+		@include appearance(none);
+		@include buttony(true);
+		@include small-caps;
+		
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		
+		border: none;
+		outline: none;
+		padding: 10px;
+		padding-top: 3px;
+		padding-bottom: 5px;
+
+		color: #ffffff;
+		background-color: #000000;
 	}
 
 	.flexslider.active {
