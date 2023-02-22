@@ -454,6 +454,10 @@ body {
 						strong {
 							font-weight: $semibold;
 						}
+
+						u {
+							text-decoration: none;
+						}
 					}
 
 					.qrcode-inline,
@@ -611,8 +615,15 @@ body {
 				&.title-slide h1,
 				&.specimen .title,
 				&.specimen .field_scientific_name,
-				&.specimen .field_tagline {
+				&.specimen .field_tagline,
+				&.specimen .body u {
 					@include highlight-color;
+				}
+
+				&.specimen .body u {
+					.theme-167 & {
+						color: $hidden-reef-highlight-alt;
+					}
 				}
 			}
 		}
