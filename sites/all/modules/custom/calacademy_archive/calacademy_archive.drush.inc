@@ -16,9 +16,10 @@ function calacademy_archive_drush_command() {
   return $items;
 }
 
-function drush_calacademy_archive($tanks) {
+function drush_calacademy_archive($tanks, $dryRun = false) {
   print "\n";
 
+  $dryRun = $dryRun == 'dry-run';
   $tanks = trim(strtolower($tanks));
   
   $args = [];
@@ -43,11 +44,15 @@ function drush_calacademy_archive($tanks) {
     if ($tank->depth === 0) continue;
 
     if ($all || in_array(strtolower($tank->name), $args)) {
-      // start archiving
-      if (_calacademy_archive_create($tank->tid, trim(strtolower($tank->name)), true)) {
-        print 'Successfully archived ' . $tank->name . "\n";
+      if ($dryRun) {
+        print 'Dry run ' . $tank->name . "\n";
       } else {
-        print 'Archive failed for ' . $tank->name . "!\n";
+        // start archiving
+        if (_calacademy_archive_create($tank->tid, trim(strtolower($tank->name)), true)) {
+          print 'Successfully archived ' . $tank->name . "\n";
+        } else {
+          print 'Archive failed for ' . $tank->name . "!\n";
+        }
       }
     }    
   }
