@@ -6,9 +6,14 @@
 function calacademy_archive_drush_command() {
   $items['calacademy-archive'] = array(
     'description' => 'Run archiving routine on select tanks',
+    'arguments' => array(
+      'tanks' => 'Comma-delimited tanks to archive (or all)',
+      'dryRun' => 'Dry run',
+    ),
     'examples' => array(
       'Archive a single tank' => 'drush calacademy-archive AQG11',
       'Archive a collection of tanks' => 'drush calacademy-archive AQG11,AQJ11,CRE10',
+      'Dry run archive a collection of tanks' => 'drush calacademy-archive AQG11,AQJ11,CRE10 dry-run',
       'Archive all tanks' => 'drush calacademy-archive all'
     )
   );
